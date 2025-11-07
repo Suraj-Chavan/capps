@@ -115,7 +115,7 @@
                   v-for="(user, index) in filteredMentionUsers"
                   :key="user.USER_ID || user.id"
                   :class="[
-                    'flex items-center gap-3 px-3 py-2.5 cursor-pointer transition-colors',
+                    'mention-user-item flex items-center gap-3 px-3 py-2.5 cursor-pointer transition-colors',
                     index === selectedMentionIndex ? 'bg-blue-50' : 'hover:bg-gray-50',
                     index === 0 ? 'rounded-t-lg' : '',
                     index === filteredMentionUsers.length - 1 ? 'rounded-b-lg' : ''
@@ -1185,7 +1185,7 @@ export default {
         const dropdown = this.$refs.mentionDropdown;
         if (!dropdown) return;
 
-        const items = dropdown.querySelectorAll('[class*="flex items-center"]');
+        const items = dropdown.querySelectorAll('.mention-user-item');
         const selectedItem = items[this.selectedMentionIndex];
 
         if (selectedItem) {
