@@ -315,7 +315,8 @@ export default {
       selectedMentionIndex: 0,
       mentionCursorPosition: 0,
       mentionedUsers: [], // Track users mentioned in current comment
-      userSearchDebounceTimer: null // Debounce timer for user search
+      userSearchDebounceTimer: null, // Debounce timer for user search
+      mentionDropdownTop: 0 // Dynamic top position for mention dropdown
     };
   },
   computed: {
@@ -344,9 +345,9 @@ export default {
       return null; // No avatar in session storage currently
     },
 
-    // Dropdown positioning - always position right below the textarea
+    // Dropdown positioning - use dynamic calculated position
     dropdownTop() {
-      return '100%';
+      return this.mentionDropdownTop + 'px';
     },
 
     isInModal() {
@@ -1052,6 +1053,46 @@ export default {
       }
     },
 
+    calculateDropdownPosition(textarea, cursorPosition) {
+      // Create a temporary element to measure cursor position
+      const computed = window.getComputedStyle(textarea);
+      const div = document.createElement('div');
+
+      // Copy styles from textarea
+      const styles = [
+        'fontFamily', 'fontSize', 'fontWeight', 'fontStyle',
+        'letterSpacing', 'lineHeight', 'padding', 'paddingTop',
+        'paddingBottom', 'paddingLeft', 'paddingRight',
+        'border', 'borderWidth', 'boxSizing', 'whiteSpace', 'wordWrap'
+      ];
+
+      styles.forEach(style => {
+        div.style[style] = computed[style];
+      });
+
+      div.style.position = 'absolute';
+      div.style.visibility = 'hidden';
+      div.style.width = textarea.offsetWidth + 'px';
+      div.style.height = 'auto';
+
+      // Get text up to cursor
+      const textBeforeCursor = this.newComment.substring(0, cursorPosition);
+      div.textContent = textBeforeCursor;
+
+      // Add to DOM to measure
+      document.body.appendChild(div);
+
+      // Get the height of text before cursor
+      const height = div.offsetHeight;
+
+      // Clean up
+      document.body.removeChild(div);
+
+      // Set dropdown position (add line height to position below current line)
+      const lineHeight = parseInt(computed.lineHeight) || 20;
+      this.mentionDropdownTop = height;
+    },
+
     handleTextareaInput(event) {
       const textarea = this.$refs.commentTextarea.$el;
       const cursorPosition = textarea.selectionStart;
@@ -1061,6 +1102,9 @@ export default {
       const mentionMatch = textBeforeCursor.match(/@([\w.]*)$/);
 
       if (mentionMatch) {
+        // Calculate cursor position for dropdown placement
+        this.calculateDropdownPosition(textarea, cursorPosition);
+
         // Show mention dropdown
         this.showMentionDropdown = true;
         this.mentionSearchQuery = mentionMatch[1]; // Text after @
