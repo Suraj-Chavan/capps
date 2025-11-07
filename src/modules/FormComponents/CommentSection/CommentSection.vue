@@ -1091,23 +1091,23 @@ export default {
       // Add to DOM to measure
       document.body.appendChild(div);
 
-      // Get the height of text before cursor
-      const height = div.offsetHeight;
-
-      // Get cursor marker position for horizontal placement
+      // Get cursor marker position for both horizontal and vertical placement
       const marker = div.querySelector('#cursor-marker');
       const markerRect = marker.getBoundingClientRect();
       const divRect = div.getBoundingClientRect();
 
-      // Calculate left position relative to the div (which has same padding as textarea)
+      // Calculate positions relative to the div
       const leftPosition = markerRect.left - divRect.left;
+      // Use the marker's bottom position (where the cursor line ends) for vertical positioning
+      const topPosition = markerRect.bottom - divRect.top;
 
       // Clean up
       document.body.removeChild(div);
 
-      // Set dropdown position
+      // Set dropdown position - use actual cursor position instead of total height
       const lineHeight = parseInt(computed.lineHeight) || 20;
-      this.mentionDropdownTop = height;
+      // Add a small offset (4px) to give a little space between cursor and dropdown
+      this.mentionDropdownTop = topPosition + 4;
       this.mentionDropdownLeft = leftPosition;
     },
 
