@@ -85,7 +85,7 @@
             </div>
           </div>
           <div class="composer-content">
-            <div class="composer-input-wrapper">
+            <div class="composer-input-wrapper tw-scope">
               <b-form-textarea
                 ref="commentTextarea"
                 v-model="newComment"
@@ -106,24 +106,32 @@
               <!-- Mention Dropdown -->
               <div
                 v-if="showMentionDropdown && filteredMentionUsers.length > 0"
-                class="mention-dropdown"
+                class="absolute top-full left-4 right-4 max-w-md bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto mt-1"
                 ref="mentionDropdown"
               >
                 <div
                   v-for="(user, index) in filteredMentionUsers"
                   :key="user.USER_ID || user.id"
-                  :class="['mention-item', { 'selected': index === selectedMentionIndex }]"
+                  :class="[
+                    'flex items-center gap-3 px-3 py-2.5 cursor-pointer transition-colors',
+                    index === selectedMentionIndex ? 'bg-blue-50' : 'hover:bg-gray-50',
+                    index === 0 ? 'rounded-t-lg' : '',
+                    index === filteredMentionUsers.length - 1 ? 'rounded-b-lg' : ''
+                  ]"
                   @mousedown.prevent="selectMention(user)"
                   @mouseenter="selectedMentionIndex = index"
                 >
-                  <div class="mention-avatar">
-                    <div :class="['user-avatar-placeholder-small', getAvatarColorForUser(user)]">
+                  <div class="flex-shrink-0">
+                    <div :class="[
+                      'w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold text-white',
+                      getAvatarColorForUser(user)
+                    ]">
                       {{ getUserInitials(user.USER_NAME || user.USER_ID || 'U') }}
                     </div>
                   </div>
-                  <div class="mention-info">
-                    <div class="mention-name">{{ user.USER_NAME || 'Unknown' }}</div>
-                    <div class="mention-id">@{{ user.USER_ID || user.id }}</div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-medium text-gray-900 truncate">{{ user.USER_NAME || 'Unknown' }}</div>
+                    <div class="text-xs text-gray-500 truncate">@{{ user.USER_ID || user.id }}</div>
                   </div>
                 </div>
               </div>
@@ -227,7 +235,7 @@
                     <span class="activity-time">{{ comment.relativeTime }}</span>
                   </div>
                   
-                  <div v-if="comment.COMMENT_TEXT && comment.COMMENT_TEXT.trim()" class="activity-comment scroll-y">
+                  <div v-if="comment.COMMENT_TEXT && comment.COMMENT_TEXT.trim()" class="activity-comment scroll-y tw-scope">
                     <div class="comment-text" v-html="comment.isExpanded ? comment.processedText.full : comment.processedText.truncated"></div>
                     <button
                       v-if="comment.hasLongText"
@@ -1146,9 +1154,9 @@ export default {
       // Regular expression to match @username patterns
       const mentionRegex = /@(\w+)/g;
 
-      // Function to highlight mentions
+      // Function to highlight mentions with Tailwind classes
       const highlightMentions = (str) => {
-        return str.replace(mentionRegex, '<span class="comment-mention">@$1</span>');
+        return str.replace(mentionRegex, '<span class="bg-blue-100 text-blue-800 px-1 rounded font-medium cursor-pointer hover:bg-blue-200 transition-colors">@$1</span>');
       };
 
       // Process full text
@@ -1169,17 +1177,17 @@ export default {
 
     getAvatarColorForUser(user) {
       const colors = [
-        'avatar-purple',
-        'avatar-blue',
-        'avatar-green',
-        'avatar-pink',
-        'avatar-orange',
-        'avatar-indigo',
-        'avatar-teal',
-        'avatar-red'
+        'bg-purple-500',
+        'bg-blue-500',
+        'bg-green-500',
+        'bg-pink-500',
+        'bg-orange-500',
+        'bg-indigo-500',
+        'bg-teal-500',
+        'bg-red-500'
       ];
 
-      const uniqueId = user.userid || user.id || user.name || '';
+      const uniqueId = user.USER_ID || user.userid || user.id || user.name || '';
       let hash = 0;
       for (let i = 0; i < uniqueId.length; i++) {
         const char = uniqueId.charCodeAt(i);
@@ -2101,156 +2109,4 @@ export default {
   }
 }
 
-// ============================================
-// MENTION/TAGGING STYLES
-// ============================================
-
-.mention-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 16px;
-  right: 16px;
-  max-width: 400px;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  z-index: 1000;
-  max-height: 200px;
-  overflow-y: auto;
-  margin-top: 4px;
-
-  // Custom scrollbar
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #f1f5f9;
-    border-radius: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 3px;
-
-    &:hover {
-      background: #94a3b8;
-    }
-  }
-}
-
-.mention-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-
-  &:hover,
-  &.selected {
-    background-color: #f3f4f6;
-  }
-
-  &.selected {
-    background-color: #eff6ff;
-  }
-
-  &:first-child {
-    border-radius: 8px 8px 0 0;
-  }
-
-  &:last-child {
-    border-radius: 0 0 8px 8px;
-  }
-}
-
-.mention-avatar {
-  flex-shrink: 0;
-}
-
-.user-avatar-placeholder-small {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: white;
-  border: none;
-
-  &.avatar-purple {
-    background: #8b5cf6;
-  }
-
-  &.avatar-blue {
-    background: #3b82f6;
-  }
-
-  &.avatar-green {
-    background: #10b981;
-  }
-
-  &.avatar-pink {
-    background: #ec4899;
-  }
-
-  &.avatar-orange {
-    background: #f59e0b;
-  }
-
-  &.avatar-indigo {
-    background: #6366f1;
-  }
-
-  &.avatar-teal {
-    background: #14b8a6;
-  }
-
-  &.avatar-red {
-    background: #ef4444;
-  }
-}
-
-.mention-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.mention-name {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #111827;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mention-id {
-  font-size: 0.75rem;
-  color: #6b7280;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-// Highlighted mentions in comments
-.comment-text ::v-deep .comment-mention {
-  background: #dbeafe;
-  color: #1e40af;
-  padding: 1px 4px;
-  border-radius: 4px;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: #bfdbfe;
-    color: #1e3a8a;
-  }
-}
 </style>
