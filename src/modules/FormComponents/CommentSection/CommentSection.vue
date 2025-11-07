@@ -522,7 +522,7 @@ export default {
       this.isCommentSubmitting = true;
       try {
         // Extract mentions from the comment text
-        const mentionRegex = /@(\w+)/g;
+        const mentionRegex = /@([\w.]+)/g;
         const matches = [...this.newComment.matchAll(mentionRegex)];
         const mentionedUserIds = [...new Set(matches.map(match => match[1]))]; // Remove duplicates
 
@@ -1050,7 +1050,7 @@ export default {
       const textBeforeCursor = this.newComment.substring(0, cursorPosition);
 
       // Check if we're typing after an @ symbol
-      const mentionMatch = textBeforeCursor.match(/@(\w*)$/);
+      const mentionMatch = textBeforeCursor.match(/@([\w.]*)$/);
 
       if (mentionMatch) {
         // Show mention dropdown
@@ -1114,7 +1114,7 @@ export default {
       const textAfterCursor = this.newComment.substring(cursorPosition);
 
       // Find the @ symbol position
-      const mentionMatch = textBeforeCursor.match(/@(\w*)$/);
+      const mentionMatch = textBeforeCursor.match(/@([\w.]*)$/);
       if (!mentionMatch) return;
 
       const atSymbolPosition = cursorPosition - mentionMatch[0].length;
@@ -1151,8 +1151,8 @@ export default {
     processMentionsForDisplay(text) {
       if (!text) return { full: '', truncated: '' };
 
-      // Regular expression to match @username patterns
-      const mentionRegex = /@(\w+)/g;
+      // Regular expression to match @username patterns (supports dots in usernames)
+      const mentionRegex = /@([\w.]+)/g;
 
       // Function to highlight mentions with Tailwind classes
       const highlightMentions = (str) => {
