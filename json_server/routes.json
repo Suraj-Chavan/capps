@@ -1,0 +1,36 @@
+{
+    "CAPPs_LAUNCHER_APP": "/app_settings/read/CAPPs_LAUNCHER_APP",
+
+    "/credbooks/locale/en?": "/accounting_entries_mast_en",
+    "/credbooks/config?": "/accounting_entries_mast_config",
+    "/credbooks/accounting_entries_mast/schema?": "/accounting_entries_mast_schema",
+    "/credbooks/accounting_entries_mast/js/list?": "/accounting_entries_mast_list",
+    "/credbooks/accounting_entries_mast/js/card?": "/accounting_entries_mast_card",
+    "/credbooks/accounting_entries_mast/js/form?": "/accounting_entries_mast_form",
+    "/credbooks/accounting_entries_mast/read?": "/accounting_entries_mast_viewread",
+    "/credbooks/accounting_entries_mast/read/:ID": "/accounting_entries_mast_viewread/:ID",
+
+    "/mudra2/locale/en?": "/corporates_en",
+    "/mudra2/config?": "/corporates_config",
+    "/mudra2/corporates/schema?": "/corporates_schema",
+    "/mudra2/corporates/js/list?": "/corporates_list",
+    "/mudra2/corporates/js/card?": "/corporates_card",
+    "/mudra2/corporates/js/form?": "/corporates_form",
+    "/mudra2/corporates/read?": "/corporates_viewread",
+    "/mudra2/corporates/read/:ID": "/corporates_viewread/:ID",
+
+
+
+    "/mudra2/forex/schema?": "/forex_schema",
+    "/mudra2/forex/js/list?": "/forex_list",
+    "/mudra2/forex/js/card?": "/forex_card",
+    "/mudra2/forex/js/form?": "/forex_form",
+    "/mudra2/forex/read?": "/forex_viewread",
+    "/mudra2/forex/read/:ID": "/forex_viewread/:ID",
+
+    
+    "/pagebuilder/page/read?": "/page_read",
+    "/pagebuilder/page/read/:ID": "/page_read",
+    "/pagebuilder/page/process/filter/:ID": "/page_process_filter",
+    "/pagebuilder/page/process/:ID": "/page_process"
+}

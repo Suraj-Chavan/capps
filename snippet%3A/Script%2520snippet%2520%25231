@@ -1,0 +1,10 @@
+function extend (key, value) {
+    console.log(`The ${key} is extended with value ${value}`);
+}
+
+const payload = { required: true, custom_validation: { validate() {}}};
+Object.entries(payload).forEach(([key, value]) => {
+    if(typeof value === 'boolean') return;
+    extend(key, value);
+    payload[key] = true;
+});

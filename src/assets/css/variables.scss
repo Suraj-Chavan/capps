@@ -1,0 +1,55 @@
+// CAPPS Framework CSS Variables for Bootstrap-First Integration
+// This file provides SCSS variables that complement the CSS custom properties
+
+// Framework Layer Variables
+$bootstrap-base-priority: 1;
+$bootstrap-components-priority: 2; 
+$capps-custom-priority: 3;
+$tailwind-utilities-priority: 4;
+
+// Bootstrap-First Mode Flag
+$bootstrap-first-mode: true;
+
+// Layer Names for CSS @layer ordering
+$layer-bootstrap-base: 'bootstrap-base';
+$layer-bootstrap-components: 'bootstrap-components';
+$layer-capps-custom: 'capps-custom';
+$layer-tailwind-utilities: 'tailwind-utilities';
+
+// Component Protection Patterns
+$protected-bootstrap-patterns: (
+  'b-',
+  'btn',
+  'modal',
+  'nav',
+  'card',
+  'form',
+  'alert',
+  'dropdown',
+  'tab',
+  'collapse',
+  'pagination'
+);
+
+// CAPPS Theme Variables (complementing CSS custom properties)
+$capps-primary: #070F63;
+$capps-secondary: #2FADE0;
+$capps-success: #61DEA8;
+$capps-warning: #FE8F13;
+$capps-danger: #f57878;
+
+// Z-index layers for proper stacking
+$z-index-bootstrap-components: 1000;
+$z-index-capps-custom: 1100;
+$z-index-tailwind-utilities: 1200;
+$z-index-dropdown: 2000;
+
+// Responsive breakpoints (aligned with Bootstrap)
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;  
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Development mode variables
+$enable-layer-debugging: true;
+$enable-conflict-warnings: true;

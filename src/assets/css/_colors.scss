@@ -1,0 +1,29 @@
+$primary: #070F63;
+$primary-dark: #020842;
+
+$secondary: orange;
+
+$lightest-grey: #f3f3f3;
+$light-grey: #e4e4e4;
+
+/*blues*/
+$dark-blue-0: #191950; //darkest
+$dark-blue-1: #1D1D77;
+
+$blue: #1D4BA0;
+$blue-lighter: #2A57AE;
+
+
+$g-purple:#3A1F5D;
+$g-cadetBlue4:#394A6D;
+$g-aquamarine4:#3C9D9B;
+$g-medium-aquamarine:#52DE97;
+$g-tea-green:#C0FFB3;
+$g-vis:#F0DD92;
+$g-cream:#FFFFC5;
+$g-colonial-white:#F6ECBF;
+
+:export {
+    graphColors:$g-purple,$g-aquamarine4,$g-cadetBlue4,$g-medium-aquamarine,$g-vis,$g-tea-green,$g-cream,$g-colonial-white;
+
+}

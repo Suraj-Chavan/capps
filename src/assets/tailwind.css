@@ -1,0 +1,6 @@
+/* src/assets/tailwind.css */
+
+/* Scoped Tailwind import */
+.tw-scope {
+  @import "tailwindcss";
+}

@@ -1,0 +1,21 @@
+{
+    "mudra2": {
+        "corporates": {
+            "actions": {
+                "CREATE": "Add Corporate"
+            },
+            "fields": {
+                "ACCOUNTING_UNIT_CODE": "Fund Code",
+                "ACCOUNTING_UNIT_NAME": "Fund Name"
+            }
+        },
+        "forex": {
+            "actions": {
+                "CREATE": "New Corporate"
+            },
+            "fields": {
+                
+            }
+        }
+    }
+    }

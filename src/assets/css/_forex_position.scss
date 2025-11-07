@@ -1,0 +1,437 @@
+.connectStatus {
+    position: absolute;
+    left: 0;
+		top: 48px;
+    width: 100%;
+    font-size: 8px;
+//    font-weight: bold;
+    text-align: center;
+    color: white;
+    letter-spacing: 2px;
+    transition: 0.2s all ease-in;
+//    transform: translateX(-100%);
+    opacity: 0;
+    
+    &.ifOnline, &.ifOffline{
+        &.show{
+//                transform: translateX(0);
+            opacity: 1;
+
+        }
+    }
+    &.ifOnline{
+        background: #0DA225;
+    }
+    &.ifOffline{
+        background: #B1213A;
+    }
+}
+  
+  .smallLabel{
+      font-size: 11px;
+      font-weight: bold;
+      color: #707070;
+  }
+  
+  .tabHead{
+    padding: 5px 10px
+  }
+  
+  .tabHead h5{
+    color: #3F51B5;
+      font-size: 16px;
+      display: inline-block;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 500;
+      margin: 0;
+  }
+
+  .mt50{
+      margin-top:50px !important;
+  }
+  
+#currencyPosition{
+	
+
+	text-align: right;
+    min-height: 100px;
+	
+	.positiveVal{
+		color: #16A085;		
+	}
+	.negativeVal{
+		color: #F26060;		
+	}
+	.refresh-btn{
+		padding: 0 5px;
+		height: 21px;
+		margin-left: 5px;
+		line-height: 2;
+		font-size: 12px;
+		letter-spacing: 0;
+	}
+    
+    .entry{
+        border-bottom: 2px solid #f3f3f3;
+        margin-bottom: 3px;
+        font-size: 13px;
+        &:last-child {
+            border: 0;
+            margin-bottom: 0;
+        }
+         .label{
+            display: none;
+            color: grey;
+            font-weight: bold;
+            font-size: 11px;
+            text-align: left;
+            padding-left: 0;
+                
+        }
+        
+        .row > div , .bullet{
+                padding-top: 7px;
+        }
+    }
+    
+    .dashHeading {
+        color: grey;
+        font-weight: bold;
+        font-size: 9px;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #e4e4e4;
+    }
+     img{
+        width: 100%;
+    }
+    
+    .country {
+        padding-right: 0 !important;
+
+        div:last-child {
+            font-size: 12px;
+            margin-top: 0px;
+            font-weight: bold;
+            color: grey;
+
+        }
+    }
+    
+     .row .row > div{
+        padding-right: 5px;
+        padding-left: 11px; 
+         &:first-child{
+                 padding-top: 0;
+         }
+    }
+     span.decimal {
+        font-size: 16px;
+        font-weight: bold;
+		 display: inline-block;
+    }
+    
+     i.caretD {
+        position: absolute;
+        margin-left: 4px;
+        margin-top: 2px;
+    }
+    
+     .position{
+            padding-right: 0  !important;
+        }
+    
+    .increase{
+        .fa-caret-up,.decimal{
+            color: #16A085;
+        }
+    }
+    
+     .decrease{
+        .fa-caret-down,.decimal{
+            color: #F26060;
+        }
+    }
+    
+     .fa-caret-down, .fa-caret-up{
+        display: none;
+    }
+    .decrease .fa-caret-down, .increase .fa-caret-up{
+        display: inline
+    }
+	
+	.change {
+			 border: 2px solid #FFA800;
+	}
+
+	.overflowBullet{
+			background: #ce4040 ;
+			border-radius: 5px;
+	}
+
+	.position {
+		padding-left: 14px !important;
+		.fa-caret-up.caretD {
+				color: #a2de0b !important;
+		}
+		.fa-caret-down.caretD {
+			color: #F6601B !important;
+		}
+		.overflowBullet {
+			position: absolute;
+			width: 84%;
+			height: 15px;
+			top: -1px;
+			
+		}
+	}
+    
+    .bullet{
+        display: inline-block;
+       width: 5.8%;
+		transition: 0.2s all linear;
+		
+        margin-right: 0.8%;
+        position: relative;
+        .NA {
+            text-align: center;
+            margin-top: -19px;
+            position: absolute;
+            width: 100%;
+        }
+		&.faint .mini-graph .progress {
+			opacity: 0.5;
+		}
+		
+		.progress{
+			border: 0;
+		}
+	
+    }
+	.gpb_mat_profile .bullet {
+		width: 13% ;
+	}
+    .progress{
+        margin: 0;
+        height: 20px;
+        background: #B1B7BA;
+        border-radius: 3px;
+				z-index: 1;
+				position: relative;
+        
+    }
+    
+    .positive .progress-bar{
+            background: #16A085;
+    }
+    
+    .negative .progress-bar {
+        background: #F26060;
+    }
+    
+     .percentVal {
+        position: absolute;
+		top: 11px;
+    	left: 3px;
+        z-index: 2;
+        color: white;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+        font-size: 11px;
+		 display: inline-block;
+		 width: 100%;
+		 text-align: left;
+    }
+    
+  #GBP .mini-graph{
+    position: relative;
+    
+    .percentVal{
+      top: 7px !important;
+    }
+  }
+	
+	.position .percentVal {
+		font-size: 13px !important;
+		top: 9px !important;
+	}
+    
+    .graphContainer {
+        height: 40px;
+        overflow: hidden;
+        margin-top: -9px;
+        
+         .progressGraph {
+            height: 40px;
+            width: 100%;
+            box-shadow: 0 0;
+        /*    transform: translateX(-37%) translateY(-44%) scale(0.5);*/
+        }
+    }
+    
+    
+    .card-body{
+		padding: 7px 1.25rem;
+
+        
+    }
+    
+    .dispFlag {
+        width: 100%;
+        height: 20px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    
+    .gap {
+    font-size: 11px;
+    text-align: right;
+    margin-bottom: 4px;
+}
+
+    span.smallText {
+        font-size: 11px;
+    }
+
+    .customTooltip {
+        background: #E1E0F5  ;
+    /*    color: white;*/
+        padding: 5px;
+        width: auto;
+        position: absolute;
+        top: 0;
+        right: -142px;
+       opacity: 0;
+        z-index: 3;
+            width: 140px;
+        transform: scaleX(0);
+        transform-origin: left;
+        height: 52px;
+        border-radius: 3px;
+        transition: 0.2s all linear;
+        overflow: hidden;
+    /*    text-align: left;*/
+    }
+
+
+    .bullet:hover  .customTooltip,.position:hover .customTooltip, .containTooltip:hover .customTooltip{
+            opacity: 1;
+                transform: scaleX(1);
+
+        }
+}
+
+@media screen and (max-width: 1366px) and (min-width: 991px){
+    #currencyPosition .progressGraph {
+        height: 40px;
+        width: 100%;
+/*        transform: translateX(-5%) translateY(13%) scale(0.8);*/
+    }
+}
+
+@media screen and (max-width: 990px){
+	#currencyPosition .graphContainer {
+		margin-top: 0;
+	}
+	#currencyPosition .overflowBullet .label{
+		color: white;
+		padding-left: 3px;
+	}
+    #currencyPosition .dashHeading{
+        display: none;
+    }
+    
+    #currencyPosition .entry .label{
+        display: block;
+    }
+    
+    #currencyPosition span.percentVal,#currencyPosition .position .percentVal {
+		top: 19px !important;
+	}
+    
+    #currencyPosition .entry .row > div, #currencyPosition .entry .bullet {
+        padding-top: 0;
+    }
+    #currencyPosition .country div {
+        font-size: 12px;
+        margin-top: 0;
+        padding: 0;
+    }
+    
+    #currencyPosition .country div:last-child {
+    width: 63%;
+}
+    #currencyPosition .entry .col-lg-7{
+        text-align: left;
+    }
+    #currencyPosition .row .row > div:first-child {
+        text-align: left;
+        padding-top: 3px;
+    }
+    
+    #currencyPosition img {
+        width: 63%;
+    }
+    
+    .entry > div:nth-child(2){
+        padding-top: 10px;
+    }
+    
+    #currencyPosition .entry{
+        padding-bottom: 15px;
+        padding-top: 15px;
+        text-align: left;
+    }
+    
+    .card{
+        position: relative;
+        margin: .5rem 0 1rem 0;
+        background-color: #fff;
+        transition: box-shadow .25s;
+        border-radius: 2px;
+    }
+
+    #currencyPosition .card-body  > div:nth-child(2){
+        padding-top: 0;
+    }
+    
+    #currencyPosition .bullet {
+        display: inline-block;
+        width: 9.8%;
+        margin-right: 1.3%;
+    }
+    
+    #currencyPosition .graphContainer {
+        height: auto;
+    }
+    
+    #currencyPosition .progressGraph {
+/*
+        height: 240px;
+        width: 240px;
+*/
+        transform: translateX(0) translateY(0) scale(1);
+    }
+}
+
+/* for ipad landscape */
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+      span.decimal {
+        font-size: 14px;
+      }
+      
+      #currencyPosition .progressGraph {
+            height: 40px;
+            width: 100%;
+            transform: translateX(-3%) translateY(13%) scale(0.6);
+        }
+}
+
+.modal_opacity{
+    opacity : 0.7;
+}
+

@@ -1,0 +1,106 @@
+ifwk.intialiseNC=function(){
+  $j._NC=new NC({"nurl":iWebZ.cfg.notification_server});
+  $j._NC.startSession(userObj.userid,sessionid);
+  let handleNotification=(dataArr,err)=>{
+    for(var i=0;i<dataArr.length;i++){
+      (dataArr[i].type=="process_progress")?ifwk.showProcessProgress(dataArr[i].data):"";
+    }
+    if(dataArr.length) 
+      $j('#tasks-menu').addClass('hasProcess');
+    else
+      $j('#tasks-menu').removeClass('hasProcess');
+
+  }
+  $j._NC.subMessages(handleNotification);  
+}
+
+
+ifwk.showProcessProgress=(data)=>{
+  if(!data.total_no_of_subprocess) return;
+  let processPerc= 1/data.total_no_of_subprocess*100;
+  let SPComp=data.subprocess_completed/data.total_no_of_subprocess*100;
+  let successPerc=0,errorPerc=0,totalPerc=0;
+  if(data.subprocess_completed!=data.total_no_of_subprocess && data.total!=0){
+    successPerc=(data.success!=0)?data.success/data.total*processPerc:0;
+    errorPerc=(data.errors!=0)?data.errors/data.total*processPerc:0;  
+  }
+  totalPerc=SPComp+successPerc+errorPerc;
+  data.percent=totalPerc;
+
+console.log(data)
+
+var closeBtn = (data.enddate) ? '<span class="task-close" onClick="event.stopPropagation(); ifwk.clearCompletedTask($j(this));"><i class="fa fa-close"></i></span>' : ''
+
+
+  var tmpl = [];
+    tmpl[tmpl.length] ='<li class="task-item" id="'+data.id+'" data-perc="'+data.percent+'">'
+      tmpl[tmpl.length] ='<div class="cont">'
+        tmpl[tmpl.length] ='<h3> '+data.id+' '+closeBtn+'</h3>'
+          tmpl[tmpl.length] ='<div class="progress xs bg-"><div class="progress-bar bg0" style="width: '+data.percent+'%;">'
+            tmpl[tmpl.length] ='<div class="err_perc" style="width:'+errorPerc+'%"></div>'
+            tmpl[tmpl.length] ='<span class="sr-only">'+data.percent+'% Complete</span>'
+          tmpl[tmpl.length] ='</div>'
+        tmpl[tmpl.length] ='</div>'
+        
+       
+        tmpl[tmpl.length] ='<div class="proccessInfo">'
+          
+        if(data.link)
+          tmpl[tmpl.length] ='<a class="contLink" href="'+data.link+'" target="_blank"> <i class="fa fa-download"></i> Download Link</a>'
+        
+        if(errorPerc)
+            tmpl[tmpl.length] ='<p class="processError">Error occurred</p>'
+
+        tmpl[tmpl.length] ='</div>'     
+      tmpl[tmpl.length] ='</div>'
+    tmpl[tmpl.length] ='</li>'
+
+    tmpl = tmpl.join('');
+
+    var task_parent = $j('#task-list');
+    var task_item = $j('#task-list .task-item');
+
+    task_item.each(function(){
+      var _this = $j(this);
+      if(_this.attr('id') == data.id){
+          _this.remove();
+      }
+    });
+
+    task_parent.prepend(tmpl);
+    task_parent.slimScroll({destroy: true});
+    task_parent.height('auto');
+
+    if(task_item.length > 3)
+      $j("#task-list").slimScroll();
+
+    $j('#task-count').text(task_item.length)
+}
+
+ifwk.showNotificaiton=(data)=>{
+  console.log(data)
+}
+
+ifwk.clearCompletedTask=(ref)=>{
+  if(ref)
+  {
+        var _this = $j(ref).parents('.task-item');
+        if(_this.data('perc') == 100) 
+          _this.remove();
+  }
+  else{
+     $j('#task-list .task-item').each(function(){
+          var _this = $j(this);
+          if(_this.data('perc') == 100)
+              _this.remove();
+     });
+  }
+
+  $j('#task-count').text($j('#task-list li').length)
+
+  if($j('#task-list li').length)
+      $j('#tasks-menu').addClass('hasProcess');
+  else
+    $j('#tasks-menu').removeClass('hasProcess');
+}
+

@@ -1,0 +1,35 @@
+.DS_Store
+node_modules
+.claude
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+# .vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+tests/screenshot/img/*
+
+dist/config.js
+public/config.js
+
+dist_copy
+dist copy
+
+dist__vue3-mfe copy
+dist__vue3-mfe_copy
+
+package-lock.json

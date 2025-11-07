@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.625" height="18.006" viewBox="0 0 19.625 18.006">
+  <g id="calendar_black" transform="translate(0)">
+    <rect id="Rectangle_29" data-name="Rectangle 29" width="1.586" height="3.993" transform="translate(5.504)"/>
+    <rect id="Rectangle_30" data-name="Rectangle 30" width="1.586" height="3.993" transform="translate(12.389)"/>
+    <path id="Path_33" data-name="Path 33" d="M1099.656,1745.2h-4.58v1.587h2.994v13.422h-16.452v-13.422h2.649V1745.2h-4.236v16.6h19.625Z" transform="translate(-1080.03 -1743.787)"/>
+    <rect id="Rectangle_31" data-name="Rectangle 31" width="2.754" height="1.586" transform="translate(8.298 1.41)"/>
+    <path id="Subtraction_5" data-name="Subtraction 5" d="M4.483,4.483H0V0H4.483V4.483ZM1.4,1.4V3.119H3.12V1.4Z" transform="translate(12.573 5.459)"/>
+    <path id="Subtraction_6" data-name="Subtraction 6" d="M4.483,4.483H0V0H4.483V4.483ZM1.4,1.4V3.119H3.12V1.4Z" transform="translate(7.587 5.459)"/>
+    <path id="Subtraction_9" data-name="Subtraction 9" d="M4.483,4.483H0V0H4.483V4.483ZM1.4,1.4V3.119H3.12V1.4Z" transform="translate(7.587 10.535)"/>
+    <path id="Subtraction_7" data-name="Subtraction 7" d="M4.483,4.483H0V0H4.483V4.483ZM1.4,1.4V3.119H3.12V1.4Z" transform="translate(2.602 5.459)"/>
+    <path id="Subtraction_8" data-name="Subtraction 8" d="M4.483,4.483H0V0H4.483V4.483ZM1.4,1.4V3.119H3.12V1.4Z" transform="translate(2.602 10.535)"/>
+  </g>
+</svg>

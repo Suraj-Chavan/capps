@@ -1,0 +1,84 @@
+{
+    "DATA_MODEL": "TRAVELLER_ORDER_MASTER",
+    "NAME": "Traveller Orders",
+    "DEFAULT_VIEW": "list",
+    "ACTIONS": ["CREATE", "UPDATE", "DELETE", "EXPORT"],
+    "SORT_FIELD": "TRAVEL_DATE",
+    "SORT_ORDER": "DESC",
+    "FIELDS": {
+      "ID": {
+        "fieldtype": "float",
+        "required": 1,
+        "iskey": 1
+      },
+      "SECTIONBREAK1": {
+        "fieldname": "section_break",
+        "fieldtype": "section_break",
+        "label": "Traveller Info"
+      },
+      "BATCH_ID": {
+        "fieldtype": "textfield",
+        "maxlength": 50,
+        "required": 1,
+        "in_standard_filter": 1
+      },
+      "REQUEST_ID": {
+        "fieldtype": "textfield",
+        "maxlength": 50,
+        "required": 1,
+        "in_standard_filter": 1
+      },
+      "BUY_SELL": {
+        "fieldtype": "select",
+        "maxlength": 10,
+        "required": 1,
+        "in_standard_filter": 1,
+        "options": ["BUY", "SELL"]
+      },
+      "TRAVELLER_NAME": {
+        "fieldtype": "textfield",
+        "maxlength": 100,
+        "required": 1,
+        "in_standard_filter": 1
+      },
+      "MOBILE": {
+        "fieldtype": "textfield",
+        "maxlength": 15,
+        "required": 1
+      },
+      "PASSPORT": {
+        "fieldtype": "textfield",
+        "maxlength": 20,
+        "required": 1,
+        "in_standard_filter": 1
+      },
+      "TRAVEL_DATE": {
+        "fieldtype": "date",
+        "required": 1,
+        "in_standard_filter": 1
+      },
+      "FX_CARD_AMT": {
+        "fieldtype": "textfield",
+        "maxlength": 20,
+        "required": 1
+      },
+      "CURR_NOTES": {
+        "fieldtype": "textfield",
+        "maxlength": 20,
+        "required": 1
+      },
+      "DOCUMENTS": {
+        "fieldtype": "select",
+        "maxlength": 10,
+        "required": 0,
+        "options": ["Attach", "View"]
+      },
+      "STATUS": {
+        "fieldtype": "select",
+        "maxlength": 20,
+        "required": 1,
+        "in_standard_filter": 1,
+        "options": ["Initiated", "Cancelled"]
+      }
+    }
+}

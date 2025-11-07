@@ -1,0 +1,52 @@
+nav.header-nav{
+  background: $primary;
+  padding: 10px 20px;
+  > a, .menuItems > a{color: white; &:hover{color: $light-grey}}
+ 
+  .menuItems {
+    display: inline-block;
+    float: right;
+    > a {
+      font-size: 14px;
+//      height: 35px;
+      display: inline-block;
+//      width: 35px;
+      border-radius: 50%;
+      text-align: center;
+      margin-left: 10px;
+      padding: 2px 5px;
+      line-height: 1.8;
+      &:hover{
+        background: #0a158e;
+        color: white;
+        
+      }
+    }
+  }
+  
+  .userDropdown{
+    padding: 5px;
+    padding-left: 10px;
+    .dropdown-menu {
+      right: 0;
+    }
+  }
+  
+  .responsiveDropdown {
+      .dropdown a{
+        margin-left: 10px;
+      }
+      ul.dropdown-menu {
+        width: 95vw;
+        transform: translateX(-98%);
+        a {
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+    }
+  }
+}
+
+#credmegamenu .megamenu:first-child{
+  font-size: 15px !important;
+}

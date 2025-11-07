@@ -1,0 +1,65 @@
+
+
+/*tab Nav*/
+.tabNav{
+  border-bottom: 1px solid $light-grey;
+  li,a{
+    display: inline-block;
+    background: white !important;
+  }
+  a{
+    &:hover{
+      border-bottom: 1px solid $secondary;
+    }
+  }
+  .router-link-exact-active {
+    border-bottom: 1px solid $secondary;
+    color: $secondary;
+  }
+}
+
+
+/*Card*/
+.capps-card.card {
+    // background: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+  
+    .card-body,.card-head{
+      padding: 10px;
+    }
+    
+    .card{
+      box-shadow: 0 0;
+      border-radius: 3px;
+      margin-bottom: 15px;
+    }
+}
+
+.dashboardContainer{
+  .row{
+    .card-head{
+      color: white;
+      font-weight: bold;
+    }
+    >div{
+      &:nth-child(1n+1) .card-head{
+          background: orange;
+      }
+      &:nth-child(2n+2) .card-head{
+          background: $dark-blue-0;
+      }
+      &:nth-child(3n+3) .card-head{
+          background: $dark-blue-1 ;
+      }
+      &:nth-child(4n+4) .card-head{
+          background: $blue ;
+      }
+    }
+    
+    .card-body{
+          min-height: 280px;
+    }
+    
+  }
+}

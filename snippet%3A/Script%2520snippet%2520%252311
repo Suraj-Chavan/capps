@@ -1,0 +1,12 @@
+const formData = new FormData();
+Object.entries(current_form).forEach(([key, value]) => {
+	debugger
+	formData.set(
+		key,
+		(	
+			["[object Object]", "[object Array]"].includes({}.toString.call(value)) 
+			&& Object.keys(value).length > 0 
+			&& JSON.stringify(value)
+		) || (value == null ? "sasas" : value) 
+	);
+});

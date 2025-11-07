@@ -1,0 +1,40 @@
+.form-select-box {
+    &, & + &, & .vs__dropdown-menu, & + .vs__dropdown-menu {
+        @import "vue-select/src/scss/global/variables";
+        @import "vue-select/src/scss/modules/dropdown-menu";
+    }
+    .vs__dropdown-option--highlight {
+        background: #76aceb42;
+        color: #132021;
+    }
+
+    .vs__dropdown-option--selected {
+        background: #5897fb;
+        color: #132021;
+        border: 1px solid #6cafe8a3;
+    }
+
+    &.vs__dropdown-menu {
+        max-height: 270px;
+        margin: 0;
+        padding: 0;
+        z-index: 9999;
+    }
+
+    .vs__dropdown-option {
+        padding: 5px 5px 5px;
+        white-space: normal;
+    }
+
+    &.vs__dropdown-menu {
+        &::-webkit-scrollbar-thumb {
+            border-radius: 6px;
+            background: #ccc !important;
+        }
+
+        &::-webkit-scrollbar {
+            width: 5px !important;
+            height: 9px;
+        }
+    }
+}

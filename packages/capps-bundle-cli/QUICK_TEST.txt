@@ -1,0 +1,233 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║              CAPPS BUNDLE CLI - QUICK TESTING REFERENCE                  ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+STEP 1: SETUP (One-time)
+═════════════════════════════════════════════════════════════════════════════
+
+cd packages/capps-bundle-cli
+npm install
+npm link
+
+STEP 2: QUICK TESTS (5 minutes)
+═════════════════════════════════════════════════════════════════════════════
+
+Test 1: Version
+───────────────
+capps-bundle version
+Expected: capps-bundle version 1.0.0
+
+Test 2: Help
+────────────
+capps-bundle help
+Expected: Shows all commands with examples
+
+Test 3: Create Test App
+───────────────────────
+mkdir -p ~/test-capps-app/public/src
+cd ~/test-capps-app
+cat > public/assets.json << 'EOF'
+{
+  "app_name": "test-app",
+  "bundler": "vite",
+  "build": {
+    "entry_points": { "app": "src/index.js" }
+  }
+}
+EOF
+echo "console.log('test');" > src/index.js
+
+Test 4: Validate
+────────────────
+capps-bundle validate
+Expected: ✓ Configuration validation passed!
+
+Test 5: Test Error Handling
+────────────────────────────
+# Change bundler to invalid name
+sed -i 's/"vite"/"rollup"/' public/assets.json
+capps-bundle validate
+Expected: ✗ Invalid bundler: "rollup" with supported list
+
+Test 6: Test All Bundlers
+──────────────────────────
+sed -i 's/"rollup"/"webpack"/' public/assets.json
+capps-bundle validate    # Shows: Bundler: webpack
+
+sed -i 's/"webpack"/"vite"/' public/assets.json
+capps-bundle validate    # Shows: Bundler: vite
+
+sed -i 's/"vite"/"esbuild"/' public/assets.json
+capps-bundle validate    # Shows: Bundler: esbuild
+
+Test 7: Package Management
+───────────────────────────
+capps-bundle list-pkg
+Expected: No packages directory found (OK - first time)
+
+Test 8: Debug Output
+────────────────────
+capps-bundle validate --debug
+Expected: Shows debug info with → arrows
+
+Test 9: Unknown Command
+───────────────────────
+capps-bundle unknowncmd
+Expected: ✗ Unknown command with help suggestion
+
+Test 10: Clean Command
+──────────────────────
+capps-bundle clean
+Expected: Gracefully handles missing dist directory
+
+STEP 3: AUTOMATED TESTING (Bash)
+═════════════════════════════════════════════════════════════════════════════
+
+cd packages/capps-bundle-cli
+bash test-cli.sh
+
+Expected Output:
+────────────────
+✓ PASS: Version command works
+✓ PASS: Help command works
+✓ PASS: Missing assets.json error detected
+✓ PASS: Configuration validation passed
+✓ PASS: App name correctly loaded
+✓ PASS: Bundler detection works
+✓ PASS: List packages works
+✓ PASS: Clean command works
+✓ PASS: Invalid bundler error
+✓ PASS: Missing entry point error
+✓ PASS: Debug flag works
+✓ PASS: Unknown command error
+
+Test Summary:
+─────────────
+Total Tests:  12
+Passed:       12 ✓
+Failed:       0
+
+STEP 4: TEST WITH REAL APP (capps-guinea-pig)
+═════════════════════════════════════════════════════════════════════════════
+
+cd D:/credence/Servers/Funds/Apps/capps-guinea-pig
+
+capps-bundle validate
+Expected: ✓ Configuration validation passed!
+
+capps-bundle list-pkg
+Expected: No packages directory found
+
+capps-bundle help
+Expected: All commands listed
+
+cat public/assets.json
+Expected: Shows configuration with vite bundler
+
+ls -la src/
+Expected: Shows index.js and styles/main.scss
+
+STEP 5: ADVANCED TESTING (Full Build - requires bundler)
+═════════════════════════════════════════════════════════════════════════════
+
+If you have Vite installed:
+
+cd ~/test-capps-app
+npm init -y
+npm install vite @vitejs/plugin-vue --save-dev
+
+# Reset config
+cat > public/assets.json << 'EOF'
+{
+  "app_name": "test-app",
+  "bundler": "vite",
+  "build": {
+    "entry_points": { "app": "src/index.js" },
+    "output_dir": "public/dist/"
+  }
+}
+EOF
+
+capps-bundle build
+Expected: ✓ Build completed successfully!
+          ✓ manifest.json created
+
+ls -la public/dist/
+Expected: Shows bundled files
+
+capps-bundle analyze
+Expected: Bundle size report with recommendations
+
+capps-bundle clean
+Expected: ✓ Cleaned dist directory
+
+═════════════════════════════════════════════════════════════════════════════
+
+DOCUMENTATION FILES
+═════════════════════════════════════════════════════════════════════════════
+
+1. TESTING_GUIDE.md
+   - 20+ detailed test scenarios
+   - Step-by-step instructions
+   - Error handling tests
+   - Integration tests
+   - Performance tests
+   - Troubleshooting guide
+
+2. test-commands.md
+   - Copy-paste test commands
+   - Quick reference
+   - Setup instructions
+
+3. test-cli.sh
+   - Automated bash test script
+   - 12 automated tests
+   - Colored output
+
+4. README.md
+   - Package overview
+   - Installation instructions
+   - Phase status
+
+═════════════════════════════════════════════════════════════════════════════
+
+SUCCESS INDICATORS
+═════════════════════════════════════════════════════════════════════════════
+
+✅ capps-bundle version returns 1.0.0
+✅ capps-bundle help shows all 12 commands
+✅ capps-bundle validate passes with valid config
+✅ capps-bundle validate shows errors with invalid config
+✅ All 3 bundlers detected correctly (webpack, vite, esbuild)
+✅ Error messages are helpful and actionable
+✅ Package commands don't crash
+✅ Clean command handles missing dirs gracefully
+✅ Debug flag works
+✅ Color output displays correctly
+
+═════════════════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING
+═════════════════════════════════════════════════════════════════════════════
+
+If capps-bundle not found:
+──────────────────────────
+node packages/capps-bundle-cli/bin/capps-bundle.js validate
+
+If npm link fails:
+──────────────────
+npm unlink -g @capps/bundle-cli
+cd packages/capps-bundle-cli
+npm link
+
+If permission denied:
+─────────────────────
+chmod +x packages/capps-bundle-cli/bin/capps-bundle.js
+
+═════════════════════════════════════════════════════════════════════════════
+
+READY TO TEST! Start with Step 1 above and work through each section.
+
+For detailed information, see TESTING_GUIDE.md
+
+═════════════════════════════════════════════════════════════════════════════

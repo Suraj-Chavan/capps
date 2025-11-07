@@ -1,0 +1,23 @@
+<template>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="Icon Frame">
+        <path id="Ellipse 23" d="M9.99994 0.999878C14.9705 0.999878 18.9999 5.02931 18.9999 9.99988C18.9999 14.9704 14.9705 18.9999 9.99994 18.9999C5.02938 18.9999 0.999939 14.9704 0.999939 9.99988C0.999939 7.17261 2.30361 4.64983 4.3426 2.99988"  :stroke="stroke" :stroke-width="strokeWidth" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector 69" d="M0.999939 2.49988H4.99994V6.49988" :stroke="stroke" :stroke-width="strokeWidth" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </svg>
+</template>
+<script>
+export default {
+    name: "Refresh",
+    props:{
+        stroke: {
+            type: String,
+            default: "#335474"
+        },
+        strokeWidth: {
+            type: String,
+            default: "1.5"
+        }
+    }
+}
+</script>

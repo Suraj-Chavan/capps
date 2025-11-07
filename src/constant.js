@@ -1,0 +1,1 @@
+export const APP_NAME = "CAPPs_LAUNCHER_APP";

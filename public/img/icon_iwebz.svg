@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="107.979" height="98" viewBox="0 0 107.979 98">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="26.5" height="25" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect width="5.5" height="25" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_60" data-name="Group 60" transform="translate(-2355.021 -470)">
+    <path id="Path_100" data-name="Path 100" d="M2309.522,651.449h-84v66.805h50.993" transform="translate(131 -176)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+    <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(2442 470)" fill="none" stroke="#5050ca" stroke-width="3">
+      <circle cx="8.5" cy="8.5" r="8.5" stroke="none"/>
+      <circle cx="8.5" cy="8.5" r="7" fill="none"/>
+    </g>
+    <g id="Ellipse_7" data-name="Ellipse 7" transform="translate(2396 496)" fill="none" stroke="#5050ca" stroke-width="3">
+      <circle cx="5.5" cy="5.5" r="5.5" stroke="none"/>
+      <circle cx="5.5" cy="5.5" r="4" fill="none"/>
+    </g>
+    <g id="Ellipse_8" data-name="Ellipse 8" transform="translate(2412 481)" fill="none" stroke="#5050ca" stroke-width="3">
+      <circle cx="5.5" cy="5.5" r="5.5" stroke="none"/>
+      <circle cx="5.5" cy="5.5" r="4" fill="none"/>
+    </g>
+    <g id="Ellipse_9" data-name="Ellipse 9" transform="translate(2423 491)" fill="none" stroke="#5050ca" stroke-width="3">
+      <circle cx="5.5" cy="5.5" r="5.5" stroke="none"/>
+      <circle cx="5.5" cy="5.5" r="4" fill="none"/>
+    </g>
+    <line id="Line_1" data-name="Line 1" y2="30" transform="translate(2451 489)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+    <g id="Repeat_Grid_2" data-name="Repeat Grid 2" transform="translate(2369.5 481)" clip-path="url(#clip-path)">
+      <g transform="translate(-2369.5 -481)">
+        <path id="Path_101" data-name="Path 101" d="M1.833,0H21.948" transform="translate(2369.5 482.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+      </g>
+      <g transform="translate(-2369.5 -474)">
+        <path id="Path_101-2" data-name="Path 101" d="M1.833,0H21.948" transform="translate(2369.5 482.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+      </g>
+      <g transform="translate(-2369.5 -467)">
+        <path id="Path_101-3" data-name="Path 101" d="M1.833,0H21.948" transform="translate(2369.5 482.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+      </g>
+      <g transform="translate(-2369.5 -460)">
+        <path id="Path_101-4" data-name="Path 101" d="M1.833,0H21.948" transform="translate(2369.5 482.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+      </g>
+    </g>
+    <g id="Repeat_Grid_3" data-name="Repeat Grid 3" transform="translate(2361.5 481)" clip-path="url(#clip-path-2)">
+      <g transform="translate(-2369.5 -481)">
+        <path id="Path_102" data-name="Path 102" d="M1.412,0H3.167" transform="translate(2369.5 482.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+      </g>
+      <g transform="translate(-2369.5 -474)">
+        <path id="Path_102-2" data-name="Path 102" d="M1.412,0H3.167" transform="translate(2369.5 482.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+      </g>
+      <g transform="translate(-2369.5 -467)">
+        <path id="Path_102-3" data-name="Path 102" d="M1.412,0H3.167" transform="translate(2369.5 482.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+      </g>
+      <g transform="translate(-2369.5 -460)">
+        <path id="Path_102-4" data-name="Path 102" d="M1.412,0H3.167" transform="translate(2369.5 482.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+      </g>
+    </g>
+    <g id="Rectangle_27" data-name="Rectangle 27" transform="translate(2362 519)" fill="none" stroke="#fff" stroke-width="2">
+      <rect width="10" height="18" stroke="none"/>
+      <rect x="1" y="1" width="8" height="16" fill="none"/>
+    </g>
+    <g id="Rectangle_28" data-name="Rectangle 28" transform="translate(2378 523)" fill="none" stroke="#fff" stroke-width="2">
+      <rect width="10" height="14" stroke="none"/>
+      <rect x="1" y="1" width="8" height="12" fill="none"/>
+    </g>
+    <g id="Rectangle_29" data-name="Rectangle 29" transform="translate(2395 509)" fill="none" stroke="#fff" stroke-width="2">
+      <rect width="10" height="28" stroke="none"/>
+      <rect x="1" y="1" width="8" height="26" fill="none"/>
+    </g>
+    <line id="Line_3" data-name="Line 3" y1="10" x2="10" transform="translate(2404.5 489.5)" fill="none" stroke="#5050ca" stroke-width="4"/>
+    <line id="Line_4" data-name="Line 4" x2="7" y2="6" transform="translate(2419.5 487.5)" fill="none" stroke="#5050ca" stroke-width="4"/>
+    <line id="Line_5" data-name="Line 5" x1="13" y2="12" transform="translate(2431.5 481.5)" fill="none" stroke="#5050ca" stroke-width="4"/>
+    <g id="Group_59" data-name="Group 59">
+      <line id="Line_7" data-name="Line 7" y1="4" x2="7" transform="translate(2412.5 548.5)" fill="none" stroke="#fff" stroke-width="3"/>
+      <g id="Group_58" data-name="Group 58">
+        <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(2424 530)" fill="none" stroke="#5050ca" stroke-width="3">
+          <circle cx="10" cy="10" r="10" stroke="none"/>
+          <circle cx="10" cy="10" r="8.5" fill="none"/>
+        </g>
+        <g id="Ellipse_5" data-name="Ellipse 5" transform="translate(2417 523)" fill="none" stroke="#fff" stroke-width="3">
+          <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+          <circle cx="17.5" cy="17.5" r="16" fill="none"/>
+        </g>
+        <g id="Ellipse_6" data-name="Ellipse 6" transform="translate(2407 512)" fill="none" stroke="#fff" stroke-width="3">
+          <circle cx="28" cy="28" r="28" stroke="none"/>
+          <circle cx="28" cy="28" r="26.5" fill="none"/>
+        </g>
+        <line id="Line_6" data-name="Line 6" y2="10" transform="translate(2434.5 514.5)" fill="none" stroke="#fff" stroke-width="3"/>
+        <line id="Line_8" data-name="Line 8" x1="8" y1="5" transform="translate(2449.5 548.5)" fill="none" stroke="#fff" stroke-width="3"/>
+      </g>
+    </g>
+  </g>
+</svg>

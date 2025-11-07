@@ -1,0 +1,64 @@
+create table BK_10032025_AB_PAGES (
+   "PAGEID"         varchar2(200),
+   "PAGENAME"       varchar2(200),
+   "CREATED_BY"     varchar2(200),
+   "CREATED_ON"     date,
+   "LASTUPDATED_BY" varchar2(200),
+   "LASTUPDATED_ON" date,
+   "PAGESPATH"      varchar2(100)
+);
+create table BK_10032025_AUDIT_AB_PAGES (
+   "PAGEID"          varchar2(200),
+   "PAGENAME"        varchar2(200),
+   "CREATED_BY"      varchar2(200),
+   "CREATED_ON"      date,
+   "LASTUPDATED_BY"  varchar2(200),
+   "LASTUPDATED_ON"  date,
+   "PAGESPATH"       varchar2(100),
+   "SYS_AUDITREASON" varchar2(4000),
+   "SYS_USERID"      varchar2(20),
+   "SYS_AUDITDATE"   date,
+   "SYS_OPERATION"   varchar2(4000),
+   "SYS_AUDIT_ID"    number
+);
+INSERT INTO BK_10032025_AB_PAGES (SELECT * FROM AB_PAGES);
+INSERT INTO BK_10032025_AUDIT_AB_PAGES (SELECT * FROM AUDIT_AB_PAGES);
+DROP TABLE AB_PAGES;
+DROP TABLE AUDIT_AB_PAGES;
+create table AB_PAGES (
+   "PAGEID"         varchar2(200),
+   "PAGENAME"       varchar2(200),
+   "CREATED_BY"     varchar2(200),
+   "CREATED_ON"     date,
+   "LASTUPDATED_BY" varchar2(200),
+   "LASTUPDATED_ON" date,
+   "PAGESPATH"      varchar2(100),
+   "IS_SYSTEM"       VARCHAR2(4) DEFAULT 'N'
+);
+create table AUDIT_AB_PAGES (
+   "PAGEID"          varchar2(200),
+   "PAGENAME"        varchar2(200),
+   "CREATED_BY"      varchar2(200),
+   "CREATED_ON"      date,
+   "LASTUPDATED_BY"  varchar2(200),
+   "LASTUPDATED_ON"  date,
+   "PAGESPATH"       varchar2(100),
+   "IS_SYSTEM"       VARCHAR2(4) DEFAULT 'N',
+   "SYS_AUDITREASON" varchar2(4000),
+   "SYS_USERID"      varchar2(20),
+   "SYS_AUDITDATE"   date,
+   "SYS_OPERATION"   varchar2(4000),
+   "SYS_AUDIT_ID"    number
+);
+
+INSERT INTO AB_PAGES (
+    SELECT PAGEID, PAGENAME, CREATED_BY, CREATED_ON, LASTUPDATED_BY, LASTUPDATED_ON , PAGESPATH ,'N' IS_SYSTEM FROM BK_10032025_AB_PAGES 
+);
+INSERT INTO AUDIT_AB_PAGES (
+    SELECT PAGEID, PAGENAME, CREATED_BY, CREATED_ON, LASTUPDATED_BY, LASTUPDATED_ON , PAGESPATH ,'N' IS_SYSTEM , SYS_AUDITREASON, SYS_USERID, SYS_AUDITDATE, SYS_OPERATION, SYS_AUDIT_ID  FROM BK_10032025_AUDIT_AB_PAGES 
+);
+
+DROP TABLE BK_10032025_AB_PAGES;
+DROP TABLE BK_10032025_AUDIT_AB_PAGES;
+
+COMMIT;

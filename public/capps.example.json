@@ -1,0 +1,137 @@
+{
+    "DATA_MODEL": "CA_CHART_OF_ACCOUNT",
+    "NAME": "Chart of account",
+    "ACTIONS": [
+        "CREATE",
+        "UPDATE",
+        "DELETE",
+        "EXPORT",
+        "UPLOAD"
+    ],
+    "FIELDS": {
+        "ID": {
+            "fieldtype": "int",
+            "maxlength": null,
+            "required": 0,
+            "iskey": 1
+        },
+        "CHECKBOX": {
+            "fieldtype": "checkbox",
+            "required": 1,
+            "readonly": 0,
+            "default": false,
+            "default_scope": null,
+            "maxlength": null,
+            "minlength": null,
+            "ref": null,
+            "link_to": null,
+            "iskey": 0,
+            "in_list_view": 1,
+            "label": "Checkbox Example",
+            "reg_exp": null,
+            "enums": null,
+            "in_standard_filter": 0,
+            "width": null
+        },
+        "RADIO": {
+            "fieldtype": "radio",
+            "required": 1,
+            "readonly": 0,
+            "default": "Option1",
+            "default_scope": null,
+            "maxlength": null,
+            "minlength": null,
+            "ref": null,
+            "link_to": null,
+            "iskey": 0,
+            "in_list_view": 1,
+            "label": "Radio Example",
+            "reg_exp": null,
+            "enums": [
+                "Option1",
+                "Option2",
+                "Option3"
+            ],
+            "in_standard_filter": 1,
+            "width": null
+        },
+        "COLUMNBREAK3": {
+            "fieldname": "column_break1",
+            "fieldtype": "Column Break",
+            "label": "Control Action"
+        },
+        "TEXT_FIELD": {
+            "fieldtype": "textfield",
+            "required": 1,
+            "readonly": 0,
+            "default": "",
+            "default_scope": null,
+            "maxlength": null,
+            "minlength": null,
+            "ref": null,
+            "link_to": null,
+            "iskey": 0,
+            "in_list_view": 1,
+            "label": "Datetime Example",
+            "reg_exp": null,
+            "enums": null,
+            "in_standard_filter": 1,
+            "width": null
+        },
+        "SECTIONBREAK1": {
+            "fieldname": "section_break1",
+            "fieldtype": "Section Break",
+            "label": "Section 2"
+        },
+        "REMOTESELECT": {
+            "fieldtype": "remoteselect",
+            "maxlength": 10,
+            "required": 1,
+            "in_standard_filter": 1,
+            "ds_collection": "policy",
+            "ds_code": "ID",
+            "ds_name": "POLICY"
+        },
+        "SELECT": {
+            "fieldtype": "select",
+            "maxlength": 250,
+            "label": "Select",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "enums": [
+                "Asset",
+                "Liability",
+                "Income",
+                "Expense",
+                "Equity"
+            ],
+            "readonly": 0,
+            "required": 1,
+            "hidden": 0
+        },
+        "DATETIME": {
+            "fieldtype": "datetime",
+            "maxlength": null,
+            "readonly": 1,
+            "default": "CURRENT_TIMESTAMP",
+            "hidden": 0
+        },
+        "DATE": {
+            "fieldtype": "date",
+            "maxlength": null,
+            "readonly": 1,
+            "default": "CURRENT_DATE",
+            "hidden": 1
+        },
+        "TEXTAREA": {
+            "fieldtype": "textarea",
+            "maxlength": 10,
+            "required": 1
+        },
+        "EMAIL_ADDRESS": {
+            "fieldtype": "email_address",
+            "maxlength": 10,
+            "required": 1
+        }
+    }
+}

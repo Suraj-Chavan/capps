@@ -1,0 +1,61 @@
+.compact-layout {
+    
+    .top_bar .navbar{
+        padding-top: 0;
+
+        .navbar-brand{font-size: 13px;}
+    }
+
+    .common-actions{
+        .divider{bottom: 11px;}
+        svg{height: 16px;}
+        font-size: 11px;
+
+		.btn{padding: 0.375rem 0.4rem;}
+    }
+    
+    .pagination-bar{
+        padding-top: 0 !important;
+        font-size: 11px;
+    }
+    
+    .b-pagination li .page-link{
+        width: 20px !important;
+        height: 20px !important;
+        font-size: 11px;
+		line-height: 1;
+    }
+
+	.card-table .table .btn-group, .table-grid .table .btn-group{
+		top: 0;
+	}
+	.card-table {
+		max-height: calc(100vh - var(--header-height) - 10px);
+		@media (max-width: 1300px) {
+			& .b-table-sticky-header, .table-grid .b-table-sticky-header {
+				min-height: calc(100vh - var(--header-height) - 30px);
+			}
+		}
+		.main-layout-table {
+			.table {
+				tr {
+					height: 30px;
+				}
+				th {
+					font-size: 11px;
+					height: 30px;
+				}
+				td {
+					font-size: 11px;
+					svg {
+						height: 14px;
+					}
+					.btn {
+						padding-top: 0;
+						padding-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}

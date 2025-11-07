@@ -1,0 +1,13 @@
+{
+    "credbooks": {
+        "accounting_entries_mast": {
+            "actions": {
+                "CREATE": "Add JV"
+            },
+            "fields": {
+                "ACCOUNTING_UNIT_CODE": "Fund Code",
+                "ACCOUNTING_UNIT_NAME": "Fund Name"
+            }
+        }
+    }
+}

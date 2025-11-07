@@ -1,0 +1,27 @@
+onNotifyMsg([{
+    "data": {
+        "processid": "C_1753438673560_2f85a682_",
+        "id": "C_1753438673560_2f85a682c",
+        "process_name": "corporates",
+        "app_name": "capps-guinea-pig",
+        "sessionid": "126294304271961147771540086074",
+        "total": 2,
+        "success": 0,
+        "errors": 2,
+        "total_no_of_subprocess": 1,
+        "subprocess_completed": 1,
+        "startdate": "2025-07-25T10:17:53.560Z",
+        "enddate": "2025-07-25T10:17:53.581Z",
+        "startedby": "tcsuser2",
+        "subprocess_starttime": "",
+        "sub_process": "",
+        "cancel": "",
+        "remark": "",
+        "cancelallowed": "",
+        "details": ["Corporate with ID [38] already in INACTIVE status", "Corporate with ID [24] already in INACTIVE status"],
+        "filter": "{\"PARENT_ID\":139}",
+        "process_desc": null
+    },
+    "type": "process_progress",
+    "version": "2.0"
+}])

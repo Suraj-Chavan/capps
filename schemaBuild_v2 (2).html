@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schema Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar for webkit browsers */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .uppercase-input { text-transform: uppercase; }
+        .drag-handle { cursor: move; }
+        .field-card.dragging { opacity: 0.5; }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 220px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 p-2 text-sm">
+    <div class="container mx-auto mt-3">
+        <div class="flex flex-wrap -mx-2">
+            <!-- Schema Details Column -->
+            <div class="w-full lg:w-1/3 px-2">
+                <div class="bg-white shadow-lg rounded-lg sticky top-4 flex flex-col" style="height: 95vh;">
+                    <div class="p-3 bg-blue-600 text-white rounded-t-lg">
+                        <h3 class="text-xl font-bold">Schema Details</h3>
+                    </div>
+                    <div class="p-3 flex-grow overflow-y-auto custom-scrollbar">
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="col-span-1">
+                                <label for="data-model" class="block text-xs font-medium text-gray-600">
+                                    DATA_MODEL*
+                                    <span class="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="tooltiptext">The name of the data model table</span>
+                                    </span>
+                                </label>
+                                <input type="text" class="uppercase-input mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2" id="data-model" required>
+                            </div>
+                            <div class="col-span-1">
+                                <label for="name" class="block text-xs font-medium text-gray-600">
+                                    NAME
+                                    <span class="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="tooltiptext">The collection label name to be displayed in frontend</span>
+                                    </span>
+                                </label>
+                                <input type="text" class="mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2" id="name">
+                            </div>
+                            <div class="col-span-1">
+                                <label for="default-view" class="block text-xs font-medium text-gray-600">
+                                    DEFAULT_VIEW*
+                                    <span class="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="tooltiptext">Default view layout for the collection. Currently list is only supported</span>
+                                    </span>
+                                </label>
+                                <select id="default-view" class="mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2">
+                                    <option selected>list</option>
+                                    <option>card</option>
+                                </select>
+                            </div>
+                            <div class="col-span-1">
+                                <label for="sort-field" class="block text-xs font-medium text-gray-600">
+                                    SORT_FIELD
+                                    <span class="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="tooltiptext">Collection field name on which data will be sorted by default</span>
+                                    </span>
+                                </label>
+                                <input type="text" class="uppercase-input mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2" id="sort-field">
+                            </div>
+                            <div class="col-span-1">
+                                <label for="sort-order" class="block text-xs font-medium text-gray-600">
+                                    SORT_ORDER
+                                    <span class="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="tooltiptext">Determines the order in which data is arranged</span>
+                                    </span>
+                                </label>
+                                <select id="sort-order" class="mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2">
+                                    <option selected>ASC</option>
+                                    <option>DESC</option>
+                                </select>
+                            </div>
+                            <div class="col-span-1">
+                                <label for="modal-size" class="block text-xs font-medium text-gray-600">
+                                    MODAL_SIZE
+                                    <span class="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="tooltiptext">Child collection form size</span>
+                                    </span>
+                                </label>
+                                <select id="modal-size" class="mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2">
+                                    <option>sm</option>
+                                    <option selected>md</option>
+                                    <option>lg</option>
+                                    <option>xl</option>
+                                </select>
+                            </div>
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-800">
+                                    ACTIONS
+                                    <span class="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="tooltiptext">A list of supported actions against the collection</span>
+                                    </span>
+                                </label>
+                                <div class="mt-1 space-y-1">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="flex items-center">
+                                            <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 action-check" type="checkbox" value="CREATE" id="action-create">
+                                            <label class="ml-1 text-xs text-gray-700" for="action-create">CREATE</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 action-check" type="checkbox" value="UPDATE" id="action-update">
+                                            <label class="ml-1 text-xs text-gray-700" for="action-update">UPDATE</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 action-check" type="checkbox" value="DELETE" id="action-delete">
+                                            <label class="ml-1 text-xs text-gray-700" for="action-delete">DELETE</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="flex items-center">
+                                            <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 action-check" type="checkbox" value="EXPORT" id="action-export">
+                                            <label class="ml-1 text-xs text-gray-700" for="action-export">EXPORT</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 action-check" type="checkbox" value="UPLOAD" id="action-upload">
+                                            <label class="ml-1 text-xs text-gray-700" for="action-upload">UPLOAD</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 action-check" type="checkbox" value="DOWNLOAD" id="action-download">
+                                            <label class="ml-1 text-xs text-gray-700" for="action-download">DOWNLOAD</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-800">
+                                    RESTRICT_API
+                                    <span class="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="tooltiptext">A list of operations which are restricted</span>
+                                    </span>
+                                </label>
+                                <div class="mt-1 flex items-center space-x-3">
+                                    <div class="flex items-center">
+                                        <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 restrict-check" type="checkbox" value="CREATE" id="restrict-create">
+                                        <label class="ml-1 text-xs text-gray-700" for="restrict-create">CREATE</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 restrict-check" type="checkbox" value="UPDATE" id="restrict-update">
+                                        <label class="ml-1 text-xs text-gray-700" for="restrict-update">UPDATE</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 restrict-check" type="checkbox" value="DELETE" id="restrict-delete">
+                                        <label class="ml-1 text-xs text-gray-700" for="restrict-delete">DELETE</label>
+                                    </div>
+                                     <div class="flex items-center">
+                                        <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500 restrict-check" type="checkbox" value="EXPORT" id="restrict-export">
+                                        <label class="ml-1 text-xs text-gray-700" for="restrict-export">EXPORT</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-2">
+                                <div class="flex items-center mt-1">
+                                    <input class="h-3 w-3 text-blue-600 border-gray-300 rounded focus:ring-blue-500" type="checkbox" id="virtual-collection">
+                                    <label class="ml-1 text-sm font-medium text-gray-800" for="virtual-collection">
+                                        VIRTUAL_COLLECTION
+                                        <span class="tooltip">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="tooltiptext">A custom query-based collection that is not part of the capps framework</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-span-2" id="sql-container" style="display: none;">
+                                <label for="sql-query" class="block text-sm font-medium text-gray-800">
+                                    SQL* (Mandatory for Virtual Collection)
+                                    <span class="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="tooltiptext">A select query with all required columns for virtual collection</span>
+                                    </span>
+                                </label>
+                                <textarea class="mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2" id="sql-query" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fields Column -->
+            <div class="w-full lg:w-2/3 px-2">
+                <div class="bg-white shadow-lg rounded-lg flex flex-col" style="height: 95vh;">
+                    <div class="p-3 bg-blue-600 text-white rounded-t-lg flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Fields</h3>
+                        <div class="flex space-x-2">
+                            <label for="import-file" class="bg-blue-500 hover:bg-blue-400 text-white font-bold text-xs px-3 py-2 rounded-md cursor-pointer shadow-md">Import</label>
+                            <input type="file" id="import-file" class="hidden" accept=".json">
+                            
+                            <button class="bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs px-3 py-2 rounded-md shadow-md" id="copy-schema">Copy</button>
+                            <button class="bg-green-500 hover:bg-green-600 text-white font-bold text-xs px-3 py-2 rounded-md shadow-md" id="export-schema">Export</button>
+                        </div>
+                    </div>
+                    <div class="p-4 flex-grow overflow-y-auto custom-scrollbar">
+                        <div id="fields-container" class="space-y-3"></div>
+                    </div>
+                    <div class="p-3 border-t text-center bg-gray-50 rounded-b-lg">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-4 py-2 rounded-md shadow-lg" id="add-field">Add Field</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addFieldBtn = document.getElementById('add-field');
+            const fieldsContainer = document.getElementById('fields-container');
+            const exportBtn = document.getElementById('export-schema');
+            const virtualCollectionCheckbox = document.getElementById('virtual-collection');
+            const sqlContainer = document.getElementById('sql-container');
+
+            new Sortable(fieldsContainer, {
+                animation: 150,
+                handle: '.drag-handle',
+                ghostClass: 'dragging'
+            });
+            
+            let fieldCounter = 0;
+
+            const fieldTypes = {
+                "button": "Button",
+                "checkbox": "Checkbox",
+                "Column Break": "Column Break",
+                "date": "Date",
+                "datetime": "Date Time",
+                "email_address": "Email Address",
+                "file": "File",
+                "float": "Float",
+                "hyperlink": "Hyperlink",
+                "int": "Integer",
+                "password": "Password",
+                "radio": "Radio",
+                "ratings": "Ratings",
+                "rich_text_editor": "Rich Text Editor",
+                "Section Break": "Section Break",
+                "select": "Select",
+                "switch": "Switch",
+                "table": "Table",
+                "textfield": "Text Field",
+                "textarea": "Text Area",
+                "time": "Time"
+            };
+
+            const sortedFieldTypes = Object.entries(fieldTypes).sort(([,a],[,b]) => a.localeCompare(b));
+
+            const allAttributes = {
+                label: { type: 'text', title: 'Label', description: 'The caption or title used to label the field in the UI.' },
+                readonly: { type: 'checkbox', title: 'Readonly', description: 'Prevents user edit. Any attempts to update this field later will be ignored. It is primarily used for system-generated fields like created_on, created_by etc.' },
+                iskey: { type: 'checkbox', title: 'Is Key', description: 'Indicates that the field is a primary key. It will be deprecated in future, as ID field will be considered as primary key.' },
+                disabled: { type: 'checkbox', title: 'Disabled', description: 'Disables the field on the UI, making it non-editable.' },
+                restrict_update: { type: 'checkbox', title: 'Restrict Update', description: 'Not allowed to edit during update operation. Even if data is sent in api, it will be ignored.' },
+                maxlength: { type: 'number', title: 'Max Length', description: 'Limits the number of characters a user can enter in the input field.' },
+                required: { type: 'checkbox', title: 'Required', description: 'Indicates if the field is mandatory or not.' },
+                hidden: { type: 'checkbox', title: 'Hidden', description: 'The field will not be displayed on the screen.' },
+                default: { type: 'text', title: 'Default', description: 'Its value will be pre-filled on the collection form screen. In the API, if no value is provided for the field, it will default to the value specified in this attribute.' },
+                in_standard_filter: { type: 'checkbox', title: 'In Standard Filter', description: 'If this attribute is set to 1, users will be able to filter records by this field in the grid view.' },
+                in_list_view: { type: 'checkbox', title: 'In List View', default: true, description: 'It indicates whether the field should be displayed in the collection\'s main grid.' },
+                unique: { type: 'checkbox', title: 'Unique', description: 'If this attribute is set to 1, the collection’s create API enforces uniqueness for this field, preventing the creation of new records with a duplicate value in the table.' },
+                'checked-value': { type: 'text', title: 'Checked Value', description: 'Specifies the field’s value when the checkbox or switch is selected (checked).' },
+                'unchecked-value': { type: 'text', title: 'Unchecked Value', description: 'Specifies the field’s value when the checkbox or switch is deselected (unchecked).' },
+                rows: { type: 'number', title: 'Rows', description: 'Specifies how many text lines are to be visible in a textarea.' },
+                'max-rows': { type: 'number', title: 'Max Rows', description: 'Sets the maximum number of lines that can be displayed/entered in a textarea.' },
+                disable_future_dates: { type: 'checkbox', title: 'Disable Future Dates', description: 'Prevents users from choosing any date beyond the current date.' },
+                disable_past_dates: { type: 'checkbox', title: 'Disable Past Dates', description: 'Prevents users from choosing any date earlier than the current date.' },
+                multiple: { type: 'checkbox', title: 'Multiple', description: 'Enables users to select more than one option for this field.' },
+                enum: { type: 'textarea', title: 'Enum', placeholder: 'Comma-separated values', description: 'Specifies a predefined list of acceptable values for the field.' },
+                linked_to: { type: 'textarea', title: 'Linked To', placeholder: 'JSON object for linked_to', description: 'This attribute is used for foreign key relationship. It contains set of attributes to be set if the field is to be linked to parent collection.' },
+                ref: { type: 'text', title: 'Ref', description: 'Linked child collection name.' },
+                is_amount: { type: 'checkbox', title: 'Is Amount', description: 'If the number field type should be formatted as per currency format.' },
+                expression_builder: { type: 'checkbox', title: 'Expression Builder', description: 'This attribute converts the text area in to a expression builder where it allows user to select values from suggestions attribute. The autocomplete is triggered on input of curly brace `{`.' },
+                suggestions: { type: 'textarea', title: 'Suggestions', placeholder: 'JSON array of strings', description: 'An array list with all string values which to be displayed for suggesion in expression.' },
+                dont_copy_on_duplicate: { type: 'checkbox', title: 'Don\'t Copy on Duplicate', description: 'If this attribute is set to 1, the field will not be copied when duplicating the record.' },
+                sub_labels: { type: 'text', title: 'Sub Labels', description: 'An string with field dynamic expresion `{FIELDNAME 1} {FIELDNAME 2}` this text will be shown on your remote select option as sub label.' },
+                command_palette: { type: 'checkbox', title: 'Command Palette', description: 'This attribute converts the text area in to a command palette where it allows user to select values from commands attribute. The autocomplete is triggered on input of forward slash `/`.' },
+                commands: { type: 'textarea', title: 'Commands', placeholder: 'JSON array of objects', description: 'An array of Object with following supported keys - value - name - category -desc.' },
+                in_quick_filter: { type: 'checkbox', title: 'In Quick Filter', description: 'The field will be shown on above grid as Quick filter section.' },
+                grid_column_size: { type: 'select', title: 'Grid Column Size', default: 4, options: [1, 2, 3, 4], description: 'Total number of columns to be shown in form for particular row. To change column grid size of row, add this attribute to first field of next rows.' }
+            };
+
+            const fieldTypeAttributes = {
+                'button': ['label', 'disabled', 'hidden', 'grid_column_size'],
+                'textfield': ['label', 'readonly', 'disabled', 'restrict_update', 'maxlength', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'unique', 'grid_column_size', 'in_quick_filter'],
+                'checkbox': ['label', 'readonly', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'checked-value', 'unchecked-value', 'grid_column_size'],
+                'radio': ['label', 'readonly', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'checked-value', 'unchecked-value', 'enum', 'grid_column_size'],
+                'switch': ['label', 'readonly', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'checked-value', 'unchecked-value', 'grid_column_size'],
+                'textarea': ['label', 'readonly', 'disabled', 'restrict_update', 'maxlength', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'rows', 'max-rows', 'expression_builder', 'suggestions', 'command_palette', 'commands', 'grid_column_size'],
+                'int': ['label', 'readonly', 'iskey', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'unique', 'is_amount', 'grid_column_size', 'in_quick_filter'],
+                'float': ['label', 'readonly', 'iskey', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'unique', 'is_amount', 'grid_column_size', 'in_quick_filter'],
+                'email_address': ['label', 'readonly', 'disabled', 'restrict_update', 'maxlength', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'unique', 'grid_column_size'],
+                'date': ['label', 'readonly', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'disable_future_dates', 'disable_past_dates', 'grid_column_size', 'in_quick_filter'],
+                'time': ['label', 'readonly', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'grid_column_size'],
+                'datetime': ['label', 'readonly', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'disable_future_dates', 'disable_past_dates', 'grid_column_size', 'in_quick_filter'],
+                'select': ['label', 'readonly', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'multiple', 'enum', 'linked_to', 'sub_labels', 'grid_column_size', 'in_quick_filter'],
+                'table': ['label', 'ref', 'hidden', 'grid_column_size'],
+                'Section Break': ['label', 'hidden'],
+                'Column Break': [],
+                'file': ['label', 'required', 'hidden', 'grid_column_size'],
+                'password': ['label', 'maxlength', 'required', 'hidden', 'grid_column_size'],
+                'ratings': ['label', 'required', 'hidden', 'default', 'in_list_view', 'grid_column_size'],
+                'hyperlink': ['label', 'hidden', 'default', 'in_list_view', 'grid_column_size'],
+                'rich_text_editor': ['label', 'required', 'hidden', 'default', 'in_list_view', 'grid_column_size']
+            };
+
+            virtualCollectionCheckbox.addEventListener('change', () => {
+                sqlContainer.style.display = virtualCollectionCheckbox.checked ? 'block' : 'none';
+            });
+
+            const commonAttributes = ['label', 'readonly', 'disabled', 'restrict_update', 'required', 'hidden', 'default', 'in_standard_filter', 'in_list_view', 'unique', 'grid_column_size', 'in_quick_filter', 'dont_copy_on_duplicate'];
+
+            addFieldBtn.addEventListener('click', () => {
+                fieldCounter++;
+                const fieldId = `field-${fieldCounter}`;
+                const fieldCard = document.createElement('div');
+                fieldCard.className = 'border border-gray-200 rounded-md p-1 field-card';
+                fieldCard.id = fieldId;
+                fieldCard.innerHTML = `
+                    <div class="bg-gray-50 p-2 rounded-t-md">
+                        <div class="flex items-center space-x-2">
+                            <span class="drag-handle text-gray-500 text-lg">☰</span>
+                            <input type="text" class="flex-grow uppercase-input block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2 field-name-input" id="${fieldId}-name" placeholder="Field Name (e.g., FAMILY_NAME)*" required>
+                            <select class="block w-1/3 border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2 field-type-select" id="${fieldId}-fieldtype">
+                                <option value="">-- Select Type --</option>
+                                ${sortedFieldTypes.map(([value, title]) => `<option value="${value}">${title}</option>`).join('')}
+                            </select>
+                            <button class="text-red-500 hover:text-red-700 font-bold remove-field-btn" id="${fieldId}-remove-btn">X</button>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <h6 class="text-xs font-semibold text-gray-600 mb-2">Attributes</h6>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 field-attributes" id="${fieldId}-attributes">
+                            <!-- Attributes will be dynamically inserted here -->
+                        </div>
+                    </div>
+                `;
+                fieldsContainer.appendChild(fieldCard);
+
+                document.getElementById(`${fieldId}-remove-btn`).addEventListener('click', () => {
+                    fieldCard.remove();
+                });
+
+                const fieldTypeSelect = document.getElementById(`${fieldId}-fieldtype`);
+                
+                renderAttributes(fieldId, null); 
+
+                fieldTypeSelect.addEventListener('change', (e) => {
+                    renderAttributes(fieldId, e.target.value);
+                });
+            });
+
+            function renderAttributes(fieldId, fieldType) {
+                const attributesContainer = document.getElementById(`${fieldId}-attributes`);
+                attributesContainer.innerHTML = '';
+                
+                let attributesToShow = fieldType && fieldTypeAttributes[fieldType] ? fieldTypeAttributes[fieldType] : commonAttributes;
+
+                const textInputs = [];
+                const checkboxInputs = [];
+
+                attributesToShow.forEach(attrName => {
+                    const attrConfig = allAttributes[attrName];
+                    if (!attrConfig) return;
+
+                    const inputId = `${fieldId}-${attrName}`;
+                    let inputHtml = '';
+                    const label = `
+                        <label for="${inputId}" class="block text-xs font-medium text-gray-700">
+                            ${attrConfig.title}
+                            <span class="tooltip">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="tooltiptext">${attrConfig.description}</span>
+                            </span>
+                        </label>`;
+
+                    switch (attrConfig.type) {
+                        case 'checkbox':
+                            inputHtml = `
+                                <div class="flex items-center col-span-1">
+                                    <input class="h-3 w-3 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" type="checkbox" id="${inputId}" ${attrConfig.default ? 'checked' : ''}>
+                                    <label class="ml-2 text-xs text-gray-700" for="${inputId}">${attrConfig.title}</label>
+                                </div>`;
+                            checkboxInputs.push(inputHtml);
+                            break;
+                        case 'textarea':
+                            inputHtml = `
+                                <div class="col-span-full">
+                                   ${label}
+                                   <textarea class="mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2" id="${inputId}" rows="2" placeholder="${attrConfig.placeholder || ''}"></textarea>
+                                </div>`;
+                            textInputs.push(inputHtml);
+                            break;
+                        case 'select':
+                            inputHtml = `
+                                <div>
+                                    ${label}
+                                    <select class="mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2" id="${inputId}">
+                                        ${attrConfig.options.map(option => `<option value="${option}" ${attrConfig.default === option ? 'selected' : ''}>${option}</option>`).join('')}
+                                    </select>
+                                </div>`;
+                            textInputs.push(inputHtml);
+                            break;
+                        default: // text, number
+                            inputHtml = `
+                                <div>
+                                    ${label}
+                                    <input type="${attrConfig.type}" class="mt-1 block w-full border-2 border-gray-300 rounded-md focus:ring-0 focus:border-blue-500 sm:text-xs p-2" id="${inputId}" ${attrConfig.default ? `value="${attrConfig.default}"` : ''}>
+                                </div>`;
+                            textInputs.push(inputHtml);
+                    }
+                });
+                
+                attributesContainer.innerHTML = textInputs.join('') + `<div class="col-span-full grid grid-cols-2 lg:grid-cols-4 gap-2 mt-2">${checkboxInputs.join('')}</div>`;
+            }
+
+            const importFile = document.getElementById('import-file');
+
+            importFile.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (!file) {
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const schema = JSON.parse(e.target.result);
+                        populateForm(schema);
+                    } catch (err) {
+                        alert('Error parsing JSON file: ' + err.message);
+                    }
+                };
+                reader.readAsText(file);
+            });
+
+            
+
+            function populateForm(schema) {
+                // Clear existing fields
+                fieldsContainer.innerHTML = '';
+                fieldCounter = 0;
+
+                // Populate schema details
+                document.getElementById('data-model').value = schema.DATA_MODEL || '';
+                document.getElementById('name').value = schema.NAME || '';
+                document.getElementById('default-view').value = schema.DEFAULT_VIEW || 'list';
+                document.getElementById('sort-field').value = schema.SORT_FIELD || '';
+                document.getElementById('sort-order').value = schema.SORT_ORDER || 'ASC';
+                document.getElementById('modal-size').value = schema.MODAL_SIZE || 'md';
+
+                document.querySelectorAll('.action-check').forEach(cb => {
+                    cb.checked = (schema.ACTIONS || []).includes(cb.value);
+                });
+                document.querySelectorAll('.restrict-check').forEach(cb => {
+                    cb.checked = (schema.RESTRICT_API || []).includes(cb.value);
+                });
+
+                const virtualCollectionCheckbox = document.getElementById('virtual-collection');
+                virtualCollectionCheckbox.checked = schema.VIRTUAL_COLLECTION === 1;
+                sqlContainer.style.display = virtualCollectionCheckbox.checked ? 'block' : 'none';
+                document.getElementById('sql-query').value = schema.SQL || '';
+
+                // Populate fields
+                if (schema.FIELDS) {
+                    Object.entries(schema.FIELDS).forEach(([fieldName, fieldData]) => {
+                        addFieldBtn.click(); // Simulate click to create a new field card
+                        const newFieldCard = fieldsContainer.lastElementChild;
+                        const fieldId = newFieldCard.id;
+                        
+                        newFieldCard.querySelector('.field-name-input').value = fieldName;
+                        const fieldTypeSelect = newFieldCard.querySelector('.field-type-select');
+                        fieldTypeSelect.value = fieldData.fieldtype;
+                        
+                        // Directly call renderAttributes to ensure the DOM is updated synchronously
+                        renderAttributes(fieldId, fieldData.fieldtype);
+
+                        // Populate attributes now that they are rendered
+                        Object.entries(fieldData).forEach(([attrName, attrValue]) => {
+                            const attrInput = newFieldCard.querySelector(`#${fieldId}-${attrName}`);
+                            if (attrInput) {
+                                if (attrInput.type === 'checkbox') {
+                                    attrInput.checked = attrValue === 1 || attrValue === true;
+                                } else if (Array.isArray(attrValue)) {
+                                    attrInput.value = attrValue.join(', ');
+                                } else if (typeof attrValue === 'object' && attrValue !== null) {
+                                    attrInput.value = JSON.stringify(attrValue, null, 2);
+                                }
+                                else {
+                                    attrInput.value = attrValue;
+                                }
+                            }
+                        });
+                    });
+                }
+            }
+
+            exportBtn.addEventListener('click', () => {
+                const schema = getSchemaJson();
+                if (schema) {
+                    // Download the file
+                    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(schema, null, 4));
+                    const downloadAnchorNode = document.createElement('a');
+                    downloadAnchorNode.setAttribute("href", dataStr);
+                    downloadAnchorNode.setAttribute("download", "schema.json");
+                    document.body.appendChild(downloadAnchorNode);
+                    downloadAnchorNode.click();
+                    downloadAnchorNode.remove();
+                }
+            });
+
+            const copyBtn = document.getElementById('copy-schema');
+
+            copyBtn.addEventListener('click', () => {
+                const schema = getSchemaJson();
+                if (schema) {
+                    const jsonString = JSON.stringify(schema, null, 4);
+                    
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(jsonString)
+                            .then(() => alert('Schema copied to clipboard!'))
+                            .catch(err => {
+                                console.error('Failed to copy: ', err);
+                                alert('Could not copy schema to clipboard.');
+                            });
+                    } else {
+                        // Fallback for insecure contexts or older browsers
+                        const textArea = document.createElement("textarea");
+                        textArea.value = jsonString;
+                        
+                        textArea.style.position = "fixed";
+                        textArea.style.top = "0";
+                        textArea.style.left = "0";
+                        textArea.style.width = "2em";
+                        textArea.style.height = "2em";
+                        textArea.style.padding = "0";
+                        textArea.style.border = "none";
+                        textArea.style.outline = "none";
+                        textArea.style.boxShadow = "none";
+                        textArea.style.background = "transparent";
+
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+
+                        try {
+                            document.execCommand('copy');
+                            alert('Schema copied to clipboard!');
+                        } catch (err) {
+                            console.error('Fallback copy failed: ', err);
+                            alert('Could not copy schema to clipboard.');
+                        }
+
+                        document.body.removeChild(textArea);
+                    }
+                }
+            });
+
+            function getSchemaJson() {
+                const schema = {};
+                let hasError = false;
+
+                // Main schema attributes
+                schema.DATA_MODEL = document.getElementById('data-model').value.toUpperCase();
+                if (!schema.DATA_MODEL) {
+                    alert('DATA_MODEL is a required field.');
+                    hasError = true;
+                }
+                if (document.getElementById('name').value) schema.NAME = document.getElementById('name').value;
+                schema.DEFAULT_VIEW = document.getElementById('default-view').value;
+                
+                const actions = Array.from(document.querySelectorAll('.action-check:checked')).map(el => el.value);
+                if (actions.length > 0) schema.ACTIONS = actions;
+
+                if (document.getElementById('sort-field').value) schema.SORT_FIELD = document.getElementById('sort-field').value.toUpperCase();
+                if (document.getElementById('sort-order').value) schema.SORT_ORDER = document.getElementById('sort-order').value;
+                
+                const restrictApi = Array.from(document.querySelectorAll('.restrict-check:checked')).map(el => el.value);
+                if (restrictApi.length > 0) schema.RESTRICT_API = restrictApi;
+
+                schema.VIRTUAL_COLLECTION = document.getElementById('virtual-collection').checked ? 1 : 0;
+                if (schema.VIRTUAL_COLLECTION === 1) {
+                    schema.SQL = document.getElementById('sql-query').value;
+                    if (!schema.SQL) {
+                        alert('SQL is required for Virtual Collections.');
+                        hasError = true;
+                    }
+                }
+                if (document.getElementById('modal-size').value) schema.MODAL_SIZE = document.getElementById('modal-size').value;
+
+                // Fields
+                schema.FIELDS = {};
+                const fieldCards = document.querySelectorAll('#fields-container .field-card');
+
+                fieldCards.forEach(card => {
+                    const fieldNameInput = card.querySelector('.field-name-input');
+                    const fieldName = fieldNameInput.value.trim().toUpperCase();
+                    const fieldType = card.querySelector('.field-type-select').value;
+
+                    if (!fieldName || !fieldType) {
+                        alert('All fields must have a Field Name and a Field Type.');
+                        hasError = true;
+                        return;
+                    }
+                    
+                    schema.FIELDS[fieldName] = { fieldtype: fieldType };
+                    const attributesContainer = card.querySelector('.field-attributes');
+                    const attributesToShow = fieldTypeAttributes[fieldType] || commonAttributes;
+
+                    attributesToShow.forEach(attrName => {
+                        const input = attributesContainer.querySelector(`#${card.id}-${attrName}`);
+                        if (!input) return;
+
+                        let value;
+                        if (input.type === 'checkbox') {
+                            value = input.checked ? 1 : 0;
+                            if(value !== 0 || ['iskey', 'required', 'hidden', 'unique', 'in_standard_filter', 'in_list_view', 'is_amount', 'expression_builder', 'command_palette', 'in_quick_filter', 'dont_copy_on_duplicate', 'readonly', 'disabled', 'restrict_update', 'disable_future_dates', 'disable_past_dates', 'multiple'].includes(attrName)){
+                                schema.FIELDS[fieldName][attrName] = value;
+                            }
+                        } else {
+                            value = input.value.trim();
+                            if (value || value === 0) {
+                                if (attrName === 'grid_column_size') {
+                                    value = Number(value);
+                                } else if (allAttributes[attrName].type === 'number') {
+                                    value = Number(value);
+                                }
+                                if (['linked_to', 'suggestions', 'commands'].includes(attrName)) {
+                                    try {
+                                        value = JSON.parse(value);
+                                    } catch (e) {
+                                        alert(`Invalid JSON in '${attrName}' for field '${fieldName}': ${e.message}`);
+                                        hasError = true;
+                                    }
+                                }
+                                if (attrName === 'enum' && typeof value === 'string') {
+                                    value = value.split(',').map(s => s.trim()).filter(s => s);
+                                }
+                                schema.FIELDS[fieldName][attrName] = value;
+                            }
+                        }
+                    });
+                });
+
+                if (hasError) {
+                    console.error("Schema generation failed due to errors.");
+                    return null;
+                }
+                return schema;
+            }
+        });
+    </script>
+</body>
+</html>

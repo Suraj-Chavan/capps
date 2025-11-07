@@ -1,0 +1,84 @@
+.vs__actions {
+    padding: 0;
+}
+
+.vs__search,
+.vs__search:focus {
+    margin: 0px 0px 0px 5px !important;
+    padding: 3px 0px !important;
+}
+
+.vs__selected-option {
+    padding: 4px 15px;
+}
+
+.vs__dropdown-toggle {
+    .vs__selected-options {
+        max-height: 40px;
+        flex-wrap: nowrap;
+    }
+
+    // input {
+    //     font-weight: bold;
+    // }
+
+    border: 0;
+    // border-bottom: solid 1px #ddd;
+    // color: #000;
+    // min-height: 28px;
+    border-radius: initial;
+
+    .vs__selected {
+        // color: #000;
+        // font-weight: 600;
+        // margin: 0;
+        // padding: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+[multiple="multiple"] .vs__selected-options {
+    flex-wrap: wrap;
+    overflow: auto;
+    margin: 1px 1px;
+}
+
+[multiple="multiple"] .vs__selected {
+    margin: 0px 4px 4px;
+    padding: 0 4px;
+    white-space: initial;
+    overflow: visible;
+    text-overflow: initial;
+    background: #5897fb;
+    color: #ffffff;
+}
+
+.vs__spinner,
+.vs__spinner:after {
+    width: 4em;
+    height: 4em;
+}
+
+.vs__selected-options {
+    max-height: 35px;
+    overflow: hidden;
+    overflow-y: scroll;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    &::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        background: #ccc !important;
+    }
+
+    &::-webkit-scrollbar {
+        width: 5px !important;
+        height: 9px;
+    }
+}
+
+
+
+@import "vue-select/src/scss/global/variables";
+@import "vue-select/src/scss/modules/dropdown-menu";

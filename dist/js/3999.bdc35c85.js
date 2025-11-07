@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkcapps_app"]=self["webpackChunkcapps_app"]||[]).push([[3999],{63999:(e,p,r)=>{r.r(p),r.d(p,{default:()=>o});var n=function(){var e=this,p=e._self._c;return p("div",[p("router-view")],1)},t=[];const u={name:"ModuleComponent",props:{moduleName:{type:String,required:!0},collection:{type:String,required:!0}}},l=u;var s=r(81656),a=(0,s.A)(l,n,t,!1,null,null,null);const o=a.exports}}]);
+//# sourceMappingURL=3999.bdc35c85.js.map

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="93" height="67" viewBox="0 0 93 67">
+  <g id="Group_3" data-name="Group 3" transform="translate(-787 -500)">
+    <g id="Rectangle_18" data-name="Rectangle 18" transform="translate(796 500)" fill="none" stroke="#fff" stroke-width="3">
+      <path d="M7,0H70a7,7,0,0,1,7,7V54a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V7A7,7,0,0,1,7,0Z" stroke="none"/>
+      <path d="M7,1.5H70A5.5,5.5,0,0,1,75.5,7V51A1.5,1.5,0,0,1,74,52.5H3A1.5,1.5,0,0,1,1.5,51V7A5.5,5.5,0,0,1,7,1.5Z" fill="none"/>
+    </g>
+    <g id="Rectangle_15" data-name="Rectangle 15" transform="translate(787 551)" fill="none" stroke="#fff" stroke-width="3">
+      <rect width="93" height="16" rx="5" stroke="none"/>
+      <rect x="1.5" y="1.5" width="90" height="13" rx="3.5" fill="none"/>
+    </g>
+    <rect id="Rectangle_16" data-name="Rectangle 16" width="12" height="4" rx="2" transform="translate(795 557)" fill="#5050ca"/>
+    <path id="Path_16" data-name="Path 16" d="M809.485,533c.184-.216,5.072-6.325,5.072-6.325l5.625,3.306,11.711-10.207h11.987" transform="translate(-1 11.227)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+    <rect id="Rectangle_17" data-name="Rectangle 17" width="12" height="4" rx="2" transform="translate(860 557)" fill="#5050ca"/>
+    <line id="Line_1" data-name="Line 1" y2="36" transform="translate(807.5 509.5)" fill="none" stroke="#5050ca" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_2" data-name="Line 2" x1="53" transform="translate(807.5 545.5)" fill="none" stroke="#5050ca" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_3" data-name="Line 3" x1="14" transform="translate(846.5 537.5)" fill="none" stroke="#5050ca" stroke-linecap="round" stroke-width="4"/>
+    <line id="Line_4" data-name="Line 4" x1="8" transform="translate(852.5 530.5)" fill="none" stroke="#5050ca" stroke-linecap="round" stroke-width="4"/>
+    <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(841 525)" fill="#5050ca" stroke="#fff" stroke-width="2">
+      <circle cx="4.5" cy="4.5" r="4.5" stroke="none"/>
+      <circle cx="4.5" cy="4.5" r="3.5" fill="none"/>
+    </g>
+    <g id="Group_2" data-name="Group 2" transform="translate(805.08 505.273)">
+      <ellipse id="Oval-7" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(8 7.622)" fill="#509ee3"/>
+      <ellipse id="Oval-7-2" data-name="Oval-7" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(8 11.666)" fill="#509ee3"/>
+      <ellipse id="Oval-7-3" data-name="Oval-7" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(11.981 7.622)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-7-4" data-name="Oval-7" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(11.981 11.705)" fill="#509ee3"/>
+      <ellipse id="Oval-8" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(15.961 7.622)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-8-2" data-name="Oval-8" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(15.961 3)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-8-3" data-name="Oval-8" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(15.961 11.705)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-9" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(19.942 7.622)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-9-2" data-name="Oval-9" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(23.922 7.622)" fill="#509ee3"/>
+      <ellipse id="Oval-9-3" data-name="Oval-9" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(19.942 11.705)" fill="#509ee3"/>
+      <ellipse id="Oval-9-4" data-name="Oval-9" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(23.922 11.705)" fill="#509ee3"/>
+      <ellipse id="Oval-13" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(8 15.71)" fill="#509ee3"/>
+      <ellipse id="Oval-12" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(11.981 15.75)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-11" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(15.961 15.75)" fill="#509ee3"/>
+      <ellipse id="Oval-10" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(19.942 15.75)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-10-2" data-name="Oval-10" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(23.922 15.75)" fill="#509ee3"/>
+      <ellipse id="Oval-17" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(8 19.754)" fill="#509ee3"/>
+      <ellipse id="Oval-16" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(11.981 19.794)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-15" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(15.961 19.794)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-15-2" data-name="Oval-15" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(15.961 23.838)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-14" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(19.942 19.794)" fill="#fff" opacity="0.31"/>
+      <ellipse id="Oval-14-2" data-name="Oval-14" cx="1.422" cy="1.444" rx="1.422" ry="1.444" transform="translate(23.922 19.794)" fill="#509ee3"/>
+    </g>
+  </g>
+</svg>
