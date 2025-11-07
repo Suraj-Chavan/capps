@@ -85,7 +85,7 @@
             </div>
           </div>
           <div class="composer-content tw-scope">
-            <div class="composer-input-wrapper relative">
+            <div class="composer-input-wrapper">
               <b-form-textarea
                 ref="commentTextarea"
                 v-model="newComment"
@@ -107,7 +107,7 @@
               <div
                 v-if="showMentionDropdown && filteredMentionUsers.length > 0"
                 class="absolute left-0 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto"
-                :style="{ top: dropdownTop + 'px' }"
+                :style="{ top: dropdownTop }"
                 ref="mentionDropdown"
               >
                 <div
@@ -342,11 +342,9 @@ export default {
       return null; // No avatar in session storage currently
     },
 
-    // Dropdown positioning - calculate dynamically based on textarea
+    // Dropdown positioning - always position right below the textarea
     dropdownTop() {
-      if (!this.$refs.commentTextarea) return 0;
-      const textarea = this.$refs.commentTextarea.$el;
-      return textarea.offsetHeight;
+      return '100%';
     },
 
     isInModal() {
