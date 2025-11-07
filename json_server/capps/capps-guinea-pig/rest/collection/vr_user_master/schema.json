@@ -14,7 +14,7 @@
       "required": 1,
       "in_list_view": 1,
       "field_order_no": 1,
-      "description": "Unique user identifier"
+      "description": "Unique user identifier for mentions"
     },
     "USER_NAME": {
       "fieldtype": "textfield",
