@@ -1,0 +1,227 @@
+{
+  "DATA_MODEL": "CUSTOMERS",
+  "NAME": "Customer Management",
+  "DEFAULT_VIEW": "list",
+  "MODAL_SIZE": "lg",
+  "label_direction": "top-bottom",
+  "ACTIONS": [
+    "CREATE",
+    "UPDATE",
+    "DELETE",
+    "EXPORT"
+  ],
+  "SORT_FIELD": "CREATED_ON",
+  "SORT_ORDER": "DESC",
+  "FIELDS": {
+    "ID": {
+      "fieldtype": "int",
+      "label": "ID",
+      "required": 1,
+      "iskey": 1,
+      "in_list_view": 1,
+      "field_order_no": 1
+    },
+    "SECTION_BASIC": {
+      "fieldtype": "section_break",
+      "label": "Basic Information",
+      "field_order_no": 2
+    },
+    "CUSTOMER_NAME": {
+      "fieldtype": "textfield",
+      "label": "Customer Name",
+      "maxlength": 100,
+      "required": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "in_quick_filter": 1,
+      "field_order_no": 3
+    },
+    "EMAIL": {
+      "fieldtype": "email_address",
+      "label": "Email Address",
+      "maxlength": 100,
+      "required": 1,
+      "unique": 1,
+      "in_list_view": 1,
+      "field_order_no": 4
+    },
+    "PHONE": {
+      "fieldtype": "textfield",
+      "label": "Phone Number",
+      "maxlength": 20,
+      "required": 0,
+      "in_list_view": 1,
+      "field_order_no": 5
+    },
+    "CUSTOMER_TYPE": {
+      "fieldtype": "select",
+      "label": "Customer Type",
+      "required": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "in_quick_filter": 1,
+      "options": [
+        {"label": "Individual", "value": "INDIVIDUAL"},
+        {"label": "Corporate", "value": "CORPORATE"},
+        {"label": "Government", "value": "GOVERNMENT"}
+      ],
+      "default": "INDIVIDUAL",
+      "field_order_no": 6
+    },
+    "COLUMN_BREAK_1": {
+      "fieldtype": "column_break",
+      "field_order_no": 7
+    },
+    "STATUS": {
+      "fieldtype": "select",
+      "label": "Status",
+      "required": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "in_quick_filter": 1,
+      "options": [
+        {"label": "Active", "value": "ACTIVE"},
+        {"label": "Inactive", "value": "INACTIVE"},
+        {"label": "Pending Approval", "value": "PENDING"}
+      ],
+      "default": "PENDING",
+      "field_order_no": 8
+    },
+    "REGISTRATION_DATE": {
+      "fieldtype": "date",
+      "label": "Registration Date",
+      "required": 1,
+      "in_list_view": 1,
+      "default": "CURRENT_DATE",
+      "field_order_no": 9
+    },
+    "CREDIT_LIMIT": {
+      "fieldtype": "float",
+      "label": "Credit Limit",
+      "required": 0,
+      "is_amount": 1,
+      "precision": 2,
+      "in_list_view": 1,
+      "default": 0,
+      "field_order_no": 10
+    },
+    "IS_VIP": {
+      "fieldtype": "checkbox",
+      "label": "VIP Customer",
+      "required": 0,
+      "default": 0,
+      "field_order_no": 11
+    },
+    "SECTION_ADDRESS": {
+      "fieldtype": "section_break",
+      "label": "Address Information",
+      "field_order_no": 12
+    },
+    "ADDRESS": {
+      "fieldtype": "textarea",
+      "label": "Street Address",
+      "maxlength": 500,
+      "required": 0,
+      "field_order_no": 13
+    },
+    "CITY": {
+      "fieldtype": "textfield",
+      "label": "City",
+      "maxlength": 50,
+      "required": 0,
+      "in_standard_filter": 1,
+      "field_order_no": 14
+    },
+    "STATE": {
+      "fieldtype": "textfield",
+      "label": "State/Province",
+      "maxlength": 50,
+      "required": 0,
+      "field_order_no": 15
+    },
+    "COLUMN_BREAK_2": {
+      "fieldtype": "column_break",
+      "field_order_no": 16
+    },
+    "COUNTRY": {
+      "fieldtype": "select",
+      "label": "Country",
+      "required": 0,
+      "options": [
+        {"label": "India", "value": "IN"},
+        {"label": "United States", "value": "US"},
+        {"label": "United Kingdom", "value": "UK"},
+        {"label": "Canada", "value": "CA"}
+      ],
+      "default": "IN",
+      "field_order_no": 17
+    },
+    "POSTAL_CODE": {
+      "fieldtype": "textfield",
+      "label": "Postal/ZIP Code",
+      "maxlength": 10,
+      "required": 0,
+      "field_order_no": 18
+    },
+    "SECTION_ADDITIONAL": {
+      "fieldtype": "section_break",
+      "label": "Additional Information",
+      "field_order_no": 19
+    },
+    "NOTES": {
+      "fieldtype": "textarea",
+      "label": "Notes",
+      "maxlength": 1000,
+      "required": 0,
+      "field_order_no": 20
+    },
+    "RATING": {
+      "fieldtype": "ratings",
+      "label": "Customer Rating",
+      "required": 0,
+      "default": 3,
+      "field_order_no": 21
+    },
+    "SECTION_AUDIT": {
+      "fieldtype": "section_break",
+      "label": "Audit Information",
+      "field_order_no": 22
+    },
+    "CREATED_BY": {
+      "fieldtype": "textfield",
+      "label": "Created By",
+      "maxlength": 50,
+      "required": 0,
+      "readonly": 1,
+      "hidden": 1,
+      "field_order_no": 23
+    },
+    "CREATED_ON": {
+      "fieldtype": "datetime",
+      "label": "Created On",
+      "required": 0,
+      "readonly": 1,
+      "default": "CURRENT_DATE",
+      "hidden": 1,
+      "field_order_no": 24
+    },
+    "UPDATED_BY": {
+      "fieldtype": "textfield",
+      "label": "Updated By",
+      "maxlength": 50,
+      "required": 0,
+      "readonly": 1,
+      "hidden": 1,
+      "field_order_no": 25
+    },
+    "UPDATED_ON": {
+      "fieldtype": "datetime",
+      "label": "Updated On",
+      "required": 0,
+      "readonly": 1,
+      "default": "CURRENT_DATE",
+      "hidden": 1,
+      "field_order_no": 26
+    }
+  }
+}

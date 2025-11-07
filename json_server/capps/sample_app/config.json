@@ -1,0 +1,6 @@
+{
+  "moduleName": "sample_app",
+  "displayName": "Sample Application",
+  "version": "1.0.0",
+  "description": "Sample CAPPS application demonstrating collection schema, form.js, and list.js features"
+}
