@@ -85,7 +85,7 @@
             </div>
           </div>
           <div class="composer-content">
-            <div class="composer-input-wrapper tw-scope">
+            <div class="composer-input-wrapper tw-scope relative">
               <b-form-textarea
                 ref="commentTextarea"
                 v-model="newComment"
@@ -106,7 +106,8 @@
               <!-- Mention Dropdown -->
               <div
                 v-if="showMentionDropdown && filteredMentionUsers.length > 0"
-                class="absolute top-full left-0 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto"
+                class="absolute left-0 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto"
+                :style="{ top: dropdownTop + 'px' }"
                 ref="mentionDropdown"
               >
                 <div
@@ -340,7 +341,14 @@ export default {
       // Get current user avatar from session/store (if available in future)
       return null; // No avatar in session storage currently
     },
-    
+
+    // Dropdown positioning - calculate dynamically based on textarea
+    dropdownTop() {
+      if (!this.$refs.commentTextarea) return 0;
+      const textarea = this.$refs.commentTextarea.$el;
+      return textarea.offsetHeight;
+    },
+
     isInModal() {
       // Check if component is being used in module route context
       // Look for ModuleDisplay or check if we have moduleName prop (indicating module usage)
