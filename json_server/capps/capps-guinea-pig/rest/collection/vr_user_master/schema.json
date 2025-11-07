@@ -4,7 +4,7 @@
   "DEFAULT_VIEW": "list",
   "VIRTUAL_COLLECTION": 1,
   "SQL": "select USER_ID, USER_NAME from IWZ_USER_MASTER",
-  "ACTIONS": ["READ"],
+  "ACTIONS": [],
   "SORT_FIELD": "USER_NAME",
   "SORT_ORDER": "ASC",
   "FIELDS": {
