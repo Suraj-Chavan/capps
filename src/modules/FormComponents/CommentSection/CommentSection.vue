@@ -106,7 +106,7 @@
               <!-- Mention Dropdown -->
               <div
                 v-if="showMentionDropdown && filteredMentionUsers.length > 0"
-                class="absolute top-full left-4 right-4 max-w-md bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto mt-1"
+                class="absolute top-full left-0 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto"
                 ref="mentionDropdown"
               >
                 <div
