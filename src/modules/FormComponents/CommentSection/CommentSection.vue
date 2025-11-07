@@ -107,8 +107,8 @@
                 <!-- Mention Dropdown -->
                 <div
                   v-if="showMentionDropdown && filteredMentionUsers.length > 0"
-                  class="absolute left-0 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto"
-                  :style="{ top: dropdownTop }"
+                  class="absolute w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto"
+                  :style="{ top: dropdownTop, left: dropdownLeft }"
                   ref="mentionDropdown"
                 >
                 <div
@@ -316,7 +316,8 @@ export default {
       mentionCursorPosition: 0,
       mentionedUsers: [], // Track users mentioned in current comment
       userSearchDebounceTimer: null, // Debounce timer for user search
-      mentionDropdownTop: 0 // Dynamic top position for mention dropdown
+      mentionDropdownTop: 0, // Dynamic top position for mention dropdown
+      mentionDropdownLeft: 0 // Dynamic left position for mention dropdown
     };
   },
   computed: {
@@ -348,6 +349,10 @@ export default {
     // Dropdown positioning - use dynamic calculated position
     dropdownTop() {
       return this.mentionDropdownTop + 'px';
+    },
+
+    dropdownLeft() {
+      return this.mentionDropdownLeft + 'px';
     },
 
     isInModal() {
@@ -1074,10 +1079,14 @@ export default {
       div.style.visibility = 'hidden';
       div.style.width = textarea.offsetWidth + 'px';
       div.style.height = 'auto';
+      div.style.whiteSpace = 'pre-wrap';
+      div.style.wordWrap = 'break-word';
 
       // Get text up to cursor
       const textBeforeCursor = this.newComment.substring(0, cursorPosition);
-      div.textContent = textBeforeCursor;
+
+      // Split into text before cursor and a marker for cursor position
+      div.innerHTML = textBeforeCursor + '<span id="cursor-marker"></span>';
 
       // Add to DOM to measure
       document.body.appendChild(div);
@@ -1085,12 +1094,21 @@ export default {
       // Get the height of text before cursor
       const height = div.offsetHeight;
 
+      // Get cursor marker position for horizontal placement
+      const marker = div.querySelector('#cursor-marker');
+      const markerRect = marker.getBoundingClientRect();
+      const divRect = div.getBoundingClientRect();
+
+      // Calculate left position relative to the div (which has same padding as textarea)
+      const leftPosition = markerRect.left - divRect.left;
+
       // Clean up
       document.body.removeChild(div);
 
-      // Set dropdown position (add line height to position below current line)
+      // Set dropdown position
       const lineHeight = parseInt(computed.lineHeight) || 20;
       this.mentionDropdownTop = height;
+      this.mentionDropdownLeft = leftPosition;
     },
 
     handleTextareaInput(event) {
