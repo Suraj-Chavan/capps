@@ -1,0 +1,29 @@
+{
+  "DATA_MODEL": "IWZ_USER_MASTER",
+  "NAME": "Users",
+  "DEFAULT_VIEW": "list",
+  "VIRTUAL_COLLECTION": 1,
+  "SQL": "select USER_ID, USER_NAME from IWZ_USER_MASTER",
+  "ACTIONS": [],
+  "SORT_FIELD": "USER_NAME",
+  "SORT_ORDER": "ASC",
+  "FIELDS": {
+    "USER_ID": {
+      "fieldtype": "textfield",
+      "label": "User ID",
+      "required": 1,
+      "in_list_view": 1,
+      "field_order_no": 1,
+      "description": "Unique user identifier for mentions",
+      "iskey": 1
+    },
+    "USER_NAME": {
+      "fieldtype": "textfield",
+      "label": "User Name",
+      "required": 1,
+      "in_list_view": 1,
+      "field_order_no": 2,
+      "description": "Display name for user"
+    }
+  }
+}
