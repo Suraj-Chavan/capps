@@ -111,19 +111,19 @@
               >
                 <div
                   v-for="(user, index) in filteredMentionUsers"
-                  :key="user.userid || user.id"
+                  :key="user.USER_ID || user.id"
                   :class="['mention-item', { 'selected': index === selectedMentionIndex }]"
                   @mousedown.prevent="selectMention(user)"
                   @mouseenter="selectedMentionIndex = index"
                 >
                   <div class="mention-avatar">
                     <div :class="['user-avatar-placeholder-small', getAvatarColorForUser(user)]">
-                      {{ getUserInitials(user.name || user.user_name || user.userid || 'U') }}
+                      {{ getUserInitials(user.USER_NAME || user.USER_ID || 'U') }}
                     </div>
                   </div>
                   <div class="mention-info">
-                    <div class="mention-name">{{ user.name || user.user_name || 'Unknown' }}</div>
-                    <div class="mention-id">@{{ user.userid || user.id }}</div>
+                    <div class="mention-name">{{ user.USER_NAME || 'Unknown' }}</div>
+                    <div class="mention-id">@{{ user.USER_ID || user.id }}</div>
                   </div>
                 </div>
               </div>
@@ -937,15 +937,15 @@ export default {
 
     async loadAvailableUsers(searchQuery = '') {
       try {
-        // Try to fetch users from a users collection via REST API with search filter
+        // Try to fetch users from vr_user_master collection via REST API with search filter
         try {
           const filters = [];
 
-          // If there's a search query, add filter for user name or userid
+          // If there's a search query, add filter for USER_NAME or USER_ID
           if (searchQuery) {
-            // Try to search by username or userid (using 'like' operator)
+            // Try to search by USER_NAME or USER_ID (using 'like' operator)
             filters.push({
-              field: "user_name",
+              field: "USER_NAME",
               asgn: "like",
               value: `%${searchQuery}%`
             });
@@ -959,7 +959,7 @@ export default {
             requestParams.filter = filters;
           }
 
-          const response = await capps.rest[this.moduleName].users.read(
+          const response = await capps.rest[this.moduleName].vr_user_master.read(
             requestParams,
             { loader: false }
           );
@@ -969,11 +969,11 @@ export default {
             return;
           }
 
-          // If no results, try with userid field
+          // If no results, try with USER_ID field
           if (searchQuery && response.length === 0) {
-            const response2 = await capps.rest[this.moduleName].users.read({
+            const response2 = await capps.rest[this.moduleName].vr_user_master.read({
               filter: [{
-                field: "userid",
+                field: "USER_ID",
                 asgn: "like",
                 value: `%${searchQuery}%`
               }],
@@ -987,8 +987,8 @@ export default {
           }
 
         } catch (error) {
-          // Users collection might not exist, log and continue to fallback
-          console.log('Users collection not available or error fetching:', error.message);
+          // vr_user_master collection might not exist, log and continue to fallback
+          console.log('vr_user_master collection not available or error fetching:', error.message);
         }
 
         // Fallback: Try to get users from session storage
@@ -1110,7 +1110,7 @@ export default {
       if (!mentionMatch) return;
 
       const atSymbolPosition = cursorPosition - mentionMatch[0].length;
-      const username = user.userid || user.id;
+      const username = user.USER_ID || user.id;
 
       // Replace the @search with @username
       const newText =
@@ -1121,10 +1121,10 @@ export default {
       this.newComment = newText;
 
       // Track mentioned user
-      if (!this.mentionedUsers.find(u => u.userid === user.userid)) {
+      if (!this.mentionedUsers.find(u => u.USER_ID === user.USER_ID)) {
         this.mentionedUsers.push({
-          userid: user.userid || user.id,
-          name: user.name || user.user_name
+          USER_ID: user.USER_ID || user.id,
+          USER_NAME: user.USER_NAME
         });
       }
 
