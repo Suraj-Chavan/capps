@@ -14,7 +14,8 @@
       "required": 1,
       "in_list_view": 1,
       "field_order_no": 1,
-      "description": "Unique user identifier for mentions"
+      "description": "Unique user identifier for mentions",
+      "iskey": 1
     },
     "USER_NAME": {
       "fieldtype": "textfield",
