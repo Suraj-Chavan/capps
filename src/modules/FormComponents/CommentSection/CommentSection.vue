@@ -86,30 +86,31 @@
           </div>
           <div class="composer-content tw-scope">
             <div class="composer-input-wrapper">
-              <b-form-textarea
-                ref="commentTextarea"
-                v-model="newComment"
-                placeholder="Add a comment... (Use @ to mention users)"
-                rows="3"
-                max-rows="6"
-                maxlength="4000"
-                :disabled="isCommentSubmitting"
-                class="comment-textarea"
-                @input="handleTextareaInput"
-                @keydown.ctrl.enter="submitComment"
-                @keydown.meta.enter="submitComment"
-                @keydown="handleTextareaKeydown"
-                @focus="isComposerFocused = true"
-                @blur="handleComposerBlur"
-              ></b-form-textarea>
+              <div class="relative">
+                <b-form-textarea
+                  ref="commentTextarea"
+                  v-model="newComment"
+                  placeholder="Add a comment... (Use @ to mention users)"
+                  rows="3"
+                  max-rows="6"
+                  maxlength="4000"
+                  :disabled="isCommentSubmitting"
+                  class="comment-textarea"
+                  @input="handleTextareaInput"
+                  @keydown.ctrl.enter="submitComment"
+                  @keydown.meta.enter="submitComment"
+                  @keydown="handleTextareaKeydown"
+                  @focus="isComposerFocused = true"
+                  @blur="handleComposerBlur"
+                ></b-form-textarea>
 
-              <!-- Mention Dropdown -->
-              <div
-                v-if="showMentionDropdown && filteredMentionUsers.length > 0"
-                class="absolute left-0 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto"
-                :style="{ top: dropdownTop }"
-                ref="mentionDropdown"
-              >
+                <!-- Mention Dropdown -->
+                <div
+                  v-if="showMentionDropdown && filteredMentionUsers.length > 0"
+                  class="absolute left-0 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto"
+                  :style="{ top: dropdownTop }"
+                  ref="mentionDropdown"
+                >
                 <div
                   v-for="(user, index) in filteredMentionUsers"
                   :key="user.USER_ID || user.id"
@@ -135,8 +136,9 @@
                     <div class="text-xs text-gray-500 truncate">@{{ user.USER_ID || user.id }}</div>
                   </div>
                 </div>
+                </div>
               </div>
-              
+
               <!-- Character count display -->
               <div 
                 v-if="newComment.length > 0" 
