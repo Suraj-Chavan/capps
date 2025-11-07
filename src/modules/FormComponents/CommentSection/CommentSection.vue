@@ -84,8 +84,8 @@
               {{ getUserInitials(currentUserName) }}
             </div>
           </div>
-          <div class="composer-content">
-            <div class="composer-input-wrapper tw-scope relative">
+          <div class="composer-content tw-scope">
+            <div class="composer-input-wrapper relative">
               <b-form-textarea
                 ref="commentTextarea"
                 v-model="newComment"
