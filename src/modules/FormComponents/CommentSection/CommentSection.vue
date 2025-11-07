@@ -87,18 +87,46 @@
           <div class="composer-content">
             <div class="composer-input-wrapper">
               <b-form-textarea
+                ref="commentTextarea"
                 v-model="newComment"
-                placeholder="Add a comment..."
+                placeholder="Add a comment... (Use @ to mention users)"
                 rows="3"
                 max-rows="6"
                 maxlength="4000"
                 :disabled="isCommentSubmitting"
                 class="comment-textarea"
+                @input="handleTextareaInput"
                 @keydown.ctrl.enter="submitComment"
                 @keydown.meta.enter="submitComment"
+                @keydown="handleTextareaKeydown"
                 @focus="isComposerFocused = true"
                 @blur="handleComposerBlur"
               ></b-form-textarea>
+
+              <!-- Mention Dropdown -->
+              <div
+                v-if="showMentionDropdown && filteredMentionUsers.length > 0"
+                class="mention-dropdown"
+                ref="mentionDropdown"
+              >
+                <div
+                  v-for="(user, index) in filteredMentionUsers"
+                  :key="user.userid || user.id"
+                  :class="['mention-item', { 'selected': index === selectedMentionIndex }]"
+                  @mousedown.prevent="selectMention(user)"
+                  @mouseenter="selectedMentionIndex = index"
+                >
+                  <div class="mention-avatar">
+                    <div :class="['user-avatar-placeholder-small', getAvatarColorForUser(user)]">
+                      {{ getUserInitials(user.name || user.user_name || user.userid || 'U') }}
+                    </div>
+                  </div>
+                  <div class="mention-info">
+                    <div class="mention-name">{{ user.name || user.user_name || 'Unknown' }}</div>
+                    <div class="mention-id">@{{ user.userid || user.id }}</div>
+                  </div>
+                </div>
+              </div>
               
               <!-- Character count display -->
               <div 
@@ -200,10 +228,8 @@
                   </div>
                   
                   <div v-if="comment.COMMENT_TEXT && comment.COMMENT_TEXT.trim()" class="activity-comment scroll-y">
-                    <div class="comment-text">
-                      {{ comment.isExpanded ? comment.fullText : comment.truncatedText }}
-                    </div>
-                    <button 
+                    <div class="comment-text" v-html="comment.isExpanded ? comment.processedText.full : comment.processedText.truncated"></div>
+                    <button
                       v-if="comment.hasLongText"
                       class="view-more-btn"
                       @click="toggleCommentExpansion(comment.ID)"
@@ -270,7 +296,15 @@ export default {
       formHeaderElement: null,
       commentsElement: null,
       scrollContainer: null,
-      expandedComments: {} // Track which comments are expanded
+      expandedComments: {}, // Track which comments are expanded
+      // Mention/Tagging feature
+      showMentionDropdown: false,
+      mentionSearchQuery: '',
+      mentionUsers: [],
+      selectedMentionIndex: 0,
+      mentionCursorPosition: 0,
+      mentionedUsers: [], // Track users mentioned in current comment
+      userSearchDebounceTimer: null // Debounce timer for user search
     };
   },
   computed: {
@@ -352,12 +386,21 @@ export default {
         relativeTime: this.formatRelativeTime(comment.CREATED_ON),
         // Text processing
         hasLongText: comment.COMMENT_TEXT && comment.COMMENT_TEXT.length > 200,
-        truncatedText: comment.COMMENT_TEXT && comment.COMMENT_TEXT.length > 200 
+        truncatedText: comment.COMMENT_TEXT && comment.COMMENT_TEXT.length > 200
           ? comment.COMMENT_TEXT.substring(0, 200) + '...'
           : comment.COMMENT_TEXT,
         fullText: comment.COMMENT_TEXT,
-        isExpanded: this.expandedComments[comment.ID] || false
+        isExpanded: this.expandedComments[comment.ID] || false,
+        // Process mentions for display
+        processedText: this.processMentionsForDisplay(comment.COMMENT_TEXT)
       }));
+    },
+
+    // Filtered mention users - now users are already filtered by API
+    filteredMentionUsers() {
+      // Since we're fetching filtered results from API, just return the users
+      // Limited to 10 results from the API
+      return this.mentionUsers.slice(0, 10);
     }
   },
   
@@ -395,6 +438,10 @@ export default {
     }
     // Remove wheel event listener
     this.removeScrollDelegation();
+    // Clear debounce timer
+    if (this.userSearchDebounceTimer) {
+      clearTimeout(this.userSearchDebounceTimer);
+    }
   },
   methods: {
     async loadComments() {
@@ -454,7 +501,7 @@ export default {
 
     async submitComment() {
       if (!this.newComment.trim() || this.isCommentSubmitting || this.newComment.length > 4000) return;
-      
+
       // Additional validation
       if (this.newComment.length > 4000) {
         capps.ui.toast({
@@ -463,29 +510,43 @@ export default {
         });
         return;
       }
-      
+
       this.isCommentSubmitting = true;
       try {
+        // Extract mentions from the comment text
+        const mentionRegex = /@(\w+)/g;
+        const matches = [...this.newComment.matchAll(mentionRegex)];
+        const mentionedUserIds = [...new Set(matches.map(match => match[1]))]; // Remove duplicates
+
+        const commentData = {
+          COMMENT_TEXT: this.newComment.trim(),
+          AUTHOR_NAME: this.currentUserName,
+          COLLECTION_NAME: this.collection,
+          RECORD_ID: this.recordId,
+          COMMENT_TYPE: 'commented'
+        };
+
+        // Add mentioned users if any
+        if (mentionedUserIds.length > 0) {
+          commentData.MENTIONED_USERS = JSON.stringify(mentionedUserIds);
+        }
+
         const response = await capps.rest[this.moduleName].comments.create({
-          data: {
-            COMMENT_TEXT: this.newComment.trim(),
-            AUTHOR_NAME: this.currentUserName,
-            COLLECTION_NAME: this.collection,
-            RECORD_ID: this.recordId,
-            COMMENT_TYPE: 'commented'
-          }
+          data: commentData
         }, { loader: false });
-        
+
         if (response?.status === 'success' || response?.ID) {
-          // Clear input
+          // Clear input and mentions
           this.newComment = '';
-          
+          this.mentionedUsers = [];
+          this.showMentionDropdown = false;
+
           // Show success message
           capps.ui.toast({
             message: 'Comment added successfully',
             variant: 'success'
           });
-          
+
           // Reload comments to show the new one
           await this.loadComments();
         } else {
@@ -869,7 +930,267 @@ export default {
     toggleCommentExpansion(commentId) {
       this.$set(this.expandedComments, commentId, !this.expandedComments[commentId]);
     },
-    
+
+    // ============================================
+    // MENTION/TAGGING METHODS
+    // ============================================
+
+    async loadAvailableUsers(searchQuery = '') {
+      try {
+        // Try to fetch users from a users collection via REST API with search filter
+        try {
+          const filters = [];
+
+          // If there's a search query, add filter for user name or userid
+          if (searchQuery) {
+            // Try to search by username or userid (using 'like' operator)
+            filters.push({
+              field: "user_name",
+              asgn: "like",
+              value: `%${searchQuery}%`
+            });
+          }
+
+          const requestParams = {
+            limit: 10 // Limit to 10 users for dropdown
+          };
+
+          if (filters.length > 0) {
+            requestParams.filter = filters;
+          }
+
+          const response = await capps.rest[this.moduleName].users.read(
+            requestParams,
+            { loader: false }
+          );
+
+          if (Array.isArray(response) && response.length > 0) {
+            this.mentionUsers = response;
+            return;
+          }
+
+          // If no results, try with userid field
+          if (searchQuery && response.length === 0) {
+            const response2 = await capps.rest[this.moduleName].users.read({
+              filter: [{
+                field: "userid",
+                asgn: "like",
+                value: `%${searchQuery}%`
+              }],
+              limit: 10
+            }, { loader: false });
+
+            if (Array.isArray(response2)) {
+              this.mentionUsers = response2;
+              return;
+            }
+          }
+
+        } catch (error) {
+          // Users collection might not exist, log and continue to fallback
+          console.log('Users collection not available or error fetching:', error.message);
+        }
+
+        // Fallback: Try to get users from session storage
+        const session = config.getSessionStorage();
+        if (session.users && Array.isArray(session.users)) {
+          // Filter users based on search query if provided
+          if (searchQuery) {
+            this.mentionUsers = session.users.filter(user => {
+              const userName = (user.name || user.user_name || '').toLowerCase();
+              const userId = (user.userid || user.id || '').toString().toLowerCase();
+              const query = searchQuery.toLowerCase();
+              return userName.includes(query) || userId.includes(query);
+            }).slice(0, 10);
+          } else {
+            this.mentionUsers = session.users.slice(0, 10);
+          }
+          return;
+        }
+
+        // Last fallback - Show current user only
+        const fallbackUser = {
+          userid: session.userid || 'current_user',
+          name: session.user_name || 'Current User',
+          user_name: session.user_name || 'Current User',
+          id: session.userid
+        };
+
+        // Filter fallback user based on search
+        if (searchQuery) {
+          const userName = (fallbackUser.name || '').toLowerCase();
+          const userId = (fallbackUser.userid || '').toLowerCase();
+          const query = searchQuery.toLowerCase();
+          if (userName.includes(query) || userId.includes(query)) {
+            this.mentionUsers = [fallbackUser];
+          } else {
+            this.mentionUsers = [];
+          }
+        } else {
+          this.mentionUsers = [fallbackUser];
+        }
+
+      } catch (error) {
+        console.error('Error loading users for mentions:', error);
+        this.mentionUsers = [];
+      }
+    },
+
+    handleTextareaInput(event) {
+      const textarea = this.$refs.commentTextarea.$el;
+      const cursorPosition = textarea.selectionStart;
+      const textBeforeCursor = this.newComment.substring(0, cursorPosition);
+
+      // Check if we're typing after an @ symbol
+      const mentionMatch = textBeforeCursor.match(/@(\w*)$/);
+
+      if (mentionMatch) {
+        // Show mention dropdown
+        this.showMentionDropdown = true;
+        this.mentionSearchQuery = mentionMatch[1]; // Text after @
+        this.mentionCursorPosition = cursorPosition - mentionMatch[0].length;
+        this.selectedMentionIndex = 0; // Reset selection
+
+        // Clear existing timer
+        if (this.userSearchDebounceTimer) {
+          clearTimeout(this.userSearchDebounceTimer);
+        }
+
+        // Debounce user search API call (300ms delay)
+        this.userSearchDebounceTimer = setTimeout(async () => {
+          await this.loadAvailableUsers(this.mentionSearchQuery);
+        }, 300);
+      } else {
+        // Hide mention dropdown
+        this.showMentionDropdown = false;
+        this.mentionSearchQuery = '';
+        this.mentionUsers = []; // Clear users when not searching
+
+        // Clear debounce timer
+        if (this.userSearchDebounceTimer) {
+          clearTimeout(this.userSearchDebounceTimer);
+          this.userSearchDebounceTimer = null;
+        }
+      }
+    },
+
+    handleTextareaKeydown(event) {
+      if (!this.showMentionDropdown) return;
+
+      // Handle arrow keys and Enter when mention dropdown is open
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        this.selectedMentionIndex = Math.min(
+          this.selectedMentionIndex + 1,
+          this.filteredMentionUsers.length - 1
+        );
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        this.selectedMentionIndex = Math.max(this.selectedMentionIndex - 1, 0);
+      } else if (event.key === 'Enter' && this.filteredMentionUsers.length > 0) {
+        event.preventDefault();
+        const selectedUser = this.filteredMentionUsers[this.selectedMentionIndex];
+        if (selectedUser) {
+          this.selectMention(selectedUser);
+        }
+      } else if (event.key === 'Escape') {
+        event.preventDefault();
+        this.showMentionDropdown = false;
+      }
+    },
+
+    selectMention(user) {
+      const textarea = this.$refs.commentTextarea.$el;
+      const cursorPosition = textarea.selectionStart;
+      const textBeforeCursor = this.newComment.substring(0, cursorPosition);
+      const textAfterCursor = this.newComment.substring(cursorPosition);
+
+      // Find the @ symbol position
+      const mentionMatch = textBeforeCursor.match(/@(\w*)$/);
+      if (!mentionMatch) return;
+
+      const atSymbolPosition = cursorPosition - mentionMatch[0].length;
+      const username = user.userid || user.id;
+
+      // Replace the @search with @username
+      const newText =
+        this.newComment.substring(0, atSymbolPosition) +
+        `@${username} ` +
+        textAfterCursor;
+
+      this.newComment = newText;
+
+      // Track mentioned user
+      if (!this.mentionedUsers.find(u => u.userid === user.userid)) {
+        this.mentionedUsers.push({
+          userid: user.userid || user.id,
+          name: user.name || user.user_name
+        });
+      }
+
+      // Hide dropdown
+      this.showMentionDropdown = false;
+      this.mentionSearchQuery = '';
+
+      // Set cursor position after the mention
+      this.$nextTick(() => {
+        const newCursorPosition = atSymbolPosition + username.length + 2; // +2 for @ and space
+        textarea.setSelectionRange(newCursorPosition, newCursorPosition);
+        textarea.focus();
+      });
+    },
+
+    processMentionsForDisplay(text) {
+      if (!text) return { full: '', truncated: '' };
+
+      // Regular expression to match @username patterns
+      const mentionRegex = /@(\w+)/g;
+
+      // Function to highlight mentions
+      const highlightMentions = (str) => {
+        return str.replace(mentionRegex, '<span class="comment-mention">@$1</span>');
+      };
+
+      // Process full text
+      const fullText = highlightMentions(text);
+
+      // Process truncated text
+      let truncatedText = text;
+      if (text.length > 200) {
+        truncatedText = text.substring(0, 200) + '...';
+      }
+      const truncatedHighlighted = highlightMentions(truncatedText);
+
+      return {
+        full: fullText,
+        truncated: truncatedHighlighted
+      };
+    },
+
+    getAvatarColorForUser(user) {
+      const colors = [
+        'avatar-purple',
+        'avatar-blue',
+        'avatar-green',
+        'avatar-pink',
+        'avatar-orange',
+        'avatar-indigo',
+        'avatar-teal',
+        'avatar-red'
+      ];
+
+      const uniqueId = user.userid || user.id || user.name || '';
+      let hash = 0;
+      for (let i = 0; i < uniqueId.length; i++) {
+        const char = uniqueId.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+      }
+
+      const colorIndex = Math.abs(hash) % colors.length;
+      return colors[colorIndex];
+    },
+
   }
 };
 </script>
@@ -1777,6 +2098,159 @@ export default {
   .activity-comment {
     font-size: 0.8rem;
     padding: 10px 12px;
+  }
+}
+
+// ============================================
+// MENTION/TAGGING STYLES
+// ============================================
+
+.mention-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 16px;
+  right: 16px;
+  max-width: 400px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 4px;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+
+    &:hover {
+      background: #94a3b8;
+    }
+  }
+}
+
+.mention-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover,
+  &.selected {
+    background-color: #f3f4f6;
+  }
+
+  &.selected {
+    background-color: #eff6ff;
+  }
+
+  &:first-child {
+    border-radius: 8px 8px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+.mention-avatar {
+  flex-shrink: 0;
+}
+
+.user-avatar-placeholder-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  border: none;
+
+  &.avatar-purple {
+    background: #8b5cf6;
+  }
+
+  &.avatar-blue {
+    background: #3b82f6;
+  }
+
+  &.avatar-green {
+    background: #10b981;
+  }
+
+  &.avatar-pink {
+    background: #ec4899;
+  }
+
+  &.avatar-orange {
+    background: #f59e0b;
+  }
+
+  &.avatar-indigo {
+    background: #6366f1;
+  }
+
+  &.avatar-teal {
+    background: #14b8a6;
+  }
+
+  &.avatar-red {
+    background: #ef4444;
+  }
+}
+
+.mention-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mention-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mention-id {
+  font-size: 0.75rem;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Highlighted mentions in comments
+.comment-text ::v-deep .comment-mention {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #bfdbfe;
+    color: #1e3a8a;
   }
 }
 </style>
