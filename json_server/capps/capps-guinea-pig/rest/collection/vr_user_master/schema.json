@@ -1,5 +1,5 @@
 {
-  "DATA_MODEL": "VR_USER_MASTER",
+  "DATA_MODEL": "IWZ_USER_MASTER",
   "NAME": "Users",
   "DEFAULT_VIEW": "list",
   "VIRTUAL_COLLECTION": 1,
