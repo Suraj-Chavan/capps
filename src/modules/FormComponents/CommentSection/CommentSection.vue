@@ -1162,9 +1162,11 @@ export default {
           this.selectedMentionIndex + 1,
           this.filteredMentionUsers.length - 1
         );
+        this.scrollToSelectedMention();
       } else if (event.key === 'ArrowUp') {
         event.preventDefault();
         this.selectedMentionIndex = Math.max(this.selectedMentionIndex - 1, 0);
+        this.scrollToSelectedMention();
       } else if (event.key === 'Enter' && this.filteredMentionUsers.length > 0) {
         event.preventDefault();
         const selectedUser = this.filteredMentionUsers[this.selectedMentionIndex];
@@ -1175,6 +1177,25 @@ export default {
         event.preventDefault();
         this.showMentionDropdown = false;
       }
+    },
+
+    scrollToSelectedMention() {
+      // Scroll the selected item into view in the dropdown
+      this.$nextTick(() => {
+        const dropdown = this.$refs.mentionDropdown;
+        if (!dropdown) return;
+
+        const items = dropdown.querySelectorAll('[class*="flex items-center"]');
+        const selectedItem = items[this.selectedMentionIndex];
+
+        if (selectedItem) {
+          // Scroll the selected item into view
+          selectedItem.scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      });
     },
 
     selectMention(user) {
