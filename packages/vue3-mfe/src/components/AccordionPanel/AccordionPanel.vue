@@ -1,5 +1,5 @@
 <script>
-import { h } from 'vue';
+import { h, ref } from 'vue';
 import Panel from 'primevue/panel';
 
 export default {
@@ -54,6 +54,13 @@ export default {
       this.$emit('toggle', event.value);
     }
   },
+  setup() {
+    const vue2ContentRef = ref(null);
+
+    return {
+      vue2ContentRef
+    };
+  },
   render() {
     const headerContent = h('div', { class: 'panel-header-content' }, [
       // Icon
@@ -74,7 +81,7 @@ export default {
       } else if (this.mountHandler) {
         // Create a mount point for Vue 2 content
         return h('div', {
-          ref: 'vue2Content',
+          ref: this.vue2ContentRef,
           class: 'vue2-content-mount-point'
         });
       }
@@ -94,8 +101,12 @@ export default {
   },
   mounted() {
     // If mountHandler is provided and we have a mount point, call it
-    if (this.mountHandler && this.$refs.vue2Content) {
-      this.cleanupFn = this.mountHandler(this.$refs.vue2Content);
+    // In Vue 3, refs need to be accessed via .value to get the actual DOM element
+    if (this.mountHandler && this.vue2ContentRef && this.vue2ContentRef.value) {
+      console.log('Mounting Vue 2 content into:', this.vue2ContentRef.value);
+      this.cleanupFn = this.mountHandler(this.vue2ContentRef.value);
+    } else if (this.mountHandler) {
+      console.warn('mountHandler provided but vue2ContentRef not available');
     }
   },
   beforeUnmount() {
