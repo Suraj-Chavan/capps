@@ -159,9 +159,9 @@ export default {
         // Show loading state
         if (this.showLoader) {
             children.push(
-                h('div', { class: 'loading-state' }, [
-                    this.$slots.loading ? this.$slots.loading() : 'Loading Vue 3 component...'
-                ])
+                h('div', { class: 'loading-state' },
+                    this.$slots.loading || ['Loading Vue 3 component...']
+                )
             );
         }
 
