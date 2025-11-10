@@ -15,7 +15,10 @@
     </template>
 
     <template #default>
-      <slot></slot>
+      <!-- Render Vue 2 slot content if provided -->
+      <div v-if="slotContent" v-html="slotContent"></div>
+      <!-- Fallback to Vue 3 slot if no slotContent prop -->
+      <slot v-else></slot>
     </template>
   </Panel>
 </template>
@@ -52,6 +55,10 @@ const props = defineProps({
   customClass: {
     type: String,
     default: ''
+  },
+  slotContent: {
+    type: String,
+    default: null
   }
 });
 
@@ -71,13 +78,6 @@ watch(() => props.collapsed, (newVal) => {
 <style scoped lang="scss">
 .capps-accordion-panel {
   margin-bottom: 0.5rem;
-
-  ::v-deep(.p-panel-header) {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
-    padding: 0.5rem 1rem;
-    border-radius: 0 !important;
-  }
 
   ::v-deep(.p-panel-content) {
     padding: 0.5rem;
