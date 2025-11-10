@@ -165,13 +165,23 @@ export default {
             return eventHandlerProps;
         },
         injectSlotContent() {
+            console.log('injectSlotContent called');
+            console.log('Has slots.default:', !!this.$slots.default);
+            console.log('Has vue3MountPoint ref:', !!this.$refs.vue3MountPoint);
+
             // If we have slot content, inject it into the Vue 3 component's DOM
             if (this.$slots.default && this.$refs.vue3MountPoint) {
+                console.log('vue3MountPoint HTML:', this.$refs.vue3MountPoint.innerHTML);
+
                 // Find the content injection point in the Vue 3 component
                 // Look for an element with class 'vue2-content-mount-point'
                 const contentTarget = this.$refs.vue3MountPoint.querySelector('.vue2-content-mount-point');
 
+                console.log('Found contentTarget:', !!contentTarget);
+
                 if (contentTarget) {
+                    console.log('Injecting Vue 2 content into mount point...');
+
                     // Create a temporary div to render our Vue 2 slot content
                     const slotContainer = document.createElement('div');
                     slotContainer.className = 'vue2-slot-container';
@@ -188,12 +198,23 @@ export default {
 
                     instance.$mount(slotContainer);
 
+                    console.log('Vue 2 instance mounted, appending to target...');
+
                     // Inject the rendered content into the Vue 3 component
                     contentTarget.appendChild(instance.$el);
 
+                    console.log('Content injected successfully!');
+
                     // Store reference for cleanup
                     this.slotInstance = instance;
+                } else {
+                    console.warn('Content target (.vue2-content-mount-point) not found!');
                 }
+            } else {
+                console.warn('Missing requirements:', {
+                    hasSlots: !!this.$slots.default,
+                    hasRef: !!this.$refs.vue3MountPoint
+                });
             }
         }
     },
