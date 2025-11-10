@@ -43,19 +43,22 @@ export default {
     async mounted() {
         console.log('[Vue3ComponentLoader] Mounted hook called');
 
-        // Wait for initial render to complete so $refs are available
+        // Set loading state FIRST before storing the element reference
+        // This ensures the mount point div is created with the correct state
+        this.isLoading = true;
+
+        // Wait for render with loading state to complete
         await this.$nextTick();
 
-        // Store the actual DOM element reference to prevent it from being lost during re-renders
+        // NOW store the DOM element reference - this will be the stable mount point
         this.actualMountElement = this.$refs.vue3MountPoint;
 
         console.log('[Vue3ComponentLoader] Stored mount element reference:', this.actualMountElement);
 
-        // Now load and mount the Vue 3 component
-        this.isLoading = true;
-
+        // Load and mount the Vue 3 component to the stable element
         await this.loadAndMountVue3Component();
 
+        // Set loading to false to reveal the content
         this.isLoading = false;
 
         // Wait for visibility change to apply, then inject slot content
@@ -65,7 +68,8 @@ export default {
             storedElement: this.actualMountElement,
             innerHTML: this.actualMountElement ? this.actualMountElement.innerHTML.substring(0, 200) : 'N/A',
             offsetHeight: this.actualMountElement ? this.actualMountElement.offsetHeight : 0,
-            offsetWidth: this.actualMountElement ? this.actualMountElement.offsetWidth : 0
+            offsetWidth: this.actualMountElement ? this.actualMountElement.offsetWidth : 0,
+            display: this.actualMountElement ? window.getComputedStyle(this.actualMountElement).display : 'N/A'
         });
 
         this.injectSlotContent();
