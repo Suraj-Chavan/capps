@@ -1,5 +1,5 @@
 <script>
-import { h, ref } from 'vue';
+import { h } from 'vue';
 import Panel from 'primevue/panel';
 
 export default {
@@ -35,50 +35,14 @@ export default {
     customClass: {
       type: String,
       default: ''
-    },
-    // Function to mount Vue 2 content
-    mountHandler: {
-      type: Function,
-      default: null
     }
   },
   emits: ['toggle', 'update:collapsed'],
-  watch: {
-    collapsed(newVal) {
-      console.log(`Panel "${this.header}" collapsed state changed:`, newVal);
-
-      // When panel expands (collapsed becomes false), try to mount Vue 2 content
-      if (!newVal && this.mountHandler && !this.cleanupFn) {
-        this.$nextTick(() => {
-          this.tryMountVue2Content();
-        });
-      }
-    }
-  },
   methods: {
     handleToggle(event) {
       this.$emit('update:collapsed', event.value);
       this.$emit('toggle', event.value);
-    },
-    tryMountVue2Content() {
-      // In Vue 3, refs need to be accessed via .value to get the actual DOM element
-      if (this.mountHandler && this.vue2ContentRef && this.vue2ContentRef.value) {
-        console.log('Mounting Vue 2 content into:', this.vue2ContentRef.value);
-        this.cleanupFn = this.mountHandler(this.vue2ContentRef.value);
-      } else if (this.mountHandler) {
-        console.warn('mountHandler provided but vue2ContentRef not available', {
-          hasRef: !!this.vue2ContentRef,
-          refValue: this.vue2ContentRef?.value
-        });
-      }
     }
-  },
-  setup() {
-    const vue2ContentRef = ref(null);
-
-    return {
-      vue2ContentRef
-    };
   },
   render() {
     const headerContent = h('div', { class: 'panel-header-content' }, [
@@ -93,20 +57,6 @@ export default {
       this.badge ? h('small', { class: ['ml-2', this.badgeClass] }, this.badge) : null
     ].filter(Boolean));
 
-    // Create default slot content
-    const defaultSlotContent = () => {
-      if (this.$slots.default) {
-        return this.$slots.default();
-      } else if (this.mountHandler) {
-        // Create a mount point for Vue 2 content
-        return h('div', {
-          ref: this.vue2ContentRef,
-          class: 'vue2-content-mount-point'
-        });
-      }
-      return null;
-    };
-
     return h(Panel, {
       header: this.header,
       toggleable: this.toggleable,
@@ -114,42 +64,24 @@ export default {
       onToggle: this.handleToggle,
       class: ['capps-accordion-panel', this.customClass]
     }, {
-      header: () => headerContent,
-      default: defaultSlotContent
+      header: () => headerContent
     });
-  },
-  mounted() {
-    // If panel starts expanded (collapsed=false), try mounting immediately
-    if (!this.collapsed && this.mountHandler) {
-      this.$nextTick(() => {
-        this.tryMountVue2Content();
-      });
-    }
-  },
-  beforeUnmount() {
-    // Call cleanup function if it exists
-    if (this.cleanupFn && typeof this.cleanupFn === 'function') {
-      this.cleanupFn();
-    }
-  },
-  data() {
-    return {
-      cleanupFn: null
-    };
   }
 }
 </script>
 
 <style scoped lang="scss">
 .capps-accordion-panel {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 
   ::v-deep(.p-panel-header) {
     padding: 0.875rem 1rem;
+    border-bottom: none;
   }
 
+  // Hide panel body since content is external
   ::v-deep(.p-panel-content) {
-    padding: 0.5rem 1rem;
+    display: none !important;
   }
 
   .panel-header-content {

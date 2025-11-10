@@ -152,7 +152,7 @@
 						<div class="scroll-y mh-76">
 							<div id="details-accordion-group" role="tablist">
 								<!-- Attachments Accordion Item -->
-								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictAttachments" class="mb-2">
+								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictAttachments" class="mb-2 panel-integrated">
 									<Vue3ComponentLoader
 										exposed-module="./AccordionPanel"
 										:component-props="{
@@ -162,17 +162,32 @@
 											badge: restrictedFeatures.restrictAttachments ? '(Read Only)' : '',
 											badgeClass: 'text-warning',
 											toggleable: !isAccordionRestricted('accordion-attachments'),
-											collapsed: !activeAccordionItemIds.includes('accordion-attachments'),
-											mountHandler: createAttachmentsMountHandler()
+											collapsed: !activeAccordionItemIds.includes('accordion-attachments')
 										}"
 										:component-events="{
 											toggle: (collapsed) => handlePanelToggle('accordion-attachments', collapsed)
 										}"
 									/>
+									<!-- Vue 2 content styled to look integrated -->
+									<div v-show="activeAccordionItemIds.includes('accordion-attachments')" class="panel-vue2-content">
+										<div v-if="restrictedFeatures.restrictAttachments" class="alert alert-info mb-2">
+											<i class="fas fa-info-circle mr-2"></i>
+											<small>Attachments are in read-only mode. Upload/delete operations are disabled.</small>
+										</div>
+										<AttachmentsComponent
+											ref="attachmentsComponent"
+											:id="id"
+											:collection="collection"
+											:module-name="moduleName"
+											:action="action"
+											:auto-load="false"
+											:restrict-attachments="restrictedFeatures.restrictAttachments"
+										/>
+									</div>
 								</div>
 
 								<!-- Connections Accordion Item -->
-								<div v-if="action === 'view' && !hideFeatures.restrictConnections" class="mb-2">
+								<div v-if="action === 'view' && !hideFeatures.restrictConnections" class="mb-2 panel-integrated">
 									<Vue3ComponentLoader
 										exposed-module="./AccordionPanel"
 										:component-props="{
@@ -180,17 +195,27 @@
 											icon: 'fas fa-link',
 											iconColor: '#8b5cf6',
 											toggleable: true,
-											collapsed: !activeAccordionItemIds.includes('accordion-connections'),
-											mountHandler: createConnectionsMountHandler()
+											collapsed: !activeAccordionItemIds.includes('accordion-connections')
 										}"
 										:component-events="{
 											toggle: (collapsed) => handlePanelToggle('accordion-connections', collapsed)
 										}"
 									/>
+									<div v-show="activeAccordionItemIds.includes('accordion-connections')" class="panel-vue2-content">
+										<ConnectionsComponent
+											ref="connectionsComponent"
+											:id="id"
+											:collection="collection"
+											:module-name="moduleName"
+											:action="action"
+											:auto-load="false"
+											:user-form-data="userFormData"
+										/>
+									</div>
 								</div>
 
 								<!-- Version History Accordion Item -->
-								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictHistory" class="mb-2">
+								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictHistory" class="mb-2 panel-integrated">
 									<Vue3ComponentLoader
 										exposed-module="./AccordionPanel"
 										:component-props="{
@@ -198,13 +223,23 @@
 											icon: 'fas fa-history',
 											iconColor: '#10b981',
 											toggleable: true,
-											collapsed: !activeAccordionItemIds.includes('accordion-history'),
-											mountHandler: createHistoryMountHandler()
+											collapsed: !activeAccordionItemIds.includes('accordion-history')
 										}"
 										:component-events="{
 											toggle: (collapsed) => handlePanelToggle('accordion-history', collapsed)
 										}"
 									/>
+									<div v-show="activeAccordionItemIds.includes('accordion-history')" class="panel-vue2-content">
+										<HistoryComponent
+											ref="historyComponent"
+											:id="id"
+											:collection="collection"
+											:module-name="moduleName"
+											:action="action"
+											:audit_id="audit_id"
+											:auto-load="false"
+										/>
+									</div>
 								</div>
 
 							</div>
@@ -658,126 +693,6 @@ export default {
 			}
 			return false;
 		},
-		createAttachmentsMountHandler() {
-			const _this = this;
-			// Return a function that will mount the Vue 2 AttachmentsComponent
-			return (el) => {
-				const Vue = _this.$root.constructor;
-
-				// Create a new Vue instance
-				const instance = new Vue({
-					components: {
-						AttachmentsComponent: () => import('./ModuleComponents/AttachmentsComponent.vue')
-					},
-					render(h) {
-						const children = [];
-
-						// Add warning message if restricted
-						if (_this.restrictedFeatures.restrictAttachments) {
-							children.push(
-								h('div', {
-									class: 'alert alert-info mb-2'
-								}, [
-									h('i', { class: 'fas fa-info-circle mr-2' }),
-									h('small', {}, 'Attachments are in read-only mode. Upload/delete operations are disabled.')
-								])
-							);
-						}
-
-						// Add the AttachmentsComponent
-						children.push(
-							h('AttachmentsComponent', {
-								ref: 'attachmentsComponent',
-								props: {
-									id: _this.id,
-									collection: _this.collection,
-									moduleName: _this.moduleName,
-									action: _this.action,
-									autoLoad: false,
-									restrictAttachments: _this.restrictedFeatures.restrictAttachments
-								}
-							})
-						);
-
-						return h('div', children);
-					}
-				});
-
-				instance.$mount(el);
-
-				// Store the ref on the parent component
-				_this.$refs.attachmentsComponent = instance.$refs.attachmentsComponent;
-
-				// Return cleanup function
-				return () => {
-					instance.$destroy();
-				};
-			};
-		},
-		createConnectionsMountHandler() {
-			const _this = this;
-			return (el) => {
-				const Vue = _this.$root.constructor;
-
-				const instance = new Vue({
-					components: {
-						ConnectionsComponent: () => import('./ModuleComponents/ConnectionsComponent.vue')
-					},
-					render(h) {
-						return h('ConnectionsComponent', {
-							ref: 'connectionsComponent',
-							props: {
-								id: _this.id,
-								collection: _this.collection,
-								moduleName: _this.moduleName,
-								action: _this.action,
-								autoLoad: false,
-								userFormData: _this.userFormData
-							}
-						});
-					}
-				});
-
-				instance.$mount(el);
-				_this.$refs.connectionsComponent = instance.$refs.connectionsComponent;
-
-				return () => {
-					instance.$destroy();
-				};
-			};
-		},
-		createHistoryMountHandler() {
-			const _this = this;
-			return (el) => {
-				const Vue = _this.$root.constructor;
-
-				const instance = new Vue({
-					components: {
-						HistoryComponent: () => import('./ModuleComponents/HistoryComponent.vue')
-					},
-					render(h) {
-						return h('HistoryComponent', {
-							ref: 'historyComponent',
-							props: {
-								id: _this.id,
-								collection: _this.collection,
-								moduleName: _this.moduleName,
-								action: _this.action,
-								auditId: _this.audit_id,
-								autoLoad: false
-							}
-						});
-					}
-				});
-
-				instance.$mount(el);
-				_this.$refs.historyComponent = instance.$refs.historyComponent;
-
-				return () => {
-					instance.$destroy();
-				};
-			};
-		},
 		updateCurrentFormGlobal(userFormData) {
 			if (this.parentFormData) {
 				const inheritAttrs = {
@@ -1206,6 +1121,26 @@ export default {
 		}
 
 		// Styles for Vue 3 Panel integration with Vue 2 content
+		.panel-integrated {
+			border: 1px solid #dee2e6;
+			border-radius: 4px;
+			overflow: hidden;
+			margin-bottom: 0.5rem;
+
+			// Remove bottom border from panel header when content follows
+			::v-deep(.capps-accordion-panel) {
+				.p-panel {
+					border: none;
+					border-radius: 0;
+				}
+			}
+
+			.panel-vue2-content {
+				border-top: 1px solid #dee2e6;
+				padding: 0.5rem 1rem;
+				background-color: #ffffff;
+			}
+		}
 	}
 
 	::v-deep {
