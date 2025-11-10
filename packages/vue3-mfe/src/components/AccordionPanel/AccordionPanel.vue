@@ -1,57 +1,54 @@
-<script setup>
-import { h, watch } from 'vue';
+<script>
+import { h } from 'vue';
 import Panel from 'primevue/panel';
 
-const props = defineProps({
-  header: {
-    type: String,
-    required: true
-  },
-  icon: {
-    type: String,
-    default: ''
-  },
-  iconColor: {
-    type: String,
-    default: ''
-  },
-  badge: {
-    type: String,
-    default: ''
-  },
-  badgeClass: {
-    type: String,
-    default: 'text-warning'
-  },
-  toggleable: {
-    type: Boolean,
-    default: true
-  },
-  collapsed: {
-    type: Boolean,
-    default: true
-  },
-  customClass: {
-    type: String,
-    default: ''
-  }
-});
-
-const emit = defineEmits(['toggle', 'update:collapsed']);
-
-const handleToggle = (event) => {
-  emit('update:collapsed', event.value);
-  emit('toggle', event.value);
-};
-
-// Watch for external changes to collapsed prop
-watch(() => props.collapsed, (newVal) => {
-  console.log(`Panel "${props.header}" collapsed state changed:`, newVal);
-});
-</script>
-
-<script>
 export default {
+  props: {
+    header: {
+      type: String,
+      required: true
+    },
+    icon: {
+      type: String,
+      default: ''
+    },
+    iconColor: {
+      type: String,
+      default: ''
+    },
+    badge: {
+      type: String,
+      default: ''
+    },
+    badgeClass: {
+      type: String,
+      default: 'text-warning'
+    },
+    toggleable: {
+      type: Boolean,
+      default: true
+    },
+    collapsed: {
+      type: Boolean,
+      default: true
+    },
+    customClass: {
+      type: String,
+      default: ''
+    }
+  },
+  emits: ['toggle', 'update:collapsed'],
+  watch: {
+    collapsed(newVal) {
+      console.log(`Panel "${this.header}" collapsed state changed:`, newVal);
+    }
+  },
+  methods: {
+    handleToggle(event) {
+      this.$emit('update:collapsed', event.value);
+      this.$emit('toggle', event.value);
+    }
+  },
   render() {
     const headerContent = h('div', { class: 'panel-header-content' }, [
       // Icon
