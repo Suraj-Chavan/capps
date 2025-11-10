@@ -332,18 +332,19 @@ export default {
             );
         }
 
-        // Always add the mount point (hidden when loading or error)
-        const mountPointStyle = {
-            display: this.showLoader || this.errorLoading ? 'none' : 'block'
+        // Always add the mount point with a CSS class for visibility
+        // Using class instead of inline style prevents Vue from replacing the element
+        const mountPointClass = {
+            'vue3-mount-point': true,
+            'is-loading': this.showLoader || this.errorLoading
         };
 
-        console.log('[Vue3ComponentLoader] Mount point style:', mountPointStyle);
+        console.log('[Vue3ComponentLoader] Mount point class:', mountPointClass);
 
         children.push(
             h('div', {
                 ref: 'vue3MountPoint',
-                class: 'vue3-mount-point',
-                style: mountPointStyle
+                class: mountPointClass
             })
         );
 
@@ -358,6 +359,15 @@ export default {
 .vue3-component-loader .error-state {
     padding: 10px;
     border: 1px dashed #ccc;
+}
+
+/* Mount point visibility control via CSS class */
+.vue3-mount-point {
+    display: block;
+}
+
+.vue3-mount-point.is-loading {
+    display: none;
 }
 .vue3-component-loader .error-state {
     color: red;
