@@ -35,6 +35,11 @@ export default {
     customClass: {
       type: String,
       default: ''
+    },
+    // Function to mount Vue 2 content
+    mountHandler: {
+      type: Function,
+      default: null
     }
   },
   emits: ['toggle', 'update:collapsed'],
@@ -62,6 +67,20 @@ export default {
       this.badge ? h('small', { class: ['ml-2', this.badgeClass] }, this.badge) : null
     ].filter(Boolean));
 
+    // Create default slot content
+    const defaultSlotContent = () => {
+      if (this.$slots.default) {
+        return this.$slots.default();
+      } else if (this.mountHandler) {
+        // Create a mount point for Vue 2 content
+        return h('div', {
+          ref: 'vue2Content',
+          class: 'vue2-content-mount-point'
+        });
+      }
+      return null;
+    };
+
     return h(Panel, {
       header: this.header,
       toggleable: this.toggleable,
@@ -70,8 +89,25 @@ export default {
       class: ['capps-accordion-panel', this.customClass]
     }, {
       header: () => headerContent,
-      // Don't render default slot - content is managed by Vue 2 parent
+      default: defaultSlotContent
     });
+  },
+  mounted() {
+    // If mountHandler is provided and we have a mount point, call it
+    if (this.mountHandler && this.$refs.vue2Content) {
+      this.cleanupFn = this.mountHandler(this.$refs.vue2Content);
+    }
+  },
+  beforeUnmount() {
+    // Call cleanup function if it exists
+    if (this.cleanupFn && typeof this.cleanupFn === 'function') {
+      this.cleanupFn();
+    }
+  },
+  data() {
+    return {
+      cleanupFn: null
+    };
   }
 }
 </script>
@@ -84,9 +120,8 @@ export default {
     padding: 0.875rem 1rem;
   }
 
-  // Hide the panel body completely since content is external
   ::v-deep(.p-panel-content) {
-    display: none !important;
+    padding: 0.5rem 1rem;
   }
 
   .panel-header-content {
