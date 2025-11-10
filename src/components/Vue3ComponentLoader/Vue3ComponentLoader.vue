@@ -37,25 +37,38 @@ export default {
             vue3UpdateFn: null,
             slotInstance: null,
             mountObserver: null,
+            actualMountElement: null, // Store actual DOM element to prevent loss during re-renders
         };
     },
     async mounted() {
+        console.log('[Vue3ComponentLoader] Mounted hook called');
+
+        // Wait for initial render to complete so $refs are available
+        await this.$nextTick();
+
+        // Store the actual DOM element reference to prevent it from being lost during re-renders
+        this.actualMountElement = this.$refs.vue3MountPoint;
+
+        console.log('[Vue3ComponentLoader] Stored mount element reference:', this.actualMountElement);
+
+        // Now load and mount the Vue 3 component
+        this.isLoading = true;
+
         await this.loadAndMountVue3Component();
 
-        // Debug: Check mount point state
-        this.$nextTick(() => {
-            if (this.$refs.vue3MountPoint) {
-                console.log('[Vue3ComponentLoader] Mount point after loading:', {
-                    exists: !!this.$refs.vue3MountPoint,
-                    innerHTML: this.$refs.vue3MountPoint.innerHTML.substring(0, 200),
-                    offsetHeight: this.$refs.vue3MountPoint.offsetHeight,
-                    offsetWidth: this.$refs.vue3MountPoint.offsetWidth,
-                    display: window.getComputedStyle(this.$refs.vue3MountPoint).display
-                });
-            }
+        this.isLoading = false;
 
-            this.injectSlotContent();
+        // Wait for visibility change to apply, then inject slot content
+        await this.$nextTick();
+
+        console.log('[Vue3ComponentLoader] After loading - checking mount element:', {
+            storedElement: this.actualMountElement,
+            innerHTML: this.actualMountElement ? this.actualMountElement.innerHTML.substring(0, 200) : 'N/A',
+            offsetHeight: this.actualMountElement ? this.actualMountElement.offsetHeight : 0,
+            offsetWidth: this.actualMountElement ? this.actualMountElement.offsetWidth : 0
         });
+
+        this.injectSlotContent();
     },
     beforeDestroy() {
         // Clean up mutation observer
@@ -121,13 +134,15 @@ export default {
             }
         },
         async loadAndMountVue3Component() {
-            this.isLoading = true;
+            // Note: isLoading should be set by the caller before calling this method
             this.errorLoading = null;
             this.unmountVue3Component(); // Ensure previous instance is cleaned up
 
-            console.log('[Vue3ComponentLoader] loadAndMountVue3Component started, checking refs...');
-            console.log('[Vue3ComponentLoader] this.$refs:', Object.keys(this.$refs || {}));
-            console.log('[Vue3ComponentLoader] vue3MountPoint exists:', !!this.$refs.vue3MountPoint);
+            const mountElement = this.actualMountElement;
+
+            console.log('[Vue3ComponentLoader] loadAndMountVue3Component started');
+            console.log('[Vue3ComponentLoader] Mount element:', mountElement);
+            console.log('[Vue3ComponentLoader] Mount element exists:', !!mountElement);
 
             try {
                 // Dynamically import the exposed module from the Vue 3 MFE
@@ -143,11 +158,11 @@ export default {
                 // which itself returns an object with unmount and update methods.
                 const mfeInterface = loadedModule;
 
-                if (this.$refs.vue3MountPoint && mfeInterface && typeof mfeInterface.mount === 'function') {
-                    console.log('[Vue3ComponentLoader] Mounting Vue 3 component to:', this.$refs.vue3MountPoint);
-                    console.log('[Vue3ComponentLoader] Mount point HTML before mount:', this.$refs.vue3MountPoint.innerHTML);
+                if (mountElement && mfeInterface && typeof mfeInterface.mount === 'function') {
+                    console.log('[Vue3ComponentLoader] Mounting Vue 3 component to element');
+                    console.log('[Vue3ComponentLoader] Mount point HTML before mount:', mountElement.innerHTML);
 
-                    const mountedAppControls = mfeInterface.mount(this.$refs.vue3MountPoint, {
+                    const mountedAppControls = mfeInterface.mount(mountElement, {
                         // Pass the combined props to the Vue 3 component
                         ...this.componentProps, // Pass direct data props
                         ...this.mapEventHandlersToProps(), // Pass event handlers as props
@@ -157,14 +172,14 @@ export default {
                     this.vue3UpdateFn = mountedAppControls.update; // Store the update control
 
                     console.log('[Vue3ComponentLoader] Vue 3 component mounted successfully');
-                    console.log('[Vue3ComponentLoader] Mount point HTML after mount:', this.$refs.vue3MountPoint.innerHTML.substring(0, 200));
+                    console.log('[Vue3ComponentLoader] Mount point HTML after mount:', mountElement.innerHTML.substring(0, 200));
 
                     if (typeof this.vue3UpdateFn !== 'function') {
                         console.warn('Vue 3 MFE did not return an update function. Prop changes will require re-mounts.');
                     }
                 } else {
                     console.error('[Vue3ComponentLoader] Mount failed - missing requirements:', {
-                        hasRef: !!this.$refs.vue3MountPoint,
+                        hasMountElement: !!mountElement,
                         hasMfeInterface: !!mfeInterface,
                         hasMountFunction: !!(mfeInterface && typeof mfeInterface.mount === 'function')
                     });
@@ -174,9 +189,6 @@ export default {
                 console.error('[Vue3ComponentLoader] Failed to load or mount Vue 3 component:', error);
                 this.errorLoading = error.message || 'An error occurred while loading the component.';
                 // Optionally, emit an event or set a data property to show an error UI
-            } finally {
-                console.log('[Vue3ComponentLoader] Setting isLoading to false');
-                this.isLoading = false;
             }
         },
         mapEventHandlersToProps() {
@@ -199,13 +211,13 @@ export default {
                 return;
             }
 
-            if (!this.$refs.vue3MountPoint) {
-                console.warn('[Vue3ComponentLoader] Mount point ref not available');
+            if (!this.actualMountElement) {
+                console.warn('[Vue3ComponentLoader] Mount element not available');
                 return;
             }
 
             // Try to find the content injection point
-            const contentTarget = this.$refs.vue3MountPoint.querySelector('.vue2-content-mount-point');
+            const contentTarget = this.actualMountElement.querySelector('.vue2-content-mount-point');
 
             if (contentTarget) {
                 // Mount point exists, inject immediately
@@ -264,9 +276,14 @@ export default {
                 this.mountObserver.disconnect();
             }
 
+            if (!this.actualMountElement) {
+                console.warn('[Vue3ComponentLoader] Cannot set up observer - mount element not available');
+                return;
+            }
+
             // Create a MutationObserver to watch for the mount point appearing
             this.mountObserver = new MutationObserver((mutations) => {
-                const contentTarget = this.$refs.vue3MountPoint.querySelector('.vue2-content-mount-point');
+                const contentTarget = this.actualMountElement.querySelector('.vue2-content-mount-point');
 
                 if (contentTarget) {
                     console.log('[Vue3ComponentLoader] Mount point detected by observer, injecting content...');
@@ -275,7 +292,7 @@ export default {
             });
 
             // Start observing the vue3MountPoint for changes in its subtree
-            this.mountObserver.observe(this.$refs.vue3MountPoint, {
+            this.mountObserver.observe(this.actualMountElement, {
                 childList: true,
                 subtree: true
             });
