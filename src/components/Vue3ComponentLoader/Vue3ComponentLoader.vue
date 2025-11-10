@@ -36,6 +36,7 @@ export default {
             errorLoading: null,
             vue3UpdateFn: null,
             slotInstance: null,
+            mountObserver: null,
         };
     },
     async mounted() {
@@ -47,7 +48,12 @@ export default {
         });
     },
     beforeDestroy() {
-        // Clean up slot instance first
+        // Clean up mutation observer
+        if (this.mountObserver) {
+            this.mountObserver.disconnect();
+            this.mountObserver = null;
+        }
+        // Clean up slot instance
         if (this.slotInstance) {
             this.slotInstance.$destroy();
             this.slotInstance = null;
@@ -165,57 +171,93 @@ export default {
             return eventHandlerProps;
         },
         injectSlotContent() {
-            console.log('injectSlotContent called');
-            console.log('Has slots.default:', !!this.$slots.default);
-            console.log('Has vue3MountPoint ref:', !!this.$refs.vue3MountPoint);
+            // Only proceed if we have slot content
+            if (!this.$slots.default) {
+                return;
+            }
 
-            // If we have slot content, inject it into the Vue 3 component's DOM
-            if (this.$slots.default && this.$refs.vue3MountPoint) {
-                console.log('vue3MountPoint HTML:', this.$refs.vue3MountPoint.innerHTML);
+            if (!this.$refs.vue3MountPoint) {
+                console.warn('[Vue3ComponentLoader] Mount point ref not available');
+                return;
+            }
 
-                // Find the content injection point in the Vue 3 component
-                // Look for an element with class 'vue2-content-mount-point'
+            // Try to find the content injection point
+            const contentTarget = this.$refs.vue3MountPoint.querySelector('.vue2-content-mount-point');
+
+            if (contentTarget) {
+                // Mount point exists, inject immediately
+                this.performSlotInjection(contentTarget);
+            } else {
+                // Mount point doesn't exist yet (e.g., Panel is collapsed)
+                // Set up a MutationObserver to wait for it to appear
+                console.log('[Vue3ComponentLoader] Mount point not found yet, setting up observer...');
+                this.setupMountObserver();
+            }
+        },
+
+        performSlotInjection(contentTarget) {
+            // Avoid injecting twice
+            if (this.slotInstance) {
+                console.log('[Vue3ComponentLoader] Content already injected, skipping');
+                return;
+            }
+
+            console.log('[Vue3ComponentLoader] Injecting Vue 2 slot content...');
+
+            // Create a temporary div to render our Vue 2 slot content
+            const slotContainer = document.createElement('div');
+            slotContainer.className = 'vue2-slot-container';
+
+            // Mount the slot content using Vue 2's render
+            const SlotComponent = {
+                render: (h) => h('div', this.$slots.default)
+            };
+
+            const instance = new this.$root.constructor({
+                parent: this,
+                ...SlotComponent
+            });
+
+            instance.$mount(slotContainer);
+
+            // Inject the rendered content into the Vue 3 component
+            contentTarget.appendChild(instance.$el);
+
+            console.log('[Vue3ComponentLoader] Content injected successfully');
+
+            // Store reference for cleanup
+            this.slotInstance = instance;
+
+            // Clean up observer if it exists
+            if (this.mountObserver) {
+                this.mountObserver.disconnect();
+                this.mountObserver = null;
+            }
+        },
+
+        setupMountObserver() {
+            // Clean up existing observer if any
+            if (this.mountObserver) {
+                this.mountObserver.disconnect();
+            }
+
+            // Create a MutationObserver to watch for the mount point appearing
+            this.mountObserver = new MutationObserver((mutations) => {
                 const contentTarget = this.$refs.vue3MountPoint.querySelector('.vue2-content-mount-point');
 
-                console.log('Found contentTarget:', !!contentTarget);
-
                 if (contentTarget) {
-                    console.log('Injecting Vue 2 content into mount point...');
-
-                    // Create a temporary div to render our Vue 2 slot content
-                    const slotContainer = document.createElement('div');
-                    slotContainer.className = 'vue2-slot-container';
-
-                    // Mount the slot content using Vue 2's render
-                    const SlotComponent = {
-                        render: (h) => h('div', this.$slots.default)
-                    };
-
-                    const instance = new this.$root.constructor({
-                        parent: this,
-                        ...SlotComponent
-                    });
-
-                    instance.$mount(slotContainer);
-
-                    console.log('Vue 2 instance mounted, appending to target...');
-
-                    // Inject the rendered content into the Vue 3 component
-                    contentTarget.appendChild(instance.$el);
-
-                    console.log('Content injected successfully!');
-
-                    // Store reference for cleanup
-                    this.slotInstance = instance;
-                } else {
-                    console.warn('Content target (.vue2-content-mount-point) not found!');
+                    console.log('[Vue3ComponentLoader] Mount point detected by observer, injecting content...');
+                    this.performSlotInjection(contentTarget);
                 }
-            } else {
-                console.warn('Missing requirements:', {
-                    hasSlots: !!this.$slots.default,
-                    hasRef: !!this.$refs.vue3MountPoint
-                });
-            }
+            });
+
+            // Start observing the vue3MountPoint for changes in its subtree
+            this.mountObserver.observe(this.$refs.vue3MountPoint, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('[Vue3ComponentLoader] MutationObserver set up, waiting for mount point...');
         }
     },
     render() {
