@@ -1,20 +1,5 @@
-<template>
-    <div class="vue3-component-loader">
-        <div v-if="showLoader" class="loading-state">
-            <slot name="loading">Loading Vue 3 component...</slot>
-        </div>
-        <div v-if="errorLoading" class="error-state">
-            <p>Error loading component: {{ errorLoading }}</p>
-        </div>
-        <div
-            ref="vue3MountPoint"
-            class="vue3-mount-point"
-            :style="{ display: showLoader || errorLoading ? 'none' : 'block' }"
-        ></div>
-    </div>
-</template>
-
 <script>
+import { h } from 'vue';
 import { remoteApplicationDetails } from "config";
 import getRemoteModule from "../../plugins/get-remote-module.js";
 const { remoteApp3: REMOTE_APP3 } = remoteApplicationDetails;
@@ -167,6 +152,40 @@ export default {
             }
             return eventHandlerProps;
         }
+    },
+    render() {
+        const children = [];
+
+        // Show loading state
+        if (this.showLoader) {
+            children.push(
+                h('div', { class: 'loading-state' }, [
+                    this.$slots.loading ? this.$slots.loading() : 'Loading Vue 3 component...'
+                ])
+            );
+        }
+
+        // Show error state
+        if (this.errorLoading) {
+            children.push(
+                h('div', { class: 'error-state' }, [
+                    h('p', {}, `Error loading component: ${this.errorLoading}`)
+                ])
+            );
+        }
+
+        // Always add the mount point (hidden when loading or error)
+        children.push(
+            h('div', {
+                ref: 'vue3MountPoint',
+                class: 'vue3-mount-point',
+                style: {
+                    display: this.showLoader || this.errorLoading ? 'none' : 'block'
+                }
+            })
+        );
+
+        return h('div', { class: 'vue3-component-loader' }, children);
     }
 };
 </script>
