@@ -83,6 +83,10 @@ watch(() => props.collapsed, (newVal) => {
 .capps-accordion-panel {
   margin-bottom: 0.5rem;
 
+  ::v-deep(.p-panel-header) {
+    padding: 0.875rem 1rem;
+  }
+
   ::v-deep(.p-panel-content) {
     padding: 0.5rem;
   }
@@ -93,13 +97,15 @@ watch(() => props.collapsed, (newVal) => {
     width: 100%;
 
     .panel-icon {
-      font-size: 1.2rem;
-      opacity: 0.9;
+      font-size: 1.35rem;
+      opacity: 1;
+      margin-right: 0.625rem;
     }
 
     .panel-header-text {
-      font-weight: 800;
-      font-size: 0.95rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1.3;
     }
   }
 }
