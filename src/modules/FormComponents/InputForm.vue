@@ -158,6 +158,7 @@
 										:component-props="{
 											header: 'Attachments',
 											icon: 'fas fa-paperclip',
+											iconColor: '#3b82f6',
 											badge: restrictedFeatures.restrictAttachments ? '(Read Only)' : '',
 											badgeClass: 'text-warning',
 											toggleable: !isAccordionRestricted('accordion-attachments'),
@@ -192,6 +193,7 @@
 										:component-props="{
 											header: 'Connections',
 											icon: 'fas fa-link',
+											iconColor: '#8b5cf6',
 											toggleable: true,
 											collapsed: !activeAccordionItemIds.includes('accordion-connections')
 										}"
@@ -220,6 +222,7 @@
 										:component-props="{
 											header: 'Version History',
 											icon: 'fas fa-history',
+											iconColor: '#10b981',
 											toggleable: true,
 											collapsed: !activeAccordionItemIds.includes('accordion-history')
 										}"

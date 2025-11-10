@@ -8,8 +8,8 @@
   >
     <template #header>
       <div class="panel-header-content">
-        <i v-if="icon" :class="icon + ' mr-2'"></i>
-        <span>{{ header }}</span>
+        <i v-if="icon" :class="[icon, 'mr-2', 'panel-icon']" :style="{ color: iconColor }"></i>
+        <span class="panel-header-text">{{ header }}</span>
         <small v-if="badge" :class="['ml-2', badgeClass]">{{ badge }}</small>
       </div>
     </template>
@@ -33,6 +33,10 @@ const props = defineProps({
     required: true
   },
   icon: {
+    type: String,
+    default: ''
+  },
+  iconColor: {
     type: String,
     default: ''
   },
@@ -87,6 +91,16 @@ watch(() => props.collapsed, (newVal) => {
     display: flex;
     align-items: center;
     width: 100%;
+
+    .panel-icon {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .panel-header-text {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
   }
 }
 </style>
