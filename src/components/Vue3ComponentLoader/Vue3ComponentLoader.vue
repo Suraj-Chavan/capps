@@ -11,10 +11,6 @@
             class="vue3-mount-point"
             :style="{ display: showLoader || errorLoading ? 'none' : 'block' }"
         ></div>
-        <!-- Hidden slot content container that will be passed to Vue 3 -->
-        <div ref="slotContainer" style="display: none;">
-            <slot></slot>
-        </div>
     </div>
 </template>
 
@@ -87,15 +83,9 @@ export default {
     computed: {
         // Combine props intended for the remote component to simplify watching
         propsForRemote() {
-            // Get slot content if available
-            const slotContentElement = this.$refs.slotContainer && this.$refs.slotContainer.children.length > 0
-                ? this.$refs.slotContainer.innerHTML
-                : null;
-
             return {
                 ...this.componentProps,
                 ...this.mapEventHandlersToProps(), // Add event handlers as props
-                slotContent: slotContentElement // Include slot content
             };
         },
         showLoader() {
@@ -139,17 +129,10 @@ export default {
                 if (this.$refs.vue3MountPoint && mfeInterface && typeof mfeInterface.mount === 'function') {
                     console.log('Mounting Vue 3 component...');
 
-                    // Prepare slot content if available
-                    const slotContentElement = this.$refs.slotContainer && this.$refs.slotContainer.children.length > 0
-                        ? this.$refs.slotContainer.innerHTML
-                        : null;
-
                     const mountedAppControls = mfeInterface.mount(this.$refs.vue3MountPoint, {
                         // Pass the combined props to the Vue 3 component
                         ...this.componentProps, // Pass direct data props
                         ...this.mapEventHandlersToProps(), // Pass event handlers as props
-                        // Pass slot content as a special prop
-                        slotContent: slotContentElement
                     });
 
                     this.vue3App = { unmount: mountedAppControls.unmount }; // Store the unmount control

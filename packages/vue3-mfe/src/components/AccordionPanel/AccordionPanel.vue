@@ -15,10 +15,8 @@
     </template>
 
     <template #default>
-      <!-- Render Vue 2 slot content if provided -->
-      <div v-if="slotContent" v-html="slotContent"></div>
-      <!-- Fallback to Vue 3 slot if no slotContent prop -->
-      <slot v-else></slot>
+      <!-- Empty body - content is managed by Vue 2 parent -->
+      <div style="display: none;"></div>
     </template>
   </Panel>
 </template>
@@ -59,10 +57,6 @@ const props = defineProps({
   customClass: {
     type: String,
     default: ''
-  },
-  slotContent: {
-    type: String,
-    default: null
   }
 });
 

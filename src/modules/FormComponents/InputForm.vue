@@ -152,7 +152,7 @@
 						<div class="scroll-y mh-76">
 							<div id="details-accordion-group" role="tablist">
 								<!-- Attachments Accordion Item -->
-								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictAttachments" class="mb-2">
+								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictAttachments" class="mb-2 panel-wrapper">
 									<Vue3ComponentLoader
 										exposed-module="./AccordionPanel"
 										:component-props="{
@@ -167,27 +167,27 @@
 										:component-events="{
 											toggle: (collapsed) => handlePanelToggle('accordion-attachments', collapsed)
 										}"
-									>
-										<template #default>
-											<div v-if="restrictedFeatures.restrictAttachments" class="alert alert-info mb-2">
-												<i class="fas fa-info-circle mr-2"></i>
-												<small>Attachments are in read-only mode. Upload/delete operations are disabled.</small>
-											</div>
-											<AttachmentsComponent
-												ref="attachmentsComponent"
-												:id="id"
-												:collection="collection"
-												:module-name="moduleName"
-												:action="action"
-												:auto-load="false"
-												:restrict-attachments="restrictedFeatures.restrictAttachments"
-											/>
-										</template>
-									</Vue3ComponentLoader>
+									/>
+									<!-- Vue 2 Content - stays in Vue 2 context for full reactivity -->
+									<div v-show="activeAccordionItemIds.includes('accordion-attachments')" class="panel-body-vue2">
+										<div v-if="restrictedFeatures.restrictAttachments" class="alert alert-info mb-2">
+											<i class="fas fa-info-circle mr-2"></i>
+											<small>Attachments are in read-only mode. Upload/delete operations are disabled.</small>
+										</div>
+										<AttachmentsComponent
+											ref="attachmentsComponent"
+											:id="id"
+											:collection="collection"
+											:module-name="moduleName"
+											:action="action"
+											:auto-load="false"
+											:restrict-attachments="restrictedFeatures.restrictAttachments"
+										/>
+									</div>
 								</div>
 
 								<!-- Connections Accordion Item -->
-								<div v-if="action === 'view' && !hideFeatures.restrictConnections" class="mb-2">
+								<div v-if="action === 'view' && !hideFeatures.restrictConnections" class="mb-2 panel-wrapper">
 									<Vue3ComponentLoader
 										exposed-module="./AccordionPanel"
 										:component-props="{
@@ -200,23 +200,23 @@
 										:component-events="{
 											toggle: (collapsed) => handlePanelToggle('accordion-connections', collapsed)
 										}"
-									>
-										<template #default>
-											<ConnectionsComponent
-												ref="connectionsComponent"
-												:id="id"
-												:collection="collection"
-												:module-name="moduleName"
-												:action="action"
-												:auto-load="false"
-												:user-form-data="userFormData"
-											/>
-										</template>
-									</Vue3ComponentLoader>
+									/>
+									<!-- Vue 2 Content - stays in Vue 2 context for full reactivity -->
+									<div v-show="activeAccordionItemIds.includes('accordion-connections')" class="panel-body-vue2">
+										<ConnectionsComponent
+											ref="connectionsComponent"
+											:id="id"
+											:collection="collection"
+											:module-name="moduleName"
+											:action="action"
+											:auto-load="false"
+											:user-form-data="userFormData"
+										/>
+									</div>
 								</div>
 
 								<!-- Version History Accordion Item -->
-								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictHistory" class="mb-2">
+								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictHistory" class="mb-2 panel-wrapper">
 									<Vue3ComponentLoader
 										exposed-module="./AccordionPanel"
 										:component-props="{
@@ -229,19 +229,19 @@
 										:component-events="{
 											toggle: (collapsed) => handlePanelToggle('accordion-history', collapsed)
 										}"
-									>
-										<template #default>
-											<HistoryComponent
-												ref="historyComponent"
-												:id="id"
-												:collection="collection"
-												:module-name="moduleName"
-												:action="action"
-												:audit_id="audit_id"
-												:auto-load="false"
-											/>
-										</template>
-									</Vue3ComponentLoader>
+									/>
+									<!-- Vue 2 Content - stays in Vue 2 context for full reactivity -->
+									<div v-show="activeAccordionItemIds.includes('accordion-history')" class="panel-body-vue2">
+										<HistoryComponent
+											ref="historyComponent"
+											:id="id"
+											:collection="collection"
+											:module-name="moduleName"
+											:action="action"
+											:audit_id="audit_id"
+											:auto-load="false"
+										/>
+									</div>
 								</div>
 
 							</div>
@@ -1120,6 +1120,19 @@ export default {
 			&:hover {
 				text-decoration: underline;
 			}
+		}
+
+		// Styles for Vue 3 Panel integration with Vue 2 content
+		.panel-wrapper {
+			border: 1px solid #dee2e6;
+			border-radius: 4px;
+			overflow: hidden;
+		}
+
+		.panel-body-vue2 {
+			border-top: 1px solid #dee2e6;
+			padding: 0.5rem;
+			background-color: #ffffff;
 		}
 	}
 
