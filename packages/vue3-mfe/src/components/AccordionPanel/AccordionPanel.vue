@@ -46,12 +46,31 @@ export default {
   watch: {
     collapsed(newVal) {
       console.log(`Panel "${this.header}" collapsed state changed:`, newVal);
+
+      // When panel expands (collapsed becomes false), try to mount Vue 2 content
+      if (!newVal && this.mountHandler && !this.cleanupFn) {
+        this.$nextTick(() => {
+          this.tryMountVue2Content();
+        });
+      }
     }
   },
   methods: {
     handleToggle(event) {
       this.$emit('update:collapsed', event.value);
       this.$emit('toggle', event.value);
+    },
+    tryMountVue2Content() {
+      // In Vue 3, refs need to be accessed via .value to get the actual DOM element
+      if (this.mountHandler && this.vue2ContentRef && this.vue2ContentRef.value) {
+        console.log('Mounting Vue 2 content into:', this.vue2ContentRef.value);
+        this.cleanupFn = this.mountHandler(this.vue2ContentRef.value);
+      } else if (this.mountHandler) {
+        console.warn('mountHandler provided but vue2ContentRef not available', {
+          hasRef: !!this.vue2ContentRef,
+          refValue: this.vue2ContentRef?.value
+        });
+      }
     }
   },
   setup() {
@@ -100,13 +119,11 @@ export default {
     });
   },
   mounted() {
-    // If mountHandler is provided and we have a mount point, call it
-    // In Vue 3, refs need to be accessed via .value to get the actual DOM element
-    if (this.mountHandler && this.vue2ContentRef && this.vue2ContentRef.value) {
-      console.log('Mounting Vue 2 content into:', this.vue2ContentRef.value);
-      this.cleanupFn = this.mountHandler(this.vue2ContentRef.value);
-    } else if (this.mountHandler) {
-      console.warn('mountHandler provided but vue2ContentRef not available');
+    // If panel starts expanded (collapsed=false), try mounting immediately
+    if (!this.collapsed && this.mountHandler) {
+      this.$nextTick(() => {
+        this.tryMountVue2Content();
+      });
     }
   },
   beforeUnmount() {
