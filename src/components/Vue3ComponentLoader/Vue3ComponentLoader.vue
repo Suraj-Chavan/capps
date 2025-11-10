@@ -35,12 +35,24 @@ export default {
             isLoading: false,
             errorLoading: null,
             vue3UpdateFn: null,
+            slotInstance: null,
         };
     },
     async mounted() {
         await this.loadAndMountVue3Component();
+
+        // If we have default slot content, inject it into the Vue 3 component
+        this.$nextTick(() => {
+            this.injectSlotContent();
+        });
     },
     beforeDestroy() {
+        // Clean up slot instance first
+        if (this.slotInstance) {
+            this.slotInstance.$destroy();
+            this.slotInstance = null;
+        }
+        // Then unmount Vue 3 component
         this.unmountVue3Component();
     },
     watch: {
@@ -151,6 +163,38 @@ export default {
                 }
             }
             return eventHandlerProps;
+        },
+        injectSlotContent() {
+            // If we have slot content, inject it into the Vue 3 component's DOM
+            if (this.$slots.default && this.$refs.vue3MountPoint) {
+                // Find the content injection point in the Vue 3 component
+                // Look for an element with class 'vue2-content-mount-point'
+                const contentTarget = this.$refs.vue3MountPoint.querySelector('.vue2-content-mount-point');
+
+                if (contentTarget) {
+                    // Create a temporary div to render our Vue 2 slot content
+                    const slotContainer = document.createElement('div');
+                    slotContainer.className = 'vue2-slot-container';
+
+                    // Mount the slot content using Vue 2's render
+                    const SlotComponent = {
+                        render: (h) => h('div', this.$slots.default)
+                    };
+
+                    const instance = new this.$root.constructor({
+                        parent: this,
+                        ...SlotComponent
+                    });
+
+                    instance.$mount(slotContainer);
+
+                    // Inject the rendered content into the Vue 3 component
+                    contentTarget.appendChild(instance.$el);
+
+                    // Store reference for cleanup
+                    this.slotInstance = instance;
+                }
+            }
         }
     },
     render() {

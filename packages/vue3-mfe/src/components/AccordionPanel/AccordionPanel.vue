@@ -64,7 +64,9 @@ export default {
       onToggle: this.handleToggle,
       class: ['capps-accordion-panel', this.customClass]
     }, {
-      header: () => headerContent
+      header: () => headerContent,
+      // Render a mount point where Vue 2 content will be injected
+      default: () => h('div', { class: 'vue2-content-mount-point' })
     });
   }
 }
@@ -72,16 +74,14 @@ export default {
 
 <style scoped lang="scss">
 .capps-accordion-panel {
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
 
   ::v-deep(.p-panel-header) {
     padding: 0.875rem 1rem;
-    border-bottom: none;
   }
 
-  // Hide panel body since content is external
   ::v-deep(.p-panel-content) {
-    display: none !important;
+    padding: 0.5rem 1rem;
   }
 
   .panel-header-content {
@@ -100,6 +100,11 @@ export default {
       font-size: 1.1rem;
       line-height: 1.3;
     }
+  }
+
+  // Mount point for Vue 2 content
+  .vue2-content-mount-point {
+    width: 100%;
   }
 }
 </style>

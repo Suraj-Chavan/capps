@@ -152,7 +152,7 @@
 						<div class="scroll-y mh-76">
 							<div id="details-accordion-group" role="tablist">
 								<!-- Attachments Accordion Item -->
-								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictAttachments" class="mb-2 panel-integrated">
+								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictAttachments" class="mb-2">
 									<Vue3ComponentLoader
 										exposed-module="./AccordionPanel"
 										:component-props="{
@@ -167,9 +167,7 @@
 										:component-events="{
 											toggle: (collapsed) => handlePanelToggle('accordion-attachments', collapsed)
 										}"
-									/>
-									<!-- Vue 2 content styled to look integrated -->
-									<div v-show="activeAccordionItemIds.includes('accordion-attachments')" class="panel-vue2-content">
+									>
 										<div v-if="restrictedFeatures.restrictAttachments" class="alert alert-info mb-2">
 											<i class="fas fa-info-circle mr-2"></i>
 											<small>Attachments are in read-only mode. Upload/delete operations are disabled.</small>
@@ -183,11 +181,11 @@
 											:auto-load="false"
 											:restrict-attachments="restrictedFeatures.restrictAttachments"
 										/>
-									</div>
+									</Vue3ComponentLoader>
 								</div>
 
 								<!-- Connections Accordion Item -->
-								<div v-if="action === 'view' && !hideFeatures.restrictConnections" class="mb-2 panel-integrated">
+								<div v-if="action === 'view' && !hideFeatures.restrictConnections" class="mb-2">
 									<Vue3ComponentLoader
 										exposed-module="./AccordionPanel"
 										:component-props="{
@@ -200,8 +198,7 @@
 										:component-events="{
 											toggle: (collapsed) => handlePanelToggle('accordion-connections', collapsed)
 										}"
-									/>
-									<div v-show="activeAccordionItemIds.includes('accordion-connections')" class="panel-vue2-content">
+									>
 										<ConnectionsComponent
 											ref="connectionsComponent"
 											:id="id"
@@ -211,11 +208,11 @@
 											:auto-load="false"
 											:user-form-data="userFormData"
 										/>
-									</div>
+									</Vue3ComponentLoader>
 								</div>
 
 								<!-- Version History Accordion Item -->
-								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictHistory" class="mb-2 panel-integrated">
+								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictHistory" class="mb-2">
 									<Vue3ComponentLoader
 										exposed-module="./AccordionPanel"
 										:component-props="{
@@ -228,8 +225,7 @@
 										:component-events="{
 											toggle: (collapsed) => handlePanelToggle('accordion-history', collapsed)
 										}"
-									/>
-									<div v-show="activeAccordionItemIds.includes('accordion-history')" class="panel-vue2-content">
+									>
 										<HistoryComponent
 											ref="historyComponent"
 											:id="id"
@@ -239,7 +235,7 @@
 											:audit_id="audit_id"
 											:auto-load="false"
 										/>
-									</div>
+									</Vue3ComponentLoader>
 								</div>
 
 							</div>
@@ -1120,27 +1116,6 @@ export default {
 			}
 		}
 
-		// Styles for Vue 3 Panel integration with Vue 2 content
-		.panel-integrated {
-			border: 1px solid #dee2e6;
-			border-radius: 4px;
-			overflow: hidden;
-			margin-bottom: 0.5rem;
-
-			// Remove bottom border from panel header when content follows
-			::v-deep(.capps-accordion-panel) {
-				.p-panel {
-					border: none;
-					border-radius: 0;
-				}
-			}
-
-			.panel-vue2-content {
-				border-top: 1px solid #dee2e6;
-				padding: 0.5rem 1rem;
-				background-color: #ffffff;
-			}
-		}
 	}
 
 	::v-deep {
