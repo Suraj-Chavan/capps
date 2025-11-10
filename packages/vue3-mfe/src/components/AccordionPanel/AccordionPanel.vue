@@ -98,7 +98,7 @@ watch(() => props.collapsed, (newVal) => {
     }
 
     .panel-header-text {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.95rem;
     }
   }
