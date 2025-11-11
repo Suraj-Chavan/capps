@@ -441,6 +441,29 @@ export default {
 		}
 	},
 	watch: {
+		// Re-initialize panels when collection schema details are loaded
+		collectionSchemaDetails: {
+			immediate: true,
+			handler(schema) {
+				if (!schema || !schema.FIELDS) return;
+
+				// Initialize panels based on action and hideFeatures (now that schema is loaded)
+				const defaultAccordions = [];
+
+				if (this.action === 'view') {
+					// In VIEW mode: Open all non-hidden accordions
+					if (!this.hideFeatures.restrictConnections) defaultAccordions.push('accordion-connections');
+					if (!this.hideFeatures.restrictAttachments) defaultAccordions.push('accordion-attachments');
+					if (!this.hideFeatures.restrictHistory) defaultAccordions.push('accordion-history');
+				} else if (this.action === 'update') {
+					// In UPDATE mode: Open attachments and history only (NOT connections)
+					if (!this.hideFeatures.restrictAttachments) defaultAccordions.push('accordion-attachments');
+					if (!this.hideFeatures.restrictHistory) defaultAccordions.push('accordion-history');
+				}
+
+				this.activeAccordionItemIds = defaultAccordions;
+			}
+		},
 		'$route.query.showRecordSummary'(val) {
 			if (val === 'true') {
 				this.toggleDetailsSidebar();
@@ -1064,15 +1087,22 @@ export default {
 
 	},
 	created() {
-		// Initialize panels that should be open by default
-		// Version History is open by default for view and update actions
-		if (this.action === 'view' || this.action === 'update') {
-			this.activeAccordionItemIds.push('accordion-history');
-		}
-		// Connections is open by default for view action
+		// Initialize panels that should be open by default based on action and hideFeatures
+		// This replicates the old toggleDetailsSidebar() logic
+		const defaultAccordions = [];
+
 		if (this.action === 'view') {
-			this.activeAccordionItemIds.push('accordion-connections');
+			// In VIEW mode: Open all non-hidden accordions
+			if (!this.hideFeatures.restrictConnections) defaultAccordions.push('accordion-connections');
+			if (!this.hideFeatures.restrictAttachments) defaultAccordions.push('accordion-attachments');
+			if (!this.hideFeatures.restrictHistory) defaultAccordions.push('accordion-history');
+		} else if (this.action === 'update') {
+			// In UPDATE mode: Open attachments and history only (NOT connections)
+			if (!this.hideFeatures.restrictAttachments) defaultAccordions.push('accordion-attachments');
+			if (!this.hideFeatures.restrictHistory) defaultAccordions.push('accordion-history');
 		}
+
+		this.activeAccordionItemIds = defaultAccordions;
 	},
 	mounted() {
 		// Query param से panel/sidebar open करें
