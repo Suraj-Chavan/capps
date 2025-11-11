@@ -1063,6 +1063,17 @@ export default {
 		// showCustomButton, clearCustomButtons, changeCustomButtonType) are provided by ButtonVisibilityMixin
 
 	},
+	created() {
+		// Initialize panels that should be open by default
+		// Version History is open by default for view and update actions
+		if (this.action === 'view' || this.action === 'update') {
+			this.activeAccordionItemIds.push('accordion-history');
+		}
+		// Connections is open by default for view action
+		if (this.action === 'view') {
+			this.activeAccordionItemIds.push('accordion-connections');
+		}
+	},
 	mounted() {
 		// Query param से panel/sidebar open करें
 		if (this.$route && this.$route.query && this.$route.query.showRecordSummary === 'true') {
