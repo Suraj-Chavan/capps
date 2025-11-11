@@ -178,7 +178,7 @@
 											:collection="collection"
 											:module-name="moduleName"
 											:action="action"
-											:auto-load="false"
+											:auto-load="activeAccordionItemIds.includes('accordion-attachments')"
 											:restrict-attachments="restrictedFeatures.restrictAttachments"
 										/>
 									</Vue3ComponentLoader>
@@ -205,7 +205,7 @@
 											:collection="collection"
 											:module-name="moduleName"
 											:action="action"
-											:auto-load="false"
+											:auto-load="activeAccordionItemIds.includes('accordion-connections')"
 											:user-form-data="userFormData"
 										/>
 									</Vue3ComponentLoader>
@@ -233,7 +233,7 @@
 											:module-name="moduleName"
 											:action="action"
 											:audit_id="audit_id"
-											:auto-load="false"
+											:auto-load="activeAccordionItemIds.includes('accordion-history')"
 										/>
 									</Vue3ComponentLoader>
 								</div>
