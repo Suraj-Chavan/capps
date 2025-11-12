@@ -1,6 +1,5 @@
 <template>
 	<div class="connections-section">
-		<h2 class="component-header mb-3 mt-2">Connections</h2>
 		<div v-if="isConnectionsLoading" class="text-center my-3">
 			<b-spinner small></b-spinner> Loading connections...
 		</div>

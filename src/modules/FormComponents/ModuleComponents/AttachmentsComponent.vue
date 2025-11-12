@@ -28,12 +28,9 @@
 				</div>
 			</div>
 
-			<!-- Attachments Header & List -->
+			<!-- Attachments List -->
 			<div>
-				<div class="flex items-center justify-between mb-4">
-					<h2 class="text-xl font-semibold text-gray-800">
-						Attachments
-					</h2>
+				<div class="flex items-center justify-end mb-4">
 					<span v-if="ATTACHMENTS.length > 0" class="px-2 py-1 rounded-md bg-blue-100 text-blue-700 text-sm font-medium">
 						{{ ATTACHMENTS.length }} {{ ATTACHMENTS.length === 1 ? 'file' : 'files' }}
 					</span>

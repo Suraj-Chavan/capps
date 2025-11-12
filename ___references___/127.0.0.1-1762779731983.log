@@ -1,0 +1,1669 @@
+index.js:14 Loading config file from https://127.0.0.1:8888/./config.js?cb='1762779712' 
+configLoader.counter -::-  1
+tailwind-entry.js:3 CAPPs Tailwind Entry module loaded
+bootstrap:22 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+./node_modules/webpack-dev-server/client/index.js?protocol=wss&hostname=192.168.0.225&port=8888&pathname=%2Fws&logging=none&progress=true&overlay=false&reconnect=10&hot=only&live-reload=true @ index.js:320
+__webpack_require__ @ bootstrap:22
+(anonymous) @ tailwind.js:10316
+(anonymous) @ tailwind.js:10320
+get-remote-module.js:85 getRemoteModule called for: appName="page_builder", url="/STD/Apps/page-builder/dist/remoteEntry.js"
+get-remote-module.js:54 Appending script tag for "/STD/Apps/page-builder/dist/remoteEntry.js" to load remote "page_builder".
+get-remote-module.js:85 getRemoteModule called for: appName="app_components", url="/STD/Apps/app-components/dist/remoteEntry.js"
+get-remote-module.js:54 Appending script tag for "/STD/Apps/app-components/dist/remoteEntry.js" to load remote "app_components".
+vue.esm.js:9356 You are running Vue in development mode.
+Make sure to turn on production mode when deploying for production.
+See more tips at https://vuejs.org/guide/deployment.html
+get-remote-module.js:37 Script "/STD/Apps/page-builder/dist/remoteEntry.js" loaded via onload event. Checking for global "page_builder".
+get-remote-module.js:39 Global "page_builder" found: {}
+get-remote-module.js:69 Initializing share scope with host default scope.
+get-remote-module.js:75 Share scope initialized for container.
+get-remote-module.js:103 Attempting to get module "./PageBuilderStore" from container "page_builder".
+get-remote-module.js:37 Script "/STD/Apps/app-components/dist/remoteEntry.js" loaded via onload event. Checking for global "app_components".
+get-remote-module.js:39 Global "app_components" found: {}
+get-remote-module.js:69 Initializing share scope with host default scope.
+get-remote-module.js:75 Share scope initialized for container.
+bootstrap:22 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+./node_modules/webpack-dev-server/client/index.js?protocol=wss&hostname=192.168.0.225&port=8888&pathname=%2Fws&logging=none&progress=true&overlay=false&reconnect=10&hot=only&live-reload=true @ index.js:320
+__webpack_require__ @ bootstrap:22
+(anonymous) @ app.js:12372
+(anonymous) @ app.js:12376
+get-remote-module.js:109 Module "./PageBuilderStore" loaded successfully from container "page_builder".
+index.js:3 PageBuilderModules  {FileSystem: {…}, Notifications: {…}, Pages: {…}}
+bootstrap.js:45 action AppSettingsLoad/getSettingsFromServer @ 18:31:55.621
+installHook.js:1 [CAPPS Framework Error]: applicationInstance dependency is not injected. Please ensure you have injected it using capps.injectDependencies("applicationInstance", value)
+overrideMethod @ installHook.js:1
+getDependency @ getDependency.js:3
+fetchData @ cappsProxyAPI.js:8
+apply @ cappsProxyAPI.js:27
+(anonymous) @ index.js:7
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+readAppSettings @ index.js:3
+(anonymous) @ appSettingsLoad.store.js:29
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+getSettingsFromServer @ appSettingsLoad.store.js:29
+wrappedActionHandler @ vuex.esm.js:851
+dispatch @ vuex.esm.js:516
+boundDispatch @ vuex.esm.js:406
+(anonymous) @ bootstrap.js:45
+await in (anonymous)
+__webpack_require__.a @ async module:71
+./src/bootstrap.js @ src_bootstrap_js.js:26040
+__webpack_require__ @ bootstrap:22
+fn @ hot module replacement:61
+Promise.then
+(anonymous) @ main.js:6
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+(anonymous) @ main.js:7
+(anonymous) @ index.js:34
+Promise.then
+configLoader @ index.js:26
+./src/main.js @ main.js:3
+__webpack_require__ @ bootstrap:22
+(anonymous) @ app.js:12374
+(anonymous) @ app.js:12376
+moduleContext.js:20 [Module Context] Current module set to: capps-guinea-pig
+spinner.js:96 [CAPPS UI] DOM spinner fallback initialized
+spinner.js:156 [CAPPS UI] Spinner shown: "Loading application..."
+App.vue:38 capps_app compiled at Mon Nov 10 2025 18:29:42 GMT+0530 (India Standard Time); Patch Branch = claude/work-on-new-011CUyoEncn4ctA54YaMcCNY
+App.vue:41 safln undefined
+appSettingsLoad.store.js:29 mutation AppSettingsLoad/SET_APP_SETTINGS @ 18:31:55.637
+bootstrap:22 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+./node_modules/webpack-dev-server/client/index.js?protocol=wss&hostname=192.168.0.225&port=8888&pathname=%2Fws&logging=none&progress=true&overlay=false&reconnect=10&hot=only&live-reload=true @ index.js:320
+__webpack_require__ @ bootstrap:22
+(anonymous) @ startup:5
+(anonymous) @ startup:7
+AssetLoader.js:39 [CAPPS Asset Loader] Attempting to load manifest from: /capps/capps-guinea-pig/public/manifest.json?t=1762779716230
+AssetLoader.js:48 [CAPPS Asset Loader] Manifest loaded for capps-guinea-pig {version: 1, generated: '2025-11-07T06:25:28.348Z', assets: {…}, bundles: {…}, metadata: {…}, …}
+AssetLoader.js:63 [CAPPS Asset Loader] Loaded entry point: app-entry-45a76ec1.js from /capps/capps-guinea-pig/public/dist/app-entry-45a76ec1.js
+AssetLoader.js:64 [CAPPS Asset Loader] Entry point will import 5 bundled assets internally
+AssetLoader.js:71 [CAPPS Asset Loader] Successfully initiated asset loading for capps-guinea-pig
+main.js:6 [Guinea Pig App] Main entry point loade3asd
+main.js:17 [Guinea Pig App] Initializing application... {name: 'capps-guinea-pig', version: '1.0.1', loaded: true, timestamp: '2025-11-10T13:01:56.366Z'}
+app-entry-45a76ec1.js:26 [App Entry Point] Loaded CSS: style-3643161b.css
+app-entry-45a76ec1.js:30 [App Entry Point] All assets loaded successfully
+AssetLoader.js:91 [CAPPS Asset Loader] Loading app include files from: /capps/capps-guinea-pig/public/assets.json?t=1762779716846
+AssetLoader.js:129 [CAPPS Asset Loader] Loaded JS: vendor/react.production.min.js
+AssetLoader.js:129 [CAPPS Asset Loader] Loaded JS: vendor/react-dom.production.min.js
+AssetLoader.js:129 [CAPPS Asset Loader] Loaded JS: vendor/babel.min.js
+AssetLoader.js:140 [CAPPS Asset Loader] Loaded 3 JS files and 0 CSS files for capps-guinea-pig
+JSXTranspiler.js:74 [JSX Transpiler] Initialized with MutationObserver for inline JSX
+capps.layout.route.js:130 [Router] All assets loaded for module: capps-guinea-pig
+capps.layout.route.js:131 [Router] Hiding spinner and proceeding to route...
+spinner.js:172 [CAPPS UI] hideSpinner called
+spinner.js:144 [CAPPS UI] DOM Spinner hidden - show class removed and display set to none
+spinner.js:174 [CAPPS UI] Spinner hidden
+ getRemoteModule called for: appName="app_components", url="/STD/Apps/app-components/dist/remoteEntry.js"
+ Reusing existing load promise for script "/STD/Apps/app-components/dist/remoteEntry.js" expecting global "app_components".
+ action CollectionBlock/reset @ 18:31:57.512
+ mutation CollectionBlock/RESET @ 18:31:57.513
+ action ModuleBlock/reset @ 18:31:57.515
+ mutation ModuleBlock/RESET @ 18:31:57.516
+ action ModuleBlock/setModuleName @ 18:31:57.518
+ mutation ModuleBlock/SET_MODULE_NAME @ 18:31:57.519
+ mutation loading @ 18:31:57.521
+ action CollectionBlock/reset @ 18:31:57.526
+ mutation CollectionBlock/RESET @ 18:31:57.528
+ action CollectionBlock/setCollectionName @ 18:31:57.530
+ mutation CollectionBlock/SET_COLLECTION_NAME @ 18:31:57.531
+ action CollectionBlock/getCollectionSchemaDetails @ 18:31:57.533
+ mutation loading @ 18:31:57.534
+ Initializing share scope with host default scope.
+ Share scope initialized for container.
+ Attempting to get module "./FundsHeaderComponent" from container "app_components".
+ userRoles  []
+ action ModuleBlock/setModuleConfigurationData @ 18:31:57.579
+ mutation ModuleBlock/SET_MODULE_CONFIGURATIONS @ 18:31:57.579
+ mutation loading @ 18:31:57.580
+ mutation loading @ 18:31:57.581
+ mutation CollectionBlock/SET_COLLECTION_SCHEMA_DETAILS @ 18:31:57.584
+ Module "./FundsHeaderComponent" loaded successfully from container "app_components".
+ Clearing diff classes from all fields
+ Diff classes cleared
+ [FIELDS Watcher] About to load form.js for: collection_one
+ mutation loading @ 18:31:57.670
+ [ButtonVisibility] Initializing button visibility...
+ [ButtonList Computed] formJsLoadedFlag: 0
+ [ButtonList Computed] collection: collection_one
+ [ButtonList Computed] window.capps.ui: {form: {…}, collection: {…}, alert: ƒ, confirm: ƒ, hideSpinner: ƒ, …}
+ [ButtonList Computed] formConfig: {}
+ [ButtonList Computed] staticButtons: []
+ [ButtonList Computed] dynamicButtons: [__ob__: Observer]
+ [ButtonVisibility] buttonList: []
+ [ButtonVisibility] current_form: {}
+ [ButtonVisibility] Final visibility state: {__ob__: Observer}
+ [ButtonVisibility] Initializing button visibility...
+ [ButtonVisibility] buttonList: []
+ [ButtonVisibility] current_form: {}
+ [ButtonVisibility] Final visibility state: {__ob__: Observer}
+ Dashboard button -  Dashboard button loaded
+ [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: false}
+ [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ [Vue3ComponentLoader] loadAndMountVue3Component started, checking refs...
+ [Vue3ComponentLoader] this.$refs: ['vue3MountPoint']
+ [Vue3ComponentLoader] vue3MountPoint exists: true
+ getRemoteModule called for: appName="capps_vue3_package", url="/FUNDS_APPS/package_app/capps_vue3_package.js"
+ Appending script tag for "/FUNDS_APPS/package_app/capps_vue3_package.js" to load remote "capps_vue3_package".
+ [Vue3ComponentLoader] Render called: {showLoader: true, errorLoading: null, isLoading: true, hasSlots: false}
+ [Vue3ComponentLoader] Mount point style: {display: 'none'}
+ Loading styles for  FUNDS
+ No subscribe function provided or not a valid function
+ the application name is  iwf
+ [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+ [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+ [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ [Vue3ComponentLoader] loadAndMountVue3Component started, checking refs...
+ [Vue3ComponentLoader] this.$refs: ['vue3MountPoint']
+ [Vue3ComponentLoader] vue3MountPoint exists: true
+ getRemoteModule called for: appName="capps_vue3_package", url="/FUNDS_APPS/package_app/capps_vue3_package.js"
+ Reusing existing load promise for script "/FUNDS_APPS/package_app/capps_vue3_package.js" expecting global "capps_vue3_package".
+ [Vue3ComponentLoader] loadAndMountVue3Component started, checking refs...
+ [Vue3ComponentLoader] this.$refs: ['vue3MountPoint']
+ [Vue3ComponentLoader] vue3MountPoint exists: true
+ getRemoteModule called for: appName="capps_vue3_package", url="/FUNDS_APPS/package_app/capps_vue3_package.js"
+ Reusing existing load promise for script "/FUNDS_APPS/package_app/capps_vue3_package.js" expecting global "capps_vue3_package".
+ [Vue3ComponentLoader] Render called: {showLoader: true, errorLoading: null, isLoading: true, hasSlots: true}
+ [Vue3ComponentLoader] Mount point style: {display: 'none'}
+ [Vue3ComponentLoader] Render called: {showLoader: true, errorLoading: null, isLoading: true, hasSlots: true}
+ [Vue3ComponentLoader] Mount point style: {display: 'none'}
+ [Vue3ComponentLoader] Render called: {showLoader: true, errorLoading: null, isLoading: true, hasSlots: true}
+ [Vue3ComponentLoader] Mount point style: {display: 'none'}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: true, errorLoading: null, isLoading: true, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'none'}
+loadIcon.js:4 Funds icons loaded
+cappsProxyAPI.js:14 mutation loading @ 18:31:57.843
+InputForm.vue:525 [FIELDS Watcher] Form.js loaded. window.capps.ui.collection_one.form: {_onLoadEvent: ƒ, _onBeforeSave: ƒ, _afterFormSubmit: ƒ, BUTTON_FIELD: ƒ, TEXT_FIELD: ƒ, …}
+InputForm.vue:529 FIELDS watcher - differencesArray.length: 0
+InputForm.vue:530 FIELDS watcher - differences: {__ob__: Observer}
+InputForm.vue:994 mutation loading @ 18:31:57.849
+cappsProxyAPI.js:9 mutation loading @ 18:31:57.851
+get-remote-module.js:37 Script "/FUNDS_APPS/package_app/capps_vue3_package.js" loaded via onload event. Checking for global "capps_vue3_package".
+get-remote-module.js:39 Global "capps_vue3_package" found: {}
+get-remote-module.js:69 Initializing share scope with host default scope.
+get-remote-module.js:69 Initializing share scope with host default scope.
+get-remote-module.js:69 Initializing share scope with host default scope.
+get-remote-module.js:75 Share scope initialized for container.
+get-remote-module.js:75 Share scope initialized for container.
+get-remote-module.js:75 Share scope initialized for container.
+get-remote-module.js:103 Attempting to get module "./MenuBar" from container "capps_vue3_package".
+get-remote-module.js:103 Attempting to get module "./AccordionPanel" from container "capps_vue3_package".
+get-remote-module.js:103 Attempting to get module "./AccordionPanel" from container "capps_vue3_package".
+appserver1/#/capps-guinea-pig/doc/collection_one/update/7:1 [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) <input type=​"password" placeholder=​"Old Password" class=​"input_box">​
+appserver1/#/capps-guinea-pig/doc/collection_one/update/7:1 [DOM] Input elements should have autocomplete attributes (suggested: "new-password"): (More info: https://goo.gl/9p2vKq) <input type=​"password" placeholder=​"New Password" class=​"input_box">​
+appserver1/#/capps-guinea-pig/doc/collection_one/update/7:1 [DOM] Input elements should have autocomplete attributes (suggested: "new-password"): (More info: https://goo.gl/9p2vKq) <input id=​"confirm" type=​"password" placeholder=​"Confirm Password" class=​"input_box">​
+cappsProxyAPI.js:14 mutation loading @ 18:31:57.927
+InputForm.vue:1004 mutation loading @ 18:31:57.929
+ButtonVisibilityMixin.js:150 [ButtonVisibility] Initializing button visibility...
+InputForm.vue:423 [ButtonList Computed] formJsLoadedFlag: 1
+InputForm.vue:424 [ButtonList Computed] collection: collection_one
+InputForm.vue:425 [ButtonList Computed] window.capps.ui: {form: {…}, collection: {…}, alert: ƒ, confirm: ƒ, hideSpinner: ƒ, …}
+InputForm.vue:426 [ButtonList Computed] formConfig: {_onLoadEvent: ƒ, _onBeforeSave: ƒ, _afterFormSubmit: ƒ, BUTTON_FIELD: ƒ, TEXT_FIELD: ƒ, …}
+InputForm.vue:428 [ButtonList Computed] staticButtons: (3) [{…}, {…}, {…}]
+InputForm.vue:429 [ButtonList Computed] dynamicButtons: [__ob__: Observer]
+ButtonVisibilityMixin.js:151 [ButtonVisibility] buttonList: (3) [{…}, {…}, {…}]
+ButtonVisibilityMixin.js:152 [ButtonVisibility] current_form: {ID: 7, TEXT_FIELD: 'Test3 Text', TEXTAREA_FIELD: 'This  test', EXPRESSION_TEXTAREA_FIELD: 'This is a test', COMMAND_PALLATE_TEXTAREA_FIELD: 'This is a test', …}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "validate_form" visibility (auto): true
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "preview_data" visibility (auto): true
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "conditional_action" visibility (auto): true
+ButtonVisibilityMixin.js:167 [ButtonVisibility] Final visibility state: {__ob__: Observer}
+get-remote-module.js:109 Module "./MenuBar" loaded successfully from container "capps_vue3_package".
+Vue3ComponentLoader.vue:140 Loaded Module from getRemoteModule: Module {__esModule: true, Symbol(Symbol.toStringTag): 'Module'}
+Vue3ComponentLoader.vue:147 [Vue3ComponentLoader] Mounting Vue 3 component to: <div data-v-d87d5a52 class=​"vue3-mount-point" style=​"display:​ none;​" data-v-app>​…​</div>​
+Vue3ComponentLoader.vue:148 [Vue3ComponentLoader] Mount point HTML before mount: 
+createMfeInterface.js:7 [MFE Wrapper] Mounting component: UnnamedComponent with initialProps: {menuData: Array(3), parentSelector: '#middle-content-headerBar', activeRoute: '/capps-guinea-pig/doc/collection_one/update/7'}
+primevue-setup.js:12 [PrimeVue Setup] Initializing PrimeVue with Aura theme preset...
+Vue3ComponentLoader.vue:159 [Vue3ComponentLoader] Vue 3 component mounted successfully
+Vue3ComponentLoader.vue:160 [Vue3ComponentLoader] Mount point HTML after mount: <div class="capps__menu_bar"><!-- The actual, visible Menubar component --><div class="p-menubar p-component" data-pc-name="menubar" pc0="" data-pc-section="root"><!----><a role="button" tabindex="0" 
+Vue3ComponentLoader.vue:178 [Vue3ComponentLoader] Setting isLoading to false
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: false}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:48 [Vue3ComponentLoader] Mount point after loading: {exists: true, innerHTML: '', offsetHeight: 0, offsetWidth: 0, display: 'block'}
+get-remote-module.js:109 Module "./AccordionPanel" loaded successfully from container "capps_vue3_package".
+get-remote-module.js:109 Module "./AccordionPanel" loaded successfully from container "capps_vue3_package".
+Vue3ComponentLoader.vue:140 Loaded Module from getRemoteModule: Module {__esModule: true, Symbol(Symbol.toStringTag): 'Module'}
+Vue3ComponentLoader.vue:147 [Vue3ComponentLoader] Mounting Vue 3 component to: <div data-v-d87d5a52 class=​"vue3-mount-point" data-v-app style=​"display:​ none;​">​…​</div>​
+Vue3ComponentLoader.vue:148 [Vue3ComponentLoader] Mount point HTML before mount: 
+createMfeInterface.js:7 [MFE Wrapper] Mounting component: UnnamedComponent with initialProps: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+primevue-setup.js:12 [PrimeVue Setup] Initializing PrimeVue with Aura theme preset...
+Vue3ComponentLoader.vue:159 [Vue3ComponentLoader] Vue 3 component mounted successfully
+Vue3ComponentLoader.vue:160 [Vue3ComponentLoader] Mount point HTML after mount: <div data-v-53d4b70f="" class="p-panel p-component p-panel-toggleable capps-accordion-panel" data-p="toggleable" data-pc-name="panel" pc0="" data-pc-section="root"><div class="p-panel-header" data-p="
+Vue3ComponentLoader.vue:178 [Vue3ComponentLoader] Setting isLoading to false
+Vue3ComponentLoader.vue:140 Loaded Module from getRemoteModule: Module {__esModule: true, Symbol(Symbol.toStringTag): 'Module'}
+Vue3ComponentLoader.vue:147 [Vue3ComponentLoader] Mounting Vue 3 component to: <div data-v-d87d5a52 class=​"vue3-mount-point" data-v-app style=​"display:​ none;​">​…​</div>​
+Vue3ComponentLoader.vue:148 [Vue3ComponentLoader] Mount point HTML before mount: 
+createMfeInterface.js:7 [MFE Wrapper] Mounting component: UnnamedComponent with initialProps: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+primevue-setup.js:12 [PrimeVue Setup] Initializing PrimeVue with Aura theme preset...
+Vue3ComponentLoader.vue:159 [Vue3ComponentLoader] Vue 3 component mounted successfully
+Vue3ComponentLoader.vue:160 [Vue3ComponentLoader] Mount point HTML after mount: <div data-v-53d4b70f="" class="p-panel p-component p-panel-toggleable capps-accordion-panel" data-p="toggleable" data-pc-name="panel" pc0="" data-pc-section="root"><div class="p-panel-header" data-p="
+Vue3ComponentLoader.vue:178 [Vue3ComponentLoader] Setting isLoading to false
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:48 [Vue3ComponentLoader] Mount point after loading: {exists: true, innerHTML: '', offsetHeight: 0, offsetWidth: 0, display: 'block'}
+Vue3ComponentLoader.vue:216 [Vue3ComponentLoader] Mount point not found yet, setting up observer...
+Vue3ComponentLoader.vue:283 [Vue3ComponentLoader] MutationObserver set up, waiting for mount point...
+Vue3ComponentLoader.vue:48 [Vue3ComponentLoader] Mount point after loading: {exists: true, innerHTML: '', offsetHeight: 0, offsetWidth: 0, display: 'block'}
+Vue3ComponentLoader.vue:216 [Vue3ComponentLoader] Mount point not found yet, setting up observer...
+Vue3ComponentLoader.vue:283 [Vue3ComponentLoader] MutationObserver set up, waiting for mount point...
+ButtonVisibilityMixin.js:150 [ButtonVisibility] Initializing button visibility...
+ButtonVisibilityMixin.js:151 [ButtonVisibility] buttonList: (3) [{…}, {…}, {…}]
+ButtonVisibilityMixin.js:152 [ButtonVisibility] current_form: {ID: 7, TEXT_FIELD: 'Test3 Text', TEXTAREA_FIELD: 'This  test', EXPRESSION_TEXTAREA_FIELD: 'This is a test', COMMAND_PALLATE_TEXTAREA_FIELD: 'This is a test', …}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "validate_form" visibility (auto): true
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "preview_data" visibility (auto): true
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "conditional_action" visibility (auto): true
+ButtonVisibilityMixin.js:167 [ButtonVisibility] Final visibility state: {__ob__: Observer}
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+bootstrap:22 WebSocket connection to 'wss://192.168.0.225:7979/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+./node_modules/webpack-dev-server/client/index.js?protocol=wss&hostname=192.168.0.225&port=7979&pathname=%2Fws&logging=none&progress=true&overlay=%7B%22errors%22%3Afalse%2C%22warnings%22%3Afalse%2C%22runtimeErrors%22%3Afalse%7D&reconnect=10&hot=only&live-reload=true @ index.js:320
+__webpack_require__ @ bootstrap:22
+(anonymous) @ startup:5
+(anonymous) @ startup:7
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+n.client.lib.js:33 a {connected: true, recovered: undefined, receiveBuffer: Array(0), sendBuffer: Array(0), _queue: Array(0), …} '==============' 'Connecting the N Center : null:fundsonline'
+installHook.js:1 Invalid session.
+overrideMethod @ installHook.js:1
+(anonymous) @ n.client.lib.js:38
+i.emit @ index.js:136
+emitEvent @ socket.js:498
+onevent @ socket.js:485
+onpacket @ socket.js:455
+i.emit @ index.js:136
+(anonymous) @ manager.js:207
+Promise.then
+(anonymous) @ websocket-constructor.browser.js:5
+ondecoded @ manager.js:206
+i.emit @ index.js:136
+add @ index.js:146
+ondata @ manager.js:193
+i.emit @ index.js:136
+onPacket @ socket.js:324
+i.emit @ index.js:136
+onPacket @ transport.js:97
+onData @ transport.js:89
+ws.onmessage @ websocket.js:69
+installHook.js:1 Disconnected from notification server
+overrideMethod @ installHook.js:1
+(anonymous) @ n.client.lib.js:82
+i.emit @ index.js:136
+onclose @ socket.js:432
+disconnect @ socket.js:614
+(anonymous) @ n.client.lib.js:39
+i.emit @ index.js:136
+emitEvent @ socket.js:498
+onevent @ socket.js:485
+onpacket @ socket.js:455
+i.emit @ index.js:136
+(anonymous) @ manager.js:207
+Promise.then
+(anonymous) @ websocket-constructor.browser.js:5
+ondecoded @ manager.js:206
+i.emit @ index.js:136
+add @ index.js:146
+ondata @ manager.js:193
+i.emit @ index.js:136
+onPacket @ socket.js:324
+i.emit @ index.js:136
+onPacket @ transport.js:97
+onData @ transport.js:89
+ws.onmessage @ websocket.js:69
+ButtonVisibilityMixin.js:150 [ButtonVisibility] Initializing button visibility...
+ButtonVisibilityMixin.js:151 [ButtonVisibility] buttonList: (3) [{…}, {…}, {…}]
+ButtonVisibilityMixin.js:152 [ButtonVisibility] current_form: {ID: 7, TEXT_FIELD: 'Test3 Text', TEXTAREA_FIELD: 'This  test', EXPRESSION_TEXTAREA_FIELD: 'This is a test', COMMAND_PALLATE_TEXTAREA_FIELD: 'This is a test', …}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "validate_form" visibility (auto): true
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "preview_data" visibility (auto): true
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "conditional_action" visibility (auto): true
+ButtonVisibilityMixin.js:167 [ButtonVisibility] Final visibility state: {__ob__: Observer}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:150 [ButtonVisibility] Initializing button visibility...
+ButtonVisibilityMixin.js:151 [ButtonVisibility] buttonList: (3) [{…}, {…}, {…}]
+ButtonVisibilityMixin.js:152 [ButtonVisibility] current_form: {ID: 7, TEXT_FIELD: 'Test3 Text', TEXTAREA_FIELD: 'This  test', EXPRESSION_TEXTAREA_FIELD: 'This is a test', COMMAND_PALLATE_TEXTAREA_FIELD: 'This is a test', …}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "validate_form" visibility (auto): true
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "preview_data" visibility (auto): true
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "conditional_action" visibility (auto): true
+ButtonVisibilityMixin.js:167 [ButtonVisibility] Final visibility state: {__ob__: Observer}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+appserver1/#/capps-guinea-pig/doc/collection_one/update/7:1 [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq)
+ChildCollection.vue:276 mutation loading @ 18:32:00.979
+ButtonVisibilityMixin.js:150 [ButtonVisibility] Initializing button visibility...
+ButtonVisibilityMixin.js:151 [ButtonVisibility] buttonList: (3) [{…}, {…}, {…}]
+ButtonVisibilityMixin.js:152 [ButtonVisibility] current_form: {ID: 7, TEXT_FIELD: 'Test3 Text', TEXTAREA_FIELD: 'This  test', EXPRESSION_TEXTAREA_FIELD: 'This is a test', COMMAND_PALLATE_TEXTAREA_FIELD: 'This is a test', …}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "validate_form" visibility (auto): true
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "preview_data" visibility (auto): true
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "conditional_action" visibility (auto): true
+ButtonVisibilityMixin.js:167 [ButtonVisibility] Final visibility state: {__ob__: Observer}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ChildCollection.vue:283 mutation loading @ 18:32:01.222
+cappsProxyAPI.js:9 mutation loading @ 18:32:01.224
+cappsProxyAPI.js:14 mutation loading @ 18:32:01.529
+BEFORE_RENDER.js:9  CAPPs_LIST_ONLOAD event registering ...
+installHook.js:1 [vue-i18n] Value of key 'capps-guinea-pig.collection_two' is not a string or function !
+overrideMethod @ installHook.js:1
+warn @ vue-i18n.esm.js:57
+_interpolate @ vue-i18n.esm.js:1558
+_translate @ vue-i18n.esm.js:1817
+_t @ vue-i18n.esm.js:1842
+Vue.$t @ vue-i18n.esm.js:255
+(anonymous) @ ChildCollection.vue:219
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+handler @ ChildCollection.vue:240
+invokeWithErrorHandling @ vue.esm.js:3753
+Vue.$watch @ vue.esm.js:4608
+createWatcher @ vue.esm.js:4570
+initWatch @ vue.esm.js:4554
+initState @ vue.esm.js:4349
+Vue._init @ vue.esm.js:4732
+VueComponent @ vue.esm.js:5857
+createComponentInstanceForVnode @ vue.esm.js:5065
+init @ vue.esm.js:4927
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+Vue.$forceUpdate @ vue.esm.js:3015
+forceRender_1 @ vue.esm.js:2627
+(anonymous) @ vue.esm.js:2647
+(anonymous) @ vue.esm.js:320
+Promise.then
+resolveAsyncComponent @ vue.esm.js:2671
+createComponent @ vue.esm.js:4995
+_createElement @ vue.esm.js:1845
+createElement$1 @ vue.esm.js:1784
+vm._c @ vue.esm.js:2502
+(anonymous) @ CollectionForm.vue:31
+renderList @ vue.esm.js:1898
+(anonymous) @ CollectionForm.vue:15
+renderList @ vue.esm.js:1898
+render @ CollectionForm.vue:11
+Vue._render @ vue.esm.js:2550
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+Vue.$forceUpdate @ vue.esm.js:3015
+forceRender_1 @ vue.esm.js:2627
+(anonymous) @ vue.esm.js:2647
+(anonymous) @ vue.esm.js:320
+Promise.then
+resolveAsyncComponent @ vue.esm.js:2667
+createComponent @ vue.esm.js:4995
+_createElement @ vue.esm.js:1834
+createElement$1 @ vue.esm.js:1784
+vm._c @ vue.esm.js:2502
+render @ InputForm.vue:318
+Vue._render @ vue.esm.js:2550
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+push../node_modules/vue/dist/vue.esm.js.Dep.notify @ vue.esm.js:817
+reactiveSetter @ vue.esm.js:1052
+proxySetter @ vue.esm.js:4327
+(anonymous) @ InputForm.vue:625
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+setTimeout
+(anonymous) @ InputForm.vue:624
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+handler @ InputForm.vue:628
+invokeWithErrorHandling @ vue.esm.js:3753
+Vue.$watch @ vue.esm.js:4608
+createWatcher @ vue.esm.js:4570
+initWatch @ vue.esm.js:4554
+initState @ vue.esm.js:4349
+Vue._init @ vue.esm.js:4732
+VueComponent @ vue.esm.js:5857
+createComponentInstanceForVnode @ vue.esm.js:5065
+init @ vue.esm.js:4927
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+Vue.$forceUpdate @ vue.esm.js:3015
+forceRender_1 @ vue.esm.js:2627
+(anonymous) @ vue.esm.js:2647
+(anonymous) @ vue.esm.js:320
+Promise.then
+resolveAsyncComponent @ vue.esm.js:2667
+createComponent @ vue.esm.js:4995
+_createElement @ vue.esm.js:1834
+createElement$1 @ vue.esm.js:1784
+vm._c @ vue.esm.js:2502
+render @ FormScreen.vue:8
+Vue._render @ vue.esm.js:2550
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+push../node_modules/vue/dist/vue.esm.js.Dep.notify @ vue.esm.js:817
+reactiveSetter @ vue.esm.js:1052
+proxySetter @ vue.esm.js:4327
+(anonymous) @ FormScreen.vue:86
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+handler @ FormScreen.vue:87
+invokeWithErrorHandling @ vue.esm.js:3753
+Vue.$watch @ vue.esm.js:4608
+createWatcher @ vue.esm.js:4570
+initWatch @ vue.esm.js:4554
+initState @ vue.esm.js:4349
+Vue._init @ vue.esm.js:4732
+VueComponent @ vue.esm.js:5857
+createComponentInstanceForVnode @ vue.esm.js:5065
+init @ vue.esm.js:4927
+merged @ vue.esm.js:5082
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+patch @ vue.esm.js:7104
+Vue._update @ vue.esm.js:2986
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+merged @ vue.esm.js:5082
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+patch @ vue.esm.js:7104
+Vue._update @ vue.esm.js:2986
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+patch @ vue.esm.js:7104
+Vue._update @ vue.esm.js:2986
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+merged @ vue.esm.js:5082
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+push../node_modules/vue/dist/vue.esm.js.Dep.notify @ vue.esm.js:817
+reactiveSetter @ vue.esm.js:1052
+(anonymous) @ vue-router.esm.js:3005
+(anonymous) @ vue-router.esm.js:3004
+updateRoute @ vue-router.esm.js:2414
+(anonymous) @ vue-router.esm.js:2263
+(anonymous) @ vue-router.esm.js:2402
+step @ vue-router.esm.js:2084
+step @ vue-router.esm.js:2091
+step @ vue-router.esm.js:2091
+step @ vue-router.esm.js:2091
+runQueue @ vue-router.esm.js:2095
+(anonymous) @ vue-router.esm.js:2397
+step @ vue-router.esm.js:2084
+(anonymous) @ vue-router.esm.js:2088
+(anonymous) @ vue-router.esm.js:2384
+(anonymous) @ vue-router.esm.js:2127
+(anonymous) @ vue-router.esm.js:2203
+Promise.then
+(anonymous) @ vue-router.esm.js:2150
+(anonymous) @ vue-router.esm.js:2171
+(anonymous) @ vue-router.esm.js:2171
+flatMapComponents @ vue-router.esm.js:2170
+(anonymous) @ vue-router.esm.js:2106
+iterator @ vue-router.esm.js:2362
+step @ vue-router.esm.js:2087
+step @ vue-router.esm.js:2091
+step @ vue-router.esm.js:2091
+(anonymous) @ vue-router.esm.js:2088
+(anonymous) @ vue-router.esm.js:2384
+(anonymous) @ capps.layout.route.js:133
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+beforeEnter @ capps.layout.route.js:92
+iterator @ vue-router.esm.js:2362
+step @ vue-router.esm.js:2087
+runQueue @ vue-router.esm.js:2095
+confirmTransition @ vue-router.esm.js:2392
+transitionTo @ vue-router.esm.js:2260
+init @ vue-router.esm.js:2996
+beforeCreate @ vue-router.esm.js:1298
+invokeWithErrorHandling @ vue.esm.js:3753
+callHook$1 @ vue.esm.js:3253
+Vue._init @ vue.esm.js:4730
+Vue @ vue.esm.js:5793
+(anonymous) @ bootstrap.js:47
+await in (anonymous)
+__webpack_require__.a @ async module:71
+./src/bootstrap.js @ src_bootstrap_js.js:26040
+__webpack_require__ @ bootstrap:22
+fn @ hot module replacement:61
+Promise.then
+(anonymous) @ main.js:6
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+(anonymous) @ main.js:7
+(anonymous) @ index.js:34
+Promise.then
+configLoader @ index.js:26
+./src/main.js @ main.js:3
+__webpack_require__ @ bootstrap:22
+(anonymous) @ app.js:12374
+(anonymous) @ app.js:12376
+installHook.js:1 [vue-i18n] Value of key 'capps-guinea-pig.collection_two' is not a string or function !
+overrideMethod @ installHook.js:1
+warn @ vue-i18n.esm.js:57
+_interpolate @ vue-i18n.esm.js:1558
+_translate @ vue-i18n.esm.js:1817
+_t @ vue-i18n.esm.js:1842
+Vue.$t @ vue-i18n.esm.js:255
+(anonymous) @ ChildCollection.vue:219
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+handler @ ChildCollection.vue:240
+invokeWithErrorHandling @ vue.esm.js:3753
+Vue.$watch @ vue.esm.js:4608
+createWatcher @ vue.esm.js:4570
+initWatch @ vue.esm.js:4554
+initState @ vue.esm.js:4349
+Vue._init @ vue.esm.js:4732
+VueComponent @ vue.esm.js:5857
+createComponentInstanceForVnode @ vue.esm.js:5065
+init @ vue.esm.js:4927
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+Vue.$forceUpdate @ vue.esm.js:3015
+forceRender_1 @ vue.esm.js:2627
+(anonymous) @ vue.esm.js:2647
+(anonymous) @ vue.esm.js:320
+Promise.then
+resolveAsyncComponent @ vue.esm.js:2671
+createComponent @ vue.esm.js:4995
+_createElement @ vue.esm.js:1845
+createElement$1 @ vue.esm.js:1784
+vm._c @ vue.esm.js:2502
+(anonymous) @ CollectionForm.vue:31
+renderList @ vue.esm.js:1898
+(anonymous) @ CollectionForm.vue:15
+renderList @ vue.esm.js:1898
+render @ CollectionForm.vue:11
+Vue._render @ vue.esm.js:2550
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+Vue.$forceUpdate @ vue.esm.js:3015
+forceRender_1 @ vue.esm.js:2627
+(anonymous) @ vue.esm.js:2647
+(anonymous) @ vue.esm.js:320
+Promise.then
+resolveAsyncComponent @ vue.esm.js:2667
+createComponent @ vue.esm.js:4995
+_createElement @ vue.esm.js:1834
+createElement$1 @ vue.esm.js:1784
+vm._c @ vue.esm.js:2502
+render @ InputForm.vue:318
+Vue._render @ vue.esm.js:2550
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+push../node_modules/vue/dist/vue.esm.js.Dep.notify @ vue.esm.js:817
+reactiveSetter @ vue.esm.js:1052
+proxySetter @ vue.esm.js:4327
+(anonymous) @ InputForm.vue:625
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+setTimeout
+(anonymous) @ InputForm.vue:624
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+handler @ InputForm.vue:628
+invokeWithErrorHandling @ vue.esm.js:3753
+Vue.$watch @ vue.esm.js:4608
+createWatcher @ vue.esm.js:4570
+initWatch @ vue.esm.js:4554
+initState @ vue.esm.js:4349
+Vue._init @ vue.esm.js:4732
+VueComponent @ vue.esm.js:5857
+createComponentInstanceForVnode @ vue.esm.js:5065
+init @ vue.esm.js:4927
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+Vue.$forceUpdate @ vue.esm.js:3015
+forceRender_1 @ vue.esm.js:2627
+(anonymous) @ vue.esm.js:2647
+(anonymous) @ vue.esm.js:320
+Promise.then
+resolveAsyncComponent @ vue.esm.js:2667
+createComponent @ vue.esm.js:4995
+_createElement @ vue.esm.js:1834
+createElement$1 @ vue.esm.js:1784
+vm._c @ vue.esm.js:2502
+render @ FormScreen.vue:8
+Vue._render @ vue.esm.js:2550
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+push../node_modules/vue/dist/vue.esm.js.Dep.notify @ vue.esm.js:817
+reactiveSetter @ vue.esm.js:1052
+proxySetter @ vue.esm.js:4327
+(anonymous) @ FormScreen.vue:86
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+handler @ FormScreen.vue:87
+invokeWithErrorHandling @ vue.esm.js:3753
+Vue.$watch @ vue.esm.js:4608
+createWatcher @ vue.esm.js:4570
+initWatch @ vue.esm.js:4554
+initState @ vue.esm.js:4349
+Vue._init @ vue.esm.js:4732
+VueComponent @ vue.esm.js:5857
+createComponentInstanceForVnode @ vue.esm.js:5065
+init @ vue.esm.js:4927
+merged @ vue.esm.js:5082
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+patch @ vue.esm.js:7104
+Vue._update @ vue.esm.js:2986
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+merged @ vue.esm.js:5082
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+patch @ vue.esm.js:7104
+Vue._update @ vue.esm.js:2986
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+patch @ vue.esm.js:7104
+Vue._update @ vue.esm.js:2986
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+merged @ vue.esm.js:5082
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+push../node_modules/vue/dist/vue.esm.js.Dep.notify @ vue.esm.js:817
+reactiveSetter @ vue.esm.js:1052
+(anonymous) @ vue-router.esm.js:3005
+(anonymous) @ vue-router.esm.js:3004
+updateRoute @ vue-router.esm.js:2414
+(anonymous) @ vue-router.esm.js:2263
+(anonymous) @ vue-router.esm.js:2402
+step @ vue-router.esm.js:2084
+step @ vue-router.esm.js:2091
+step @ vue-router.esm.js:2091
+step @ vue-router.esm.js:2091
+runQueue @ vue-router.esm.js:2095
+(anonymous) @ vue-router.esm.js:2397
+step @ vue-router.esm.js:2084
+(anonymous) @ vue-router.esm.js:2088
+(anonymous) @ vue-router.esm.js:2384
+(anonymous) @ vue-router.esm.js:2127
+(anonymous) @ vue-router.esm.js:2203
+Promise.then
+(anonymous) @ vue-router.esm.js:2150
+(anonymous) @ vue-router.esm.js:2171
+(anonymous) @ vue-router.esm.js:2171
+flatMapComponents @ vue-router.esm.js:2170
+(anonymous) @ vue-router.esm.js:2106
+iterator @ vue-router.esm.js:2362
+step @ vue-router.esm.js:2087
+step @ vue-router.esm.js:2091
+step @ vue-router.esm.js:2091
+(anonymous) @ vue-router.esm.js:2088
+(anonymous) @ vue-router.esm.js:2384
+(anonymous) @ capps.layout.route.js:133
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+beforeEnter @ capps.layout.route.js:92
+iterator @ vue-router.esm.js:2362
+step @ vue-router.esm.js:2087
+runQueue @ vue-router.esm.js:2095
+confirmTransition @ vue-router.esm.js:2392
+transitionTo @ vue-router.esm.js:2260
+init @ vue-router.esm.js:2996
+beforeCreate @ vue-router.esm.js:1298
+invokeWithErrorHandling @ vue.esm.js:3753
+callHook$1 @ vue.esm.js:3253
+Vue._init @ vue.esm.js:4730
+Vue @ vue.esm.js:5793
+(anonymous) @ bootstrap.js:47
+await in (anonymous)
+__webpack_require__.a @ async module:71
+./src/bootstrap.js @ src_bootstrap_js.js:26040
+__webpack_require__ @ bootstrap:22
+fn @ hot module replacement:61
+Promise.then
+(anonymous) @ main.js:6
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+(anonymous) @ main.js:7
+(anonymous) @ index.js:34
+Promise.then
+configLoader @ index.js:26
+./src/main.js @ main.js:3
+__webpack_require__ @ bootstrap:22
+(anonymous) @ app.js:12374
+(anonymous) @ app.js:12376
+installHook.js:1 [vue-i18n] Cannot translate the value of keypath 'capps-guinea-pig.collection_two'. Use the value of keypath as default.
+overrideMethod @ installHook.js:1
+warn @ vue-i18n.esm.js:57
+_warnDefault @ vue-i18n.esm.js:1502
+_t @ vue-i18n.esm.js:1854
+Vue.$t @ vue-i18n.esm.js:255
+(anonymous) @ ChildCollection.vue:219
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+handler @ ChildCollection.vue:240
+invokeWithErrorHandling @ vue.esm.js:3753
+Vue.$watch @ vue.esm.js:4608
+createWatcher @ vue.esm.js:4570
+initWatch @ vue.esm.js:4554
+initState @ vue.esm.js:4349
+Vue._init @ vue.esm.js:4732
+VueComponent @ vue.esm.js:5857
+createComponentInstanceForVnode @ vue.esm.js:5065
+init @ vue.esm.js:4927
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+Vue.$forceUpdate @ vue.esm.js:3015
+forceRender_1 @ vue.esm.js:2627
+(anonymous) @ vue.esm.js:2647
+(anonymous) @ vue.esm.js:320
+Promise.then
+resolveAsyncComponent @ vue.esm.js:2671
+createComponent @ vue.esm.js:4995
+_createElement @ vue.esm.js:1845
+createElement$1 @ vue.esm.js:1784
+vm._c @ vue.esm.js:2502
+(anonymous) @ CollectionForm.vue:31
+renderList @ vue.esm.js:1898
+(anonymous) @ CollectionForm.vue:15
+renderList @ vue.esm.js:1898
+render @ CollectionForm.vue:11
+Vue._render @ vue.esm.js:2550
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+updateChildren @ vue.esm.js:6816
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+Vue.$forceUpdate @ vue.esm.js:3015
+forceRender_1 @ vue.esm.js:2627
+(anonymous) @ vue.esm.js:2647
+(anonymous) @ vue.esm.js:320
+Promise.then
+resolveAsyncComponent @ vue.esm.js:2667
+createComponent @ vue.esm.js:4995
+_createElement @ vue.esm.js:1834
+createElement$1 @ vue.esm.js:1784
+vm._c @ vue.esm.js:2502
+render @ InputForm.vue:318
+Vue._render @ vue.esm.js:2550
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+push../node_modules/vue/dist/vue.esm.js.Dep.notify @ vue.esm.js:817
+reactiveSetter @ vue.esm.js:1052
+proxySetter @ vue.esm.js:4327
+(anonymous) @ InputForm.vue:625
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+setTimeout
+(anonymous) @ InputForm.vue:624
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+handler @ InputForm.vue:628
+invokeWithErrorHandling @ vue.esm.js:3753
+Vue.$watch @ vue.esm.js:4608
+createWatcher @ vue.esm.js:4570
+initWatch @ vue.esm.js:4554
+initState @ vue.esm.js:4349
+Vue._init @ vue.esm.js:4732
+VueComponent @ vue.esm.js:5857
+createComponentInstanceForVnode @ vue.esm.js:5065
+init @ vue.esm.js:4927
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+Vue.$forceUpdate @ vue.esm.js:3015
+forceRender_1 @ vue.esm.js:2627
+(anonymous) @ vue.esm.js:2647
+(anonymous) @ vue.esm.js:320
+Promise.then
+resolveAsyncComponent @ vue.esm.js:2667
+createComponent @ vue.esm.js:4995
+_createElement @ vue.esm.js:1834
+createElement$1 @ vue.esm.js:1784
+vm._c @ vue.esm.js:2502
+render @ FormScreen.vue:8
+Vue._render @ vue.esm.js:2550
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+push../node_modules/vue/dist/vue.esm.js.Dep.notify @ vue.esm.js:817
+reactiveSetter @ vue.esm.js:1052
+proxySetter @ vue.esm.js:4327
+(anonymous) @ FormScreen.vue:86
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+handler @ FormScreen.vue:87
+invokeWithErrorHandling @ vue.esm.js:3753
+Vue.$watch @ vue.esm.js:4608
+createWatcher @ vue.esm.js:4570
+initWatch @ vue.esm.js:4554
+initState @ vue.esm.js:4349
+Vue._init @ vue.esm.js:4732
+VueComponent @ vue.esm.js:5857
+createComponentInstanceForVnode @ vue.esm.js:5065
+init @ vue.esm.js:4927
+merged @ vue.esm.js:5082
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+patch @ vue.esm.js:7104
+Vue._update @ vue.esm.js:2986
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+merged @ vue.esm.js:5082
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+patch @ vue.esm.js:7104
+Vue._update @ vue.esm.js:2986
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+createChildren @ vue.esm.js:6673
+createElm @ vue.esm.js:6577
+patch @ vue.esm.js:7104
+Vue._update @ vue.esm.js:2986
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+Watcher @ vue.esm.js:4172
+mountComponent @ vue.esm.js:3113
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:9335
+push../node_modules/vue/dist/vue.esm.js.Vue.$mount @ vue.esm.js:11900
+init @ vue.esm.js:4928
+merged @ vue.esm.js:5082
+createComponent @ vue.esm.js:6600
+createElm @ vue.esm.js:6554
+updateChildren @ vue.esm.js:6849
+patchVnode @ vue.esm.js:6942
+patch @ vue.esm.js:7110
+Vue._update @ vue.esm.js:2990
+updateComponent @ vue.esm.js:3096
+push../node_modules/vue/dist/vue.esm.js.Watcher.get @ vue.esm.js:4182
+push../node_modules/vue/dist/vue.esm.js.Watcher.run @ vue.esm.js:4258
+flushSchedulerQueue @ vue.esm.js:3346
+(anonymous) @ vue.esm.js:3879
+flushCallbacks @ vue.esm.js:3801
+Promise.then
+timerFunc @ vue.esm.js:3826
+nextTick @ vue.esm.js:3891
+queueWatcher @ vue.esm.js:3432
+push../node_modules/vue/dist/vue.esm.js.Watcher.update @ vue.esm.js:4249
+push../node_modules/vue/dist/vue.esm.js.Dep.notify @ vue.esm.js:817
+reactiveSetter @ vue.esm.js:1052
+(anonymous) @ vue-router.esm.js:3005
+(anonymous) @ vue-router.esm.js:3004
+updateRoute @ vue-router.esm.js:2414
+(anonymous) @ vue-router.esm.js:2263
+(anonymous) @ vue-router.esm.js:2402
+step @ vue-router.esm.js:2084
+step @ vue-router.esm.js:2091
+step @ vue-router.esm.js:2091
+step @ vue-router.esm.js:2091
+runQueue @ vue-router.esm.js:2095
+(anonymous) @ vue-router.esm.js:2397
+step @ vue-router.esm.js:2084
+(anonymous) @ vue-router.esm.js:2088
+(anonymous) @ vue-router.esm.js:2384
+(anonymous) @ vue-router.esm.js:2127
+(anonymous) @ vue-router.esm.js:2203
+Promise.then
+(anonymous) @ vue-router.esm.js:2150
+(anonymous) @ vue-router.esm.js:2171
+(anonymous) @ vue-router.esm.js:2171
+flatMapComponents @ vue-router.esm.js:2170
+(anonymous) @ vue-router.esm.js:2106
+iterator @ vue-router.esm.js:2362
+step @ vue-router.esm.js:2087
+step @ vue-router.esm.js:2091
+step @ vue-router.esm.js:2091
+(anonymous) @ vue-router.esm.js:2088
+(anonymous) @ vue-router.esm.js:2384
+(anonymous) @ capps.layout.route.js:133
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+Promise.then
+asyncGeneratorStep @ asyncToGenerator.js:8
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+beforeEnter @ capps.layout.route.js:92
+iterator @ vue-router.esm.js:2362
+step @ vue-router.esm.js:2087
+runQueue @ vue-router.esm.js:2095
+confirmTransition @ vue-router.esm.js:2392
+transitionTo @ vue-router.esm.js:2260
+init @ vue-router.esm.js:2996
+beforeCreate @ vue-router.esm.js:1298
+invokeWithErrorHandling @ vue.esm.js:3753
+callHook$1 @ vue.esm.js:3253
+Vue._init @ vue.esm.js:4730
+Vue @ vue.esm.js:5793
+(anonymous) @ bootstrap.js:47
+await in (anonymous)
+__webpack_require__.a @ async module:71
+./src/bootstrap.js @ src_bootstrap_js.js:26040
+__webpack_require__ @ bootstrap:22
+fn @ hot module replacement:61
+Promise.then
+(anonymous) @ main.js:6
+(anonymous) @ regenerator.js:52
+(anonymous) @ regeneratorDefine.js:11
+asyncGeneratorStep @ asyncToGenerator.js:3
+_next @ asyncToGenerator.js:17
+(anonymous) @ asyncToGenerator.js:22
+(anonymous) @ asyncToGenerator.js:14
+(anonymous) @ main.js:7
+(anonymous) @ index.js:34
+Promise.then
+configLoader @ index.js:26
+./src/main.js @ main.js:3
+__webpack_require__ @ bootstrap:22
+(anonymous) @ app.js:12374
+(anonymous) @ app.js:12376
+ButtonVisibilityMixin.js:150 [ButtonVisibility] Initializing button visibility...
+ButtonVisibilityMixin.js:151 [ButtonVisibility] buttonList: (3) [{…}, {…}, {…}]
+ButtonVisibilityMixin.js:152 [ButtonVisibility] current_form: {ID: 7, TEXT_FIELD: 'Test3 Text', TEXTAREA_FIELD: 'This  test', EXPRESSION_TEXTAREA_FIELD: 'This is a test', COMMAND_PALLATE_TEXTAREA_FIELD: 'This is a test', …}
+ButtonVisibilityMixin.js:150 [ButtonVisibility] Initializing button visibility...
+ButtonVisibilityMixin.js:151 [ButtonVisibility] buttonList: (3) [{…}, {…}, {…}]
+ButtonVisibilityMixin.js:152 [ButtonVisibility] current_form: {ID: 7, TEXT_FIELD: 'Test3 Text', TEXTAREA_FIELD: 'This  test', EXPRESSION_TEXTAREA_FIELD: 'This is a test', COMMAND_PALLATE_TEXTAREA_FIELD: 'This is a test', …}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "validate_form" visibility (auto): true
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "validate_form" visibility (auto): true
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "preview_data" visibility (auto): true
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "preview_data" visibility (auto): true
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "conditional_action" visibility (auto): true
+ButtonVisibilityMixin.js:167 [ButtonVisibility] Final visibility state: {__ob__: Observer}
+ButtonVisibilityMixin.js:159 [ButtonVisibility] Button "conditional_action" visibility (auto): true
+ButtonVisibilityMixin.js:167 [ButtonVisibility] Final visibility state: {__ob__: Observer}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Attachments', icon: 'fas fa-paperclip', iconColor: '#3b82f6', badge: '', badgeClass: 'text-warning', …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+Vue3ComponentLoader.vue:81 Props for remote component changed, calling MFE update function. {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+createMfeInterface.js:30 [MFE Wrapper] Updating component (UnnamedComponent) with new props: {header: 'Version History', icon: 'fas fa-history', iconColor: '#10b981', toggleable: true, collapsed: true, …}
+Vue3ComponentLoader.vue:289 [Vue3ComponentLoader] Render called: {showLoader: false, errorLoading: null, isLoading: false, hasSlots: true}
+Vue3ComponentLoader.vue:319 [Vue3ComponentLoader] Mount point style: {display: 'block'}
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:7979/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:7979/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:8888/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+WebSocketClient.js:13 WebSocket connection to 'wss://192.168.0.225:7979/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51

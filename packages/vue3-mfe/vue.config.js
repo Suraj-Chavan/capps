@@ -60,6 +60,8 @@ module.exports = {
           './DataTable': './src/exposes/DataTableEntry.js',
           './MenuBar': './src/exposes/MenuBar.js',
           "./RecordSummaryDetails": "./src/exposes/RecordSummaryDetails.js",
+          "./AccordionPanel": "./src/exposes/AccordionPanelEntry.js",
+          "./Vue2ComponentLoader": "./src/exposes/Vue2ComponentLoaderEntry.js",
         },
         shared: {
           'vue': { singleton: true, requiredVersion: '^3.5.13', eager: true, },

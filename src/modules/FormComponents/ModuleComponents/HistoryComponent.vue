@@ -1,9 +1,7 @@
 <template>
 	<div class="version-history-section">
-		<div class="version-history-header mb-3">
-			<h2 class="component-header mb-0 mt-2">Version History</h2>
+		<div class="version-history-header mb-3" v-if="audit_id">
 			<span
-				v-if="audit_id"
 				class="current-version-chip"
 				@click="openAuditFormData(null)"
 				tabindex="0"

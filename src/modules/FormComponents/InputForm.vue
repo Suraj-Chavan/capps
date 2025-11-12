@@ -152,102 +152,91 @@
 						<div class="scroll-y mh-76">
 							<div id="details-accordion-group" role="tablist">
 								<!-- Attachments Accordion Item -->
-								<b-card no-body class="mb-2" v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictAttachments">
-									<b-card-header header-tag="header" role="tab" class="p-0 rounded-0" id="header-attachments">
-										<b-button block @click="handleAccordionToggle('accordion-attachments')"
-											variant="light" 
-											class="text-left rounded-0"
-											:aria-expanded="activeAccordionItemIds.includes('accordion-attachments') ? 'true' : 'false'"
-											aria-controls="accordion-attachments">
-											<i class="fas fa-paperclip mr-2"></i>
-											Attachments
-											<small v-if="restrictedFeatures.restrictAttachments" class="text-warning ml-2">(Read Only)</small>
-										</b-button>
-									</b-card-header>
-									<b-collapse 
-										id="accordion-attachments"
-										:visible="activeAccordionItemIds.includes('accordion-attachments')"
-										@shown="ensureAttachmentsLoaded" role="tabpanel"
-										aria-labelledby="header-attachments"
+								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictAttachments" class="mb-2">
+									<Vue3ComponentLoader
+										exposed-module="./AccordionPanel"
+										:component-props="{
+											header: 'Attachments',
+											icon: 'fas fa-paperclip',
+											iconColor: '#3b82f6',
+											badge: restrictedFeatures.restrictAttachments ? '(Read Only)' : '',
+											badgeClass: 'text-warning',
+											toggleable: !isAccordionRestricted('accordion-attachments'),
+											collapsed: !activeAccordionItemIds.includes('accordion-attachments')
+										}"
+										:component-events="{
+											toggle: (collapsed) => handlePanelToggle('accordion-attachments', collapsed)
+										}"
 									>
-										<b-card-body class="p-2">
-											<div v-if="restrictedFeatures.restrictAttachments" class="alert alert-info mb-2">
-												<i class="fas fa-info-circle mr-2"></i>
-												<small>Attachments are in read-only mode. Upload/delete operations are disabled.</small>
-											</div>
-											<AttachmentsComponent
-												ref="attachmentsComponent"
-												:id="id"
-												:collection="collection"
-												:module-name="moduleName"
-												:action="action"
-												:auto-load="false"
-												:restrict-attachments="restrictedFeatures.restrictAttachments"
-											/>
-										</b-card-body>
-									</b-collapse>
-								</b-card>
+										<div v-if="restrictedFeatures.restrictAttachments" class="alert alert-info mb-2">
+											<i class="fas fa-info-circle mr-2"></i>
+											<small>Attachments are in read-only mode. Upload/delete operations are disabled.</small>
+										</div>
+										<AttachmentsComponent
+											ref="attachmentsComponent"
+											:id="id"
+											:collection="collection"
+											:module-name="moduleName"
+											:action="action"
+											:auto-load="activeAccordionItemIds.includes('accordion-attachments')"
+											:restrict-attachments="restrictedFeatures.restrictAttachments"
+										/>
+									</Vue3ComponentLoader>
+								</div>
 
 								<!-- Connections Accordion Item -->
-								<b-card no-body class="mb-2" v-if="action === 'view' && !hideFeatures.restrictConnections">
-									<b-card-header header-tag="header" role="tab" class="p-0 rounded-0" id="header-connections">
-										<b-button block @click="handleAccordionToggle('accordion-connections')"
-											variant="light" class="text-left rounded-0"
-											:aria-expanded="activeAccordionItemIds.includes('accordion-connections') ? 'true' : 'false'"
-											aria-controls="accordion-connections">
-											<i class="fas fa-link mr-2"></i>
-											Connections
-										</b-button>
-									</b-card-header>
-									<b-collapse id="accordion-connections"
-										:visible="activeAccordionItemIds.includes('accordion-connections')"
-										@shown="ensureConnectionsLoaded" role="tabpanel"
-										aria-labelledby="header-connections">
-										<b-card-body class="p-2">
-											<ConnectionsComponent
-												ref="connectionsComponent"
-												:id="id"
-												:collection="collection"
-												:module-name="moduleName"
-												:action="action"
-												:auto-load="false"
-												:user-form-data="userFormData"
-											/>
-										</b-card-body>
-									</b-collapse>
-								</b-card>
+								<div v-if="action === 'view' && !hideFeatures.restrictConnections" class="mb-2">
+									<Vue3ComponentLoader
+										exposed-module="./AccordionPanel"
+										:component-props="{
+											header: 'Connections',
+											icon: 'fas fa-link',
+											iconColor: '#8b5cf6',
+											toggleable: true,
+											collapsed: !activeAccordionItemIds.includes('accordion-connections')
+										}"
+										:component-events="{
+											toggle: (collapsed) => handlePanelToggle('accordion-connections', collapsed)
+										}"
+									>
+										<ConnectionsComponent
+											ref="connectionsComponent"
+											:id="id"
+											:collection="collection"
+											:module-name="moduleName"
+											:action="action"
+											:auto-load="activeAccordionItemIds.includes('accordion-connections')"
+											:user-form-data="userFormData"
+										/>
+									</Vue3ComponentLoader>
+								</div>
 
 								<!-- Version History Accordion Item -->
-								<b-card no-body class="mb-2" v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictHistory">
-									<b-card-header header-tag="header" role="tab" class="p-0 rounded-0" id="header-history">
-										<b-button block @click="handleAccordionToggle('accordion-history')"
-											variant="light" class="text-left rounded-0"
-											:aria-expanded="activeAccordionItemIds.includes('accordion-history') ? 'true' : 'false'"
-											aria-controls="accordion-history">
-											<i class="fas fa-history mr-2"></i>
-											Version History
-										</b-button>
-									</b-card-header>
-									<b-collapse 
-										id="accordion-history"
-										:visible="activeAccordionItemIds.includes('accordion-history')"
-										@shown="ensureAuditLogsLoaded" 
-										role="tabpanel" 
-										aria-labelledby="header-history"
+								<div v-if="(action === 'view' || action === 'update') && !hideFeatures.restrictHistory" class="mb-2">
+									<Vue3ComponentLoader
+										exposed-module="./AccordionPanel"
+										:component-props="{
+											header: 'Version History',
+											icon: 'fas fa-history',
+											iconColor: '#10b981',
+											toggleable: true,
+											collapsed: !activeAccordionItemIds.includes('accordion-history')
+										}"
+										:component-events="{
+											toggle: (collapsed) => handlePanelToggle('accordion-history', collapsed)
+										}"
 									>
-										<b-card-body class="p-2">
-											<HistoryComponent
-												ref="historyComponent"
-												:id="id"
-												:collection="collection"
-												:module-name="moduleName"
-												:action="action"
-												:audit_id="audit_id"
-												:auto-load="false"
-											/>
-										</b-card-body>
-									</b-collapse>
-								</b-card>
+										<HistoryComponent
+											ref="historyComponent"
+											:id="id"
+											:collection="collection"
+											:module-name="moduleName"
+											:action="action"
+											:audit_id="audit_id"
+											:auto-load="activeAccordionItemIds.includes('accordion-history')"
+										/>
+									</Vue3ComponentLoader>
+								</div>
 
 							</div>
 						</div>
@@ -355,6 +344,7 @@ export default {
 		AttachmentsComponent: () => import("./ModuleComponents/AttachmentsComponent.vue"),
 		ConnectionsComponent: () => import("./ModuleComponents/ConnectionsComponent.vue"),
 		HistoryComponent: () => import("./ModuleComponents/HistoryComponent.vue"),
+		Vue3ComponentLoader: () => import("@/components/Vue3ComponentLoader/Vue3ComponentLoader.vue"),
 	},
 	computed: {
 		restrictedFeatures() {
@@ -451,6 +441,29 @@ export default {
 		}
 	},
 	watch: {
+		// Re-initialize panels when collection schema details are loaded
+		collectionSchemaDetails: {
+			immediate: true,
+			handler(schema) {
+				if (!schema || !schema.FIELDS) return;
+
+				// Initialize panels based on action and hideFeatures (now that schema is loaded)
+				const defaultAccordions = [];
+
+				if (this.action === 'view') {
+					// In VIEW mode: Open all non-hidden accordions
+					if (!this.hideFeatures.restrictConnections) defaultAccordions.push('accordion-connections');
+					if (!this.hideFeatures.restrictAttachments) defaultAccordions.push('accordion-attachments');
+					if (!this.hideFeatures.restrictHistory) defaultAccordions.push('accordion-history');
+				} else if (this.action === 'update') {
+					// In UPDATE mode: Open attachments and history only (NOT connections)
+					if (!this.hideFeatures.restrictAttachments) defaultAccordions.push('accordion-attachments');
+					if (!this.hideFeatures.restrictHistory) defaultAccordions.push('accordion-history');
+				}
+
+				this.activeAccordionItemIds = defaultAccordions;
+			}
+		},
 		'$route.query.showRecordSummary'(val) {
 			if (val === 'true') {
 				this.toggleDetailsSidebar();
@@ -652,7 +665,7 @@ export default {
 			if (this.isAccordionRestricted(itemId)) {
 				return; // Don't allow toggle if restricted
 			}
-			
+
 			const index = this.activeAccordionItemIds.indexOf(itemId);
 			if (index > -1) {
 				this.activeAccordionItemIds.splice(index, 1); // Close if already open
@@ -662,8 +675,35 @@ export default {
 			// If you want to maintain a single-open behavior after the initial default open,
 			// you would uncomment the following lines and comment out the push line above.
 			// } else {
-			//  this.activeAccordionItemIds = [itemId]; 
+			//  this.activeAccordionItemIds = [itemId];
 			// }
+		},
+		handlePanelToggle(itemId, collapsed) {
+			// Check if the panel is restricted
+			if (this.isAccordionRestricted(itemId)) {
+				return; // Don't allow toggle if restricted
+			}
+
+			const index = this.activeAccordionItemIds.indexOf(itemId);
+			// If panel is now collapsed (closed), remove from active list
+			if (collapsed && index > -1) {
+				this.activeAccordionItemIds.splice(index, 1);
+			}
+			// If panel is now expanded (open), add to active list and trigger data loading
+			else if (!collapsed && index === -1) {
+				this.activeAccordionItemIds.push(itemId);
+
+				// Trigger lazy loading based on panel type
+				this.$nextTick(() => {
+					if (itemId === 'accordion-attachments') {
+						this.ensureAttachmentsLoaded();
+					} else if (itemId === 'accordion-connections') {
+						this.ensureConnectionsLoaded();
+					} else if (itemId === 'accordion-history') {
+						this.ensureAuditLogsLoaded();
+					}
+				});
+			}
 		},
 		isAccordionRestricted(itemId) {
 			// Only attachments have restrictions since connections and history are read-only
@@ -1046,6 +1086,24 @@ export default {
 		// showCustomButton, clearCustomButtons, changeCustomButtonType) are provided by ButtonVisibilityMixin
 
 	},
+	created() {
+		// Initialize panels that should be open by default based on action and hideFeatures
+		// This replicates the old toggleDetailsSidebar() logic
+		const defaultAccordions = [];
+
+		if (this.action === 'view') {
+			// In VIEW mode: Open all non-hidden accordions
+			if (!this.hideFeatures.restrictConnections) defaultAccordions.push('accordion-connections');
+			if (!this.hideFeatures.restrictAttachments) defaultAccordions.push('accordion-attachments');
+			if (!this.hideFeatures.restrictHistory) defaultAccordions.push('accordion-history');
+		} else if (this.action === 'update') {
+			// In UPDATE mode: Open attachments and history only (NOT connections)
+			if (!this.hideFeatures.restrictAttachments) defaultAccordions.push('accordion-attachments');
+			if (!this.hideFeatures.restrictHistory) defaultAccordions.push('accordion-history');
+		}
+
+		this.activeAccordionItemIds = defaultAccordions;
+	},
 	mounted() {
 		// Query param से panel/sidebar open करें
 		if (this.$route && this.$route.query && this.$route.query.showRecordSummary === 'true') {
@@ -1098,6 +1156,7 @@ export default {
 				text-decoration: underline;
 			}
 		}
+
 	}
 
 	::v-deep {

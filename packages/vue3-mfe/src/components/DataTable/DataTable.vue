@@ -362,12 +362,12 @@
 <script setup>
 import { ref, onMounted, watch, computed, reactive, watchEffect, onBeforeUnmount, nextTick } from 'vue';
 import capps from "capps";
-import {
-    hasOwn,
-} from "@credenceanalytics/utilities";
 import debounce from 'lodash/debounce';
 import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
+
+// Helper function to check if object has own property (replaces @credenceanalytics/utilities)
+const hasOwn = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
 
 import DatePicker from 'primevue/datepicker';
 import { globalDateFormatShort, globalDateFormatLong } from "config";
